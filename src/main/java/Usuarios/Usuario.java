@@ -8,9 +8,9 @@ package Usuarios;
  *
  * @author ice
  */
-public class Usuario {
-    public String nome;
-    public String senha;
+public abstract class Usuario {
+    private String nome;
+    private String senha;
     
     public Usuario(String nome, String senha){
         this.nome = nome;
