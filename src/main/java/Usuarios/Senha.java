@@ -4,6 +4,7 @@
  */
 package Usuarios;
 import Excecao.*;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 /**
@@ -14,10 +15,11 @@ public class Senha {
     private String senha;
     //confirmar validade desse ReGex
     //formato digito, lowercase, uppercase, caracter especial, sem espaço, minimo de tamanho 8
-    private String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-    private Pattern padrao = Pattern.compile(senhaRegex);
+    private final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    private final Pattern padrao;
     
     public Senha(String senha) throws ExcecaoDeSenha{
+        padrao = Pattern.compile(senhaRegex);
         setSenha(senha);
     }
     
@@ -27,6 +29,36 @@ public class Senha {
     }
     
     private void setSenha(String senha)throws ExcecaoDeSenha{
+        if(!validaSenha(senha))
+            throw new ExcecaoDeSenha();
         
+        this.senha = senha;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+    /*
+    @Override
+    public boolean equals(Object senha){
+        if(senha.getSenha() != this.senha)
+            return false;
+        return true;
+    }*/
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this.senha == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Senha other = (Senha) obj;
+        return Objects.equals(this.senha, other.getSenha());
+    }
+    
 }
