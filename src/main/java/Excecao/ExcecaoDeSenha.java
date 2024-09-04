@@ -2,18 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Usuarios;
+package Excecao;
 
 /**
  *
- * @author ice
+ * @author mateu
  */
-public class Admin extends Juiz {
+public class ExcecaoDeSenha extends Exception{
 
-    public Admin(String nome, Senha senha) {
-        super(nome, senha);
-    }
-    void criarTorneio(){
-        
+    public ExcecaoDeSenha() {
+        super("senha invalida!");
     }
 }

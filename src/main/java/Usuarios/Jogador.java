@@ -12,7 +12,7 @@ public class Jogador extends Usuario {
     private int empates;
     private int vitorias;
     
-    public Jogador(String nome, String senha) {
+    public Jogador(String nome, Senha senha) {
         super(nome, senha);
     }
     
