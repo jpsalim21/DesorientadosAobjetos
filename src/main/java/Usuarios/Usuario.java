@@ -6,7 +6,7 @@ package Usuarios;
 
 /**
  *
- * @author ice
+ * @author Thales
  */
 public abstract class Usuario {
     private String nome;
@@ -16,5 +16,4 @@ public abstract class Usuario {
         this.nome = nome;
         this.senha = senha;
     }
-    
 }

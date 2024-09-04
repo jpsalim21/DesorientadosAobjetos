@@ -11,7 +11,8 @@ import java.util.List;
 
 /**
  *
- * @author ice
+ * @author Thales
+ * 
  */
 public class Torneio {
     private String nome;
