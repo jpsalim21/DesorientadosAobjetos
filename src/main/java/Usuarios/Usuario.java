@@ -4,6 +4,7 @@
  */
 package Usuarios;
 import java.util.*;
+import Torneios.*;
 /**
  *
  * @author ice
@@ -11,10 +12,28 @@ import java.util.*;
 public abstract class Usuario {
     private String nome;
     private String senha;
-    private List<Torneio> torneio = new ArrayList<>();
+    protected List<Torneio> torneio = new ArrayList<>();
+    
     public Usuario(String nome, String senha){
         this.nome = nome;
         this.senha = senha;
+    }
+    
+    public void addTorneio(Torneio torneio){
+        this.torneio.add(torneio);
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    //faz sentido assim?
+    public List<Torneio> getTorneio() {
+        return torneio;
     }
     
 }
