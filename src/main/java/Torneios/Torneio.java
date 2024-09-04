@@ -17,7 +17,7 @@ import java.util.List;
 public class Torneio {
     private String nome;
     List<Juiz> juizes;
-    List<Jogador> participantes;
+    List<JogadorParticipante> participantes;
     List<Admin> admins;
     
     public Torneio(String nome){
@@ -28,9 +28,12 @@ public class Torneio {
     }
     
     public void adicionarParticipante(Jogador novoJogador){
-        participantes.add(novoJogador);
+        JogadorParticipante novoElemento = new JogadorParticipante(novoJogador);
+        participantes.add(novoElemento);
     }
-    public void removerParticipante(Jogador delJogador){
+    //ALERT: Podemos ter problemas aqui, já que a função pede outra classe.
+    //É para revermos ao começarmos a interface visual
+    public void removerParticipante(JogadorParticipante delJogador){
         participantes.remove(delJogador);
     }
 
