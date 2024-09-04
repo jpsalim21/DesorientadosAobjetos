@@ -5,8 +5,6 @@
 package Persistencias;
 
 import static Persistencias.Persistencia.DIRECTORY;
-import Usuarios.Admin;
-import Usuarios.Jogador;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
