@@ -11,7 +11,6 @@ import java.util.List;
  * @author ice
  */
 public class Juiz extends Usuario {
-    List<String> torneios; //FIXME: A lista é de torneios, mas vamos trocar depois
 
     public Juiz(String nome, Senha senha) {
         super(nome, senha);
