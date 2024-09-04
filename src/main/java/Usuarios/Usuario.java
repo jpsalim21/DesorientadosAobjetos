@@ -7,7 +7,7 @@ import java.util.*;
 import Torneios.*;
 /**
  *
- * @author ice
+ * @author Thales
  */
 public abstract class Usuario {
     private String nome;

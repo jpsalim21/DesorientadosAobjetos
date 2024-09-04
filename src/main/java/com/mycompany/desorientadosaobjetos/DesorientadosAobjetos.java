@@ -3,14 +3,18 @@
  */
 
 package com.mycompany.desorientadosaobjetos;
-
+import Janelas.*;
 /**
  *
- * @author ice
+ * @author Thales
  */
+
 public class DesorientadosAobjetos {
 
+
+    //Favor incrementar o contador de horas usadas nesse codigo: 0:00.
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Janela a = new Janela();
+        a.Janela();
     }
 }
