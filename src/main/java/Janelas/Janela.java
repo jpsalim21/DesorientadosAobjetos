@@ -13,7 +13,7 @@ import javax.swing.*;
  * @author Thales
  */
 public class Janela extends JFrame {
-   private JDesktopPane desktop;
+   //private JDesktopPane desktop; não to usando
    private JPanel painel;
    private JFrame tela;
    private final int WIDTH = 500;
@@ -48,36 +48,44 @@ public class Janela extends JFrame {
        JPanel painel2= new JPanel(); 
        painel.setBorder(BorderFactory.createCompoundBorder());
        painel2.setBorder(BorderFactory.createCompoundBorder());
+       painel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+       painel2.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/2));
+       painel.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));   
+       painel2.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
        
        JPanel Texto = new JPanel();
        
-       Texto.setLayout(new  GridLayout(0, 1, H_GAP, V_GAP));
+       Texto.setSize(new Dimension(WIDTH/2, HEIGHT));
        Texto.add(new JLabel("Bem-vindo"));
+       Texto.setFont(new Font("ComicSans", 18, 18));
+       Texto.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
        
        painel2.add(Texto,BorderLayout.CENTER);
+       painel2.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
        painel.add(painel2);
-       painel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
-       
-       
-       //FIXME procurar uma forma melhor de usar 
-       /*painel2.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
-       painel.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));*/
-       
-       painel.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));     
        
        JButton botao = new JButton("Adm");
-    //  botao.addActionListener(this);
+    //    botao.addActionListener(new AdmJ());
        JButton botaoU = new JButton("Usuário");
-    //  botao.addActionListener(this);
+    //    botao.addActionListener(this);
         JButton botaoJ = new JButton("Juiz");
-    //  botao.addActionListener(this);   
+    //  botaoJ.addActionListener(new AdmJ());
        JPanel botoes = new JPanel();
+       botoes.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/2));
        
        botoes.add(botao);
        botoes.add(botaoU);
        botoes.add(botaoJ);
        
-       //Talvez desnecessário
+       JButton botaoC = new JButton("Cadastro");
+       //  botao.addActionListener(this);  
+       
+       botoes.add(botaoC,BorderLayout.PAGE_END);
+       /*cadastro.add(botaoC);
+       cadastro.setVisible(true);
+       cadastro.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));*/
+       
+        //Talvez desnecessário
        /*botao.setVerticalTextPosition(AbstractButton.CENTER);
        botao.setHorizontalTextPosition(AbstractButton.RIGHT);
        botao.setEnabled(true);*/
@@ -85,7 +93,11 @@ public class Janela extends JFrame {
        //botao.
        
        botoes.setVisible(true);
+       botoes.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
+       
        painel.add(botoes, BorderLayout.SOUTH);
+       //painel.add(cadastro,BorderLayout.SOUTH);
+       painel.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
        tela.getContentPane().add(painel,BorderLayout.CENTER);
    }
 }
