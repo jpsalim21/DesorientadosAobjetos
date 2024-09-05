@@ -10,7 +10,7 @@ package Usuarios;
  */
 public class Admin extends Juiz {
 
-    public Admin(String nome, String senha) {
+    public Admin(String nome, Senha senha) {
         super(nome, senha);
     }
     void criarTorneio(){

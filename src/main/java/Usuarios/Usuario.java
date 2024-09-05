@@ -11,10 +11,10 @@ import Torneios.*;
  */
 public abstract class Usuario {
     private String nome;
-    private String senha;
+    private Senha senha;
     protected List<Torneio> torneio = new ArrayList<>();
     
-    public Usuario(String nome, String senha){
+    public Usuario(String nome, Senha senha){
         this.nome = nome;
         this.senha = senha;
     }
@@ -27,7 +27,7 @@ public abstract class Usuario {
         return nome;
     }
 
-    public String getSenha() {
+    public Senha getSenha() {
         return senha;
     }
 

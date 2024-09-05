@@ -2,18 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Usuarios;
-
-import java.util.List;
+package Excecao;
 
 /**
  *
- * @author ice
+ * @author mateu
  */
-public class Juiz extends Usuario {
+public class ExcecaoDeSenha extends Exception{
 
-    public Juiz(String nome, Senha senha) {
-        super(nome, senha);
+    public ExcecaoDeSenha() {
+        super("senha invalida!");
     }
-    
 }
