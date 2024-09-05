@@ -49,8 +49,11 @@ public class TorneioSuico extends Torneio{
         infoRodadas.add(infoRodadaAtual);
     }
     private void calcularClassificacao(){
-        //TODO: 
-        //Fazer verificação de que a rodada tenha terminado
+        for(Confronto c : infoRodadas.get(rodadaAtual)){
+            if(!c.getTerminouConfronto()){
+                return;
+            }
+        }
         
         List<JogadorParticipante> classificacao = new ArrayList<>();
         classificacao.addAll(participantes);

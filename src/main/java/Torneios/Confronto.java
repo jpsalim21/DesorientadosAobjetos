@@ -12,6 +12,8 @@ public class Confronto {
     private final JogadorParticipante jogador1;
     private final JogadorParticipante jogador2;
     private JogadorParticipante vencedor = null;
+    private boolean terminouConfronto = false;
+    private int resultado = 0;
     
     public Confronto(JogadorParticipante j1, JogadorParticipante j2){
         jogador1 = j1;
@@ -19,7 +21,11 @@ public class Confronto {
     }
     //Pode ter jeitos melhores de setar isso, mas como temos caso de empate, não podemos usar boolean
     public void setResultado(int r){
-        switch(r){
+        resultado = r;
+        terminouConfronto = true;
+    }
+    public void terminarConfronto(){
+        switch(resultado){
             case -1 -> {
                 jogador1.getUsuario().addVitorias();
                 jogador2.getUsuario().addDerrotas();
@@ -43,6 +49,7 @@ public class Confronto {
     public JogadorParticipante getVencedor(){
         return vencedor;
     }
-    
-    
+    public boolean getTerminouConfronto(){
+        return terminouConfronto;
+    }
 }

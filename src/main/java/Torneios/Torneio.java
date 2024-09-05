@@ -12,10 +12,11 @@ import java.util.List;
 /**
  *
  * @author Thales
+ * @author Joao Pedro Miranda Salim
  * 
  */
 public class Torneio {
-    private String nome;
+    private final String nome;
     List<Juiz> juizes;
     List<JogadorParticipante> participantes;
     List<Admin> admins;
