@@ -13,10 +13,13 @@ import javax.swing.*;
  * @author Thales
  */
 public class Janela extends JFrame {
-   private JDesktopPane desktop;
+   //private JDesktopPane desktop; não to usando
+   private JPanel painel;
    private JFrame tela;
    private final int WIDTH = 500;
-   private final int HEIGHT = 550;
+   private final int HEIGHT = 200;
+    private final int V_GAP = 10;
+    private final int H_GAP = 5;
    /*public Janela(){
        super("Janela");
        Dimension screenSize = 
@@ -24,17 +27,77 @@ public class Janela extends JFrame {
    
    public void Janela(){
        tela = new JFrame("TESTE");
-       JPanel painel = new JPanel();
+       
+       //Mexer com icon dps
+       //tela.setIconImage(image); Add uma imagem formato "imagem.png"
        //tela.addWindowListener(a); Ver oque deve ser adcionado de parametro na hora de abrir janela
+       
        tela.setSize(WIDTH, HEIGHT);
+       tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        tela.setVisible(true);
        tela.setLayout(new BorderLayout());
-       painel.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
-       tela.getContentPane().add(painel); 
-       //tela.setIconImage(image); Add uma imagem formato "imagem.png"
+       
+       DesenhaMenu();      
+
+       tela.pack();
    }
    
    private void DesenhaMenu(){
-       //Implementar menu
+       
+       painel = new JPanel();
+       JPanel painel2= new JPanel(); 
+       painel.setBorder(BorderFactory.createCompoundBorder());
+       painel2.setBorder(BorderFactory.createCompoundBorder());
+       painel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+       painel2.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/2));
+       painel.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));   
+       painel2.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
+       
+       JPanel Texto = new JPanel();
+       
+       Texto.setSize(new Dimension(WIDTH/2, HEIGHT));
+       Texto.add(new JLabel("Bem-vindo"));
+       Texto.setFont(new Font("ComicSans", 18, 18));
+       Texto.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
+       
+       painel2.add(Texto,BorderLayout.CENTER);
+       painel2.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
+       painel.add(painel2);
+       
+       JButton botao = new JButton("Adm");
+    //    botao.addActionListener(new AdmJ());
+       JButton botaoU = new JButton("Usuário");
+    //    botao.addActionListener(this);
+        JButton botaoJ = new JButton("Juiz");
+    //  botaoJ.addActionListener(new AdmJ());
+       JPanel botoes = new JPanel();
+       botoes.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/2));
+       
+       botoes.add(botao);
+       botoes.add(botaoU);
+       botoes.add(botaoJ);
+       
+       JButton botaoC = new JButton("Cadastro");
+       //  botao.addActionListener(this);  
+       
+       botoes.add(botaoC,BorderLayout.PAGE_END);
+       /*cadastro.add(botaoC);
+       cadastro.setVisible(true);
+       cadastro.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));*/
+       
+        //Talvez desnecessário
+       /*botao.setVerticalTextPosition(AbstractButton.CENTER);
+       botao.setHorizontalTextPosition(AbstractButton.RIGHT);
+       botao.setEnabled(true);*/
+       //boolean visibi = botao.isVisible();
+       //botao.
+       
+       botoes.setVisible(true);
+       botoes.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
+       
+       painel.add(botoes, BorderLayout.SOUTH);
+       //painel.add(cadastro,BorderLayout.SOUTH);
+       painel.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
+       tela.getContentPane().add(painel,BorderLayout.CENTER);
    }
 }
