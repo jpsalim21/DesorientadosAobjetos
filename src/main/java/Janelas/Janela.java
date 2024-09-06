@@ -37,12 +37,12 @@ public class Janela extends JFrame {
        tela.setVisible(true);
        tela.setLayout(new BorderLayout());
        
-       DesenhaMenu();      
+       desenhaMenu();      
 
        tela.pack();
    }
    
-   private void DesenhaMenu(){
+   private void desenhaMenu(){
        
        painel = new JPanel();
        JPanel painel2= new JPanel(); 
