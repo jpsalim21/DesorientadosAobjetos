@@ -17,6 +17,8 @@ public class Janela extends JFrame {
    //private JDesktopPane desktop; não to usando
    private JPanel painel;
    private JFrame tela;
+   private JTextField tfUsuario;
+   private JTextField tfSenha;
    private final int WIDTH = 500;
    private final int HEIGHT = 200;
    private final int V_GAP = 10;
@@ -64,12 +66,26 @@ public class Janela extends JFrame {
        
        Texto.setSize(new Dimension(WIDTH/2, HEIGHT));
        Texto.add(new JLabel("Bem-vindo"));
-       Texto.setFont(new Font("ComicSans", 18, 18));
+       Texto.setFont(new Font("ComicSans", 18, 24));
        Texto.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
        
        painel2.add(Texto,BorderLayout.CENTER);
        painel2.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
        painel.add(painel2);
+       
+       JPanel painelField= new JPanel(); 
+       
+       painelField.setBorder(BorderFactory.createEmptyBorder());
+       painelField.setLayout(new GridLayout(0, 1, H_GAP/3, V_GAP));
+       painelField.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/2));
+       
+       tfUsuario= new JTextField(5);
+       tfUsuario.setBounds(6, 10, 30, 15);
+       tfSenha = new JPasswordField(10);
+       tfUsuario.setBounds(6, 10, 30, 15);
+       
+       painelField.add(tfUsuario);
+       painelField.add(tfSenha);
        
        JButton botao = new JButton("Adm");
     //    botao.addActionListener(new AdmJ());
@@ -92,16 +108,11 @@ public class Janela extends JFrame {
        cadastro.setVisible(true);
        cadastro.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));*/
        
-        //Talvez desnecessário
-       /*botao.setVerticalTextPosition(AbstractButton.CENTER);
-       botao.setHorizontalTextPosition(AbstractButton.RIGHT);
-       botao.setEnabled(true);*/
-       //boolean visibi = botao.isVisible();
-       //botao.
        
        botoes.setVisible(true);
        botoes.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
        
+       painel.add(painelField, BorderLayout.CENTER);
        painel.add(botoes, BorderLayout.SOUTH);
        //painel.add(cadastro,BorderLayout.SOUTH);
        painel.setBackground(new Color (Color.HSBtoRGB(287 / 360f, 46 / 100f, 65 / 100f)));
