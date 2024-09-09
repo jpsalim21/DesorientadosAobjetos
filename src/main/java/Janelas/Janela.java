@@ -4,6 +4,7 @@
  */
 package Janelas;
 
+import Usuarios.*;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -18,8 +19,14 @@ public class Janela extends JFrame {
    private JFrame tela;
    private final int WIDTH = 500;
    private final int HEIGHT = 200;
-    private final int V_GAP = 10;
-    private final int H_GAP = 5;
+   private final int V_GAP = 10;
+   private final int H_GAP = 5;
+   
+   private JTextField nome;
+   private JTextField senha;
+   private JList<Jogador> jogadores;
+   private JList<Juiz> juizes;
+   private JList<Admin> admins;
    /*public Janela(){
        super("Janela");
        Dimension screenSize = 
