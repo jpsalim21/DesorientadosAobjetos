@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  *
- * @author ice
+ * @author Joao Pedro Miranda Salim
  */
 public class TorneioSuico extends Torneio{
     
@@ -35,7 +35,11 @@ public class TorneioSuico extends Torneio{
         
         //Resolve BYE do último jogador
         if(tamanho%2==1){
-            classificacao.get(tamanho - 1).setBye();
+            int indiceUltimoBye = tamanho - 1;
+            while(classificacao.get(indiceUltimoBye).getBye()){
+                indiceUltimoBye--;
+            }
+            classificacao.get(indiceUltimoBye).setBye();
         }
         //Emparceiramento de fato
         tamanho = tamanho / 2;
