@@ -39,6 +39,7 @@ public class GerenciaUsuarios implements WindowListener{
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
         jogPersistencia.save(tela.listaJogadores());
+        //implementar retorno de lista para os demais usuarios
         //juiPersistencia.save();
         //admPersistencia.save();
     }
