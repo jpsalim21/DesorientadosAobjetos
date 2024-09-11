@@ -34,13 +34,11 @@ public class Janela2 {
     String[] usuarios = {"Jogador","Juiz","Administrador"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
-    GerenciaUsuarios gerenciador;
+    
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
-        //FIXME: Por algum motivo essa linha zoa todo o resto do código
-        //Possilvemente, a função de fechar a janela não sai, fica rodando infinitametne
-        //tela.addWindowListener(new GerenciaUsuarios(this));
+        tela.addWindowListener(new GerenciaUsuarios(this));
         
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,11 +51,15 @@ public class Janela2 {
     }
     
     private void desenhaLogin(){
+        DefaultListModel<Jogador> l1 = new DefaultListModel<>();
+        DefaultListModel<Juiz> l2 = new DefaultListModel<>();
+        DefaultListModel<Admin> l3 = new DefaultListModel<>();
+        jogadores = new JList<>(l1);
+        juizes = new JList<>(l2);
+        admins = new JList<>(l3);
         JPanel painel = new JPanel();
-        //JPanel aux = new JPanel();
         painel.setPreferredSize(new Dimension(WIDTH*2/3, HEIGHT*2/3));
         painel.setBorder(BorderFactory.createTitledBorder("Bem-Vindo"));
-        //aux.setPreferredSize(new Dimension(WIDTH/2,HEIGHT*1/4));
         
         JPanel formulario = new JPanel();
         JPanel descricao = new JPanel();
@@ -81,18 +83,13 @@ public class Janela2 {
         
         painel.setLayout(new BorderLayout());
         painel.add(formulario,BorderLayout.NORTH);
-        //aux.add(formulario,BorderLayout.NORTH);
         
         tipoUsuario.setSelectedIndex(0);
-//        painel.add(tipoUsuario);
-        //aux.add(tipoUsuario,BorderLayout.CENTER);
-        
-        //painel.add(aux,BorderLayout.NORTH);
         JButton btnLogin = new JButton("Login");
         JButton btnCadastrar = new JButton("Cadastrar");
         
         btnLogin.addActionListener(new BotaoLogin(this));
-        
+        btnCadastrar.addActionListener(new AdicionaUsuario(this));
         JPanel botoes = new JPanel();
         botoes.add(btnLogin);
         botoes.add(btnCadastrar);
@@ -155,6 +152,7 @@ public class Janela2 {
                 addAdmin();
         }
     }
+    //implementar função de busca de usuario se usuario for cadastrado return true
     
     public void addJogador(){
         DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
@@ -195,12 +193,6 @@ public class Janela2 {
         }
         System.out.println("Tentou fazer login");
     }
-    
-    public void cadastro(){
-        
-    }
-    
-    
     
     public void removeUsuario(){
         //diferenciar usuario ativo
