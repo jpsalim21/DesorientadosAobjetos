@@ -38,7 +38,7 @@ public class AdminPersistencia implements Persistencia<Admin>{
         String json = Arquivo.le(PATH);
         List<Admin> admins = new ArrayList<>();
         
-        if(!json.trim().equals(" ")){
+        if(!json.trim().equals("")){
             Type tipoLista = new TypeToken<List<Admin>>(){}.getType();
             admins = gson.fromJson(json, tipoLista);
             

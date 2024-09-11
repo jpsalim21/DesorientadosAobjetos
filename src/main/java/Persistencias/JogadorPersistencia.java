@@ -35,7 +35,7 @@ public class JogadorPersistencia implements Persistencia<Jogador>{
         Gson gson = new Gson();
         String json = Arquivo.le(PATH);
         List<Jogador> jogadores = new ArrayList<>();
-        if(!json.trim().equals(" ")){
+        if(!json.trim().equals("")){
             Type tipoLista = new TypeToken<List<Jogador>>(){}.getType();
             jogadores = gson.fromJson(json, tipoLista);
             

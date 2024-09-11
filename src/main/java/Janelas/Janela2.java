@@ -4,6 +4,7 @@
  */
 package Janelas;
 
+import Eventos.*;
 import Excecao.ExcecaoDeSenha;
 import Usuarios.*;
 import java.awt.*;
@@ -33,8 +34,14 @@ public class Janela2 {
     String[] usuarios = {"Jogador","Juiz","Usuario"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
+    GerenciaUsuarios gerenciador;
+    
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
+        //FIXME: Por algum motivo essa linha zoa todo o resto do código
+        //Possilvemente, a função de fechar a janela não sai, fica rodando infinitametne
+        tela.addWindowListener(new GerenciaUsuarios(this));
+        
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.setVisible(true);
@@ -173,4 +180,6 @@ public class Janela2 {
             JOptionPane.showMessageDialog(tela, "A senha é invalida!");
         }
     }
+    
+    
 }

@@ -37,12 +37,18 @@ public class GerenciaUsuarios implements WindowListener{
     
     @Override
     public void windowClosing(WindowEvent e) {
-        Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
-        Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
-        Persistencia<Admin> admPersistencia = new AdminPersistencia();
-        jogPersistencia.save(tela.listaJogadores());
-        juiPersistencia.save(tela.listaJuizes());
-        admPersistencia.save(tela.listaAdmins());
+        if(tela.listaJogadores() != null){
+            Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
+            jogPersistencia.save(tela.listaJogadores());
+        }
+        if(tela.listaJuizes() != null){
+            Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
+            juiPersistencia.save(tela.listaJuizes());
+        }
+        if(tela.listaAdmins() != null){
+            Persistencia<Admin> admPersistencia = new AdminPersistencia();
+            admPersistencia.save(tela.listaAdmins());
+        }
     }
     @Override
     public void windowClosed(WindowEvent e) {

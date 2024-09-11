@@ -37,7 +37,7 @@ public class JuizPersistencia implements Persistencia<Juiz>{
         String json = Arquivo.le(PATH);
         List<Juiz> juizes = new ArrayList<>();
         
-        if(!json.trim().equals(" ")){
+        if(!json.trim().equals("")){
             Type tipoLista = new TypeToken<List<Juiz>>(){}.getType();
             juizes = gson.fromJson(json, tipoLista);
             
