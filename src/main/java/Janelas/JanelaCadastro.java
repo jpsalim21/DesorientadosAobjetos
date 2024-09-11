@@ -17,7 +17,9 @@ public class JanelaCadastro {
     private final int HEIGHT = 500;
     private final int V_GAP = 10;
     private final int H_GAP = 5;
-    
+    String[] usuarios = {"Jogador","Juiz","Admin"};
+    JComboBox tipoUsuario = new JComboBox(usuarios);
+    //FIXME: tenta mexer no tamang=ho desse bgl ai
     
     public JanelaCadastro() {
         this.tela  = new JFrame("Cadastro");
@@ -43,7 +45,7 @@ public class JanelaCadastro {
         fim.setBorder(BorderFactory.createTitledBorder("Cadastro"));
         fim.setPreferredSize(new Dimension(WIDTH/2,HEIGHT/2));
         
-        button.setPreferredSize(new Dimension(WIDTH*2,HEIGHT));
+        button.setPreferredSize(new Dimension(WIDTH,HEIGHT));
         
         pain.add(new JLabel("Nome:"));
         pain.add(new JTextField(20));
@@ -53,6 +55,9 @@ public class JanelaCadastro {
         
         pain.add(new JLabel("Reptir senha:"));
         pain.add(new JPasswordField(20));
+        
+        pain.add(new JLabel("Tipo de usuário"));
+        pain.add(tipoUsuario);
         
         JButton botao = new JButton("Confirmar");
         JButton botao2 = new JButton("Cancelar");
