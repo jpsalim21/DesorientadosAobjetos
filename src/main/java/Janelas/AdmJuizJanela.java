@@ -53,9 +53,10 @@ public class AdmJuizJanela{
         JPanel resto = new JPanel();
         JPanel resto2 = new JPanel();
         JPanel botoes = new JPanel();
+        
         forms.setPreferredSize(new Dimension(WIDTH,HEIGHT*2));
-       
         forms.setLayout(new GridLayout(0, 1, H_GAP,V_GAP));
+       
         JButton botao = new JButton("Editar");
         JButton botao2 = new JButton("Adicionar");
         JButton botao3 = new JButton("Remover");
