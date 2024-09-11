@@ -4,6 +4,8 @@
  */
 package Janelas;
 import Excecao.ExcecaoDeSenha;
+import Torneios.Torneio;
+import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import Usuarios.Senha;
 import java.awt.event.*;
@@ -21,6 +23,7 @@ public class JanelaUsuario {
     private final int V_GAP = 10;
     private final int H_GAP = 5;
     private Jogador jogadorLogado;
+    private JList<Torneio> torneiosEntrados;
     
     public JanelaUsuario(){
         janela = new JFrame();
@@ -28,7 +31,6 @@ public class JanelaUsuario {
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        
         //Provisório
         try{
             jogadorLogado = new Jogador("Joaquim", new Senha("A1b@cdef"));
@@ -40,10 +42,27 @@ public class JanelaUsuario {
         jogadorLogado.addVitorias();
         jogadorLogado.addVitorias();
         jogadorLogado.addVitorias();
+        Torneio novoTorneio = new TorneioSuico("Torneio de Xadrez", 5);
+        Torneio torneio2 = new TorneioSuico("Torneio de MK11", 10);
+        jogadorLogado.addTorneio(torneio2);
+        jogadorLogado.addTorneio(novoTorneio);
         
+        desenhaTela();
+        carregarTorneios();
     }
     
-    public void desenhaTela(){
+    private void carregarTorneios(){
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        
+        for(Torneio t : jogadorLogado.getTorneio()){
+            model.addElement(t);
+            
+        }
+    }
+    
+    private void desenhaTela(){
+        DefaultListModel<Torneio> model = new DefaultListModel<>();
+        
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         painelPrincipal.setBorder(BorderFactory.createTitledBorder("Tela de jogador"));
@@ -64,6 +83,10 @@ public class JanelaUsuario {
         painelInformacoesAux.add(vitorias);
         painelInformacoesAux.add(empates);
         painelInformacoesAux.add(derrotas);
+        
+        torneiosEntrados = new JList<>(model);
+        painelPrincipal.add(new JScrollPane(torneiosEntrados), BorderLayout.CENTER);
+        
         
         painelInformacoes.add(painelInformacoesAux, BorderLayout.NORTH);
         painelPrincipal.add(painelInformacoes, BorderLayout.WEST);

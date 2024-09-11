@@ -18,6 +18,5 @@ public class DesorientadosAobjetos {
         //Janela2 a = new Janela2();
         //a.desenha();
         JanelaUsuario j = new JanelaUsuario();
-        j.desenhaTela();
     }
 }
