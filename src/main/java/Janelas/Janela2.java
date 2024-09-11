@@ -31,7 +31,7 @@ public class Janela2 {
     
     private JTextField nome;
     private JTextField senha;
-    String[] usuarios = {"Jogador","Juiz","Usuario"};
+    String[] usuarios = {"Jogador","Juiz","Administrador"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
     GerenciaUsuarios gerenciador;
