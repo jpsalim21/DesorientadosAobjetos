@@ -39,13 +39,6 @@ public class Senha {
     public String getSenha() {
         return senha;
     }
-    /*
-    @Override
-    public boolean equals(Object senha){
-        if(senha.getSenha() != this.senha)
-            return false;
-        return true;
-    }*/
 
     @Override
     public boolean equals(Object obj) {
