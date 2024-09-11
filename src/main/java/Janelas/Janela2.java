@@ -34,13 +34,13 @@ public class Janela2 {
     String[] usuarios = {"Jogador","Juiz","Usuario"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
-    GerenciaUsuarios gerenciador;
+    
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
         //FIXME: Por algum motivo essa linha zoa todo o resto do código
         //Possilvemente, a função de fechar a janela não sai, fica rodando infinitametne
-        //tela.addWindowListener(new GerenciaUsuarios(this));
+        tela.addWindowListener(new GerenciaUsuarios(this));
         
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,6 +53,12 @@ public class Janela2 {
     }
     
     private void desenhaLogin(){
+        DefaultListModel<Jogador> l1 = new DefaultListModel<>();
+        DefaultListModel<Juiz> l2 = new DefaultListModel<>();
+        DefaultListModel<Admin> l3 = new DefaultListModel<>();
+        jogadores = new JList<>(l1);
+        juizes = new JList<>(l2);
+        admins = new JList<>(l3);
         JPanel painel = new JPanel();
         //JPanel aux = new JPanel();
         painel.setPreferredSize(new Dimension(WIDTH*2/3, HEIGHT*2/3));

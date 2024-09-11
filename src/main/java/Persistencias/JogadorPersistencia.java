@@ -31,18 +31,20 @@ public class JogadorPersistencia implements Persistencia<Jogador>{
     }
     
     @Override
-    public List<Jogador> findAll(){
+    public List<Jogador> findAll() {
         Gson gson = new Gson();
         String json = Arquivo.le(PATH);
         List<Jogador> jogadores = new ArrayList<>();
-        if(!json.trim().equals("")){
-            Type tipoLista = new TypeToken<List<Jogador>>(){}.getType();
+        if (!json.trim().equals("")) {
+            Type tipoLista = new TypeToken<List<Jogador>>() {
+            }.getType();
             jogadores = gson.fromJson(json, tipoLista);
-            
-            if(jogadores == null)
+
+            if (jogadores == null) {
                 jogadores = new ArrayList<>();
+            }
         }
-            
-        return jogadores; 
+
+        return jogadores;
     }
 }
