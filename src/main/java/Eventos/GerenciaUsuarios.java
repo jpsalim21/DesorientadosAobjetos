@@ -17,6 +17,8 @@ import java.util.List;
  */
 public class GerenciaUsuarios implements WindowListener{
     private final Janela2 tela;
+    
+    
 
     public GerenciaUsuarios(Janela2 tela) {
         this.tela = tela;

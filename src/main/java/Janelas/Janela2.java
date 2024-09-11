@@ -47,16 +47,18 @@ public class Janela2 {
     
     private void desenhaLogin(){
         JPanel painel = new JPanel();
-        JPanel aux = new JPanel();
+        //JPanel aux = new JPanel();
         painel.setPreferredSize(new Dimension(WIDTH*2/3, HEIGHT*2/3));
         painel.setBorder(BorderFactory.createTitledBorder("Bem-Vindo"));
-        aux.setPreferredSize(new Dimension(WIDTH/2,HEIGHT*1/4));
+        //aux.setPreferredSize(new Dimension(WIDTH/2,HEIGHT*1/4));
         
         JPanel formulario = new JPanel();
         JPanel descricao = new JPanel();
-        descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP));
+        //nao sabemos o pq funciona mas isso arruma o layout da tela de login
+        descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP + 10));
         descricao.add(new JLabel("Nome"));
         descricao.add(new JLabel("Senha"));
+        descricao.add(new JLabel());
         
         JPanel campos = new JPanel();
         campos.setLayout(new GridLayout(0,1, H_GAP,V_GAP));
@@ -65,19 +67,20 @@ public class Janela2 {
         
         campos.add(tfnome);
         campos.add(tfsenha);
+        campos.add(tipoUsuario);
         
         formulario.add(descricao);
         formulario.add(campos);
         
         painel.setLayout(new BorderLayout());
-        //painel.add(formulario,BorderLayout.NORTH);
-        aux.add(formulario,BorderLayout.NORTH);
+        painel.add(formulario,BorderLayout.NORTH);
+        //aux.add(formulario,BorderLayout.NORTH);
         
         tipoUsuario.setSelectedIndex(0);
 //        painel.add(tipoUsuario);
-        aux.add(tipoUsuario,BorderLayout.CENTER);
+        //aux.add(tipoUsuario,BorderLayout.CENTER);
         
-        painel.add(aux,BorderLayout.NORTH);
+        //painel.add(aux,BorderLayout.NORTH);
         JButton btnLogin = new JButton("Login");
         JButton btnCadastrar = new JButton("Cadastrar");
         
