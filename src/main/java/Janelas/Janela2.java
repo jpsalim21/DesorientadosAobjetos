@@ -4,6 +4,7 @@
  */
 package Janelas;
 
+import Excecao.ExcecaoDeSenha;
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,6 +30,8 @@ public class Janela2 {
     
     private JTextField nome;
     private JTextField senha;
+    String[] usuarios = {"Jogador","Juiz","Usuario"};
+    JComboBox tipoUsuario = new JComboBox(usuarios);
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
@@ -44,8 +47,10 @@ public class Janela2 {
     
     private void desenhaLogin(){
         JPanel painel = new JPanel();
-        painel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT/2));
+        JPanel aux = new JPanel();
+        painel.setPreferredSize(new Dimension(WIDTH*2/3, HEIGHT*2/3));
         painel.setBorder(BorderFactory.createTitledBorder("Bem-Vindo"));
+        aux.setPreferredSize(new Dimension(WIDTH/2,HEIGHT*1/4));
         
         JPanel formulario = new JPanel();
         JPanel descricao = new JPanel();
@@ -65,13 +70,14 @@ public class Janela2 {
         formulario.add(campos);
         
         painel.setLayout(new BorderLayout());
-        painel.add(formulario,BorderLayout.NORTH);
+        //painel.add(formulario,BorderLayout.NORTH);
+        aux.add(formulario,BorderLayout.NORTH);
         
-        String[] usuarios = {"Jogador","Juiz","Usuario"};
-        JComboBox tipoUsuario = new JComboBox(usuarios);
         tipoUsuario.setSelectedIndex(0);
-        painel.add(tipoUsuario);
+//        painel.add(tipoUsuario);
+        aux.add(tipoUsuario,BorderLayout.CENTER);
         
+        painel.add(aux,BorderLayout.NORTH);
         JButton btnLogin = new JButton("Login");
         JButton btnCadastrar = new JButton("Cadastrar");
         
@@ -107,12 +113,61 @@ public class Janela2 {
         return jog;
     }
     
-    //implementar retorno de lista para os demais usuarios
     public List<Juiz> listaJuizes(){
-        return null;
+        DefaultListModel<Juiz> lista = (DefaultListModel<Juiz>)juizes.getModel();
+        List<Juiz> juiz = new ArrayList<>();
+        
+        for(int i = 0; i < lista.size(); i++)
+            juiz.add(lista.get(i));
+        return juiz;
     }
     
     public List<Admin> listaAdmins(){
-        return null;
+        DefaultListModel<Admin> lista = (DefaultListModel<Admin>)admins.getModel();
+        List<Admin> adm = new ArrayList<>();
+        
+        for(int i = 0; i < lista.size(); i++)
+            adm.add(lista.get(i));
+        return adm;
+    }
+    
+    public void addUsuario(){
+        int index = tipoUsuario.getSelectedIndex();
+        
+        if(index != -1){
+            if(index == 0)
+                addJogador();
+            if(index == 1)
+                addJuiz();
+            if(index == 2)
+                addAdmin();
+        }
+    }
+    
+    public void addJogador(){
+        DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
+        try {
+            lista.addElement(new Jogador(tfnome.getText(),new Senha(tfsenha.getText())));
+        } catch (ExcecaoDeSenha e){
+            JOptionPane.showMessageDialog(tela, "A senha é invalida!");
+        }
+    }
+    
+    public void addJuiz(){
+        DefaultListModel<Juiz> lista = (DefaultListModel<Juiz>)juizes.getModel();
+        try {
+            lista.addElement(new Juiz(tfnome.getText(),new Senha(tfsenha.getText())));
+        } catch (ExcecaoDeSenha e){
+            JOptionPane.showMessageDialog(tela, "A senha é invalida!");
+        }
+    }
+    
+    public void addAdmin(){
+        DefaultListModel<Admin> lista = (DefaultListModel<Admin>)admins.getModel();
+        try {
+            lista.addElement(new Admin(tfnome.getText(),new Senha(tfsenha.getText())));
+        } catch (ExcecaoDeSenha e){
+            JOptionPane.showMessageDialog(tela, "A senha é invalida!");
+        }
     }
 }

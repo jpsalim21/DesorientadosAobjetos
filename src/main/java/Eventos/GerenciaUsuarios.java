@@ -39,9 +39,8 @@ public class GerenciaUsuarios implements WindowListener{
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
         jogPersistencia.save(tela.listaJogadores());
-        //implementar retorno de lista para os demais usuarios
-        //juiPersistencia.save();
-        //admPersistencia.save();
+        juiPersistencia.save(tela.listaJuizes());
+        admPersistencia.save(tela.listaAdmins());
     }
     @Override
     public void windowClosed(WindowEvent e) {

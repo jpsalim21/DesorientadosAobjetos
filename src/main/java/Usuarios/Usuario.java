@@ -36,4 +36,6 @@ public abstract class Usuario {
         return torneio;
     }
     
+    //TODO:criar comparação entre usuario, sobrescrever equals tavez?
+    
 }
