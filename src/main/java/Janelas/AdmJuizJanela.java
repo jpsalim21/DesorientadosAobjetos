@@ -12,40 +12,65 @@ import javax.swing.*;
  * @author Thales
  */
 public class AdmJuizJanela{
+<<<<<<< HEAD
     private final JFrame tela;
     private final int WIDTH = 500;
     private final int HEIGHT = 500;
+=======
+    private JFrame tela;
+    private final int WIDTH = 500;
+    private final int HEIGHT = 200;
+>>>>>>> main
     private final int V_GAP = 10;
     private final int H_GAP = 5;
     
     private JList<Torneio>torneios;
     
+<<<<<<< HEAD
     public AdmJuizJanela(){
         //Sei que ta igual o bgl do gleiph, mas não tem muito como fugir aqui isso é uma lista
         tela = new JFrame("Tela Adm e Juiz");
+=======
+    private AdmJuizJanela(){
+        //Sei que ta igual o bgl do gleiph, mas não tem muito como fugir aqui isso é uma lista
+        tela = new JFrame();
+>>>>>>> main
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.setVisible(true);
         tela.setLayout(new BorderLayout());
+<<<<<<< HEAD
         tela.setResizable(false);
 
         colocaResto();
         desenhaLista();
         colocaBotao();
+=======
+
+        desenhaLista();
+
+>>>>>>> main
         tela.pack();
     }
     
     private void desenhaLista(){
         JPanel painel = new JPanel();
         
+<<<<<<< HEAD
         painel.setBorder(BorderFactory.createTitledBorder("Torneios"));
         painel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+=======
+        painel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createCompoundBorder(), "Torneios"));
+        painel.setBorder(BorderFactory.createTitledBorder("Contatos"));
+        painel.setPreferredSize(new Dimension(WIDTH/3, HEIGHT));
+>>>>>>> main
         painel.setLayout(new BorderLayout());
         
         torneios = new JList<>();
         //torneios.addListSelectionListener(listener);
 
         painel.add(new JScrollPane(torneios), BorderLayout.CENTER);
+<<<<<<< HEAD
         tela.add(painel,BorderLayout.WEST);
     }
     
@@ -90,5 +115,7 @@ public class AdmJuizJanela{
         
         colocar.add(botoes);
         tela.add(colocar,BorderLayout.SOUTH);
+=======
+>>>>>>> main
     }
 }
