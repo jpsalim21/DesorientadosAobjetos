@@ -40,7 +40,7 @@ public class Janela2 {
         tela = new JFrame("Sistema de Torneios");
         //FIXME: Por algum motivo essa linha zoa todo o resto do código
         //Possilvemente, a função de fechar a janela não sai, fica rodando infinitametne
-        tela.addWindowListener(new GerenciaUsuarios(this));
+        //tela.addWindowListener(new GerenciaUsuarios(this));
         
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,6 +90,8 @@ public class Janela2 {
         //painel.add(aux,BorderLayout.NORTH);
         JButton btnLogin = new JButton("Login");
         JButton btnCadastrar = new JButton("Cadastrar");
+        
+        btnLogin.addActionListener(new BotaoLogin(this));
         
         JPanel botoes = new JPanel();
         botoes.add(btnLogin);
@@ -179,6 +181,23 @@ public class Janela2 {
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é invalida!");
         }
+    }
+    
+    public void login(){
+        String nome = tfnome.getText();
+        try{
+            Senha senha = new Senha(tfsenha.getText());
+        } catch (ExcecaoDeSenha e){
+            JOptionPane.showMessageDialog(tela, "A senha é inválida!");
+        } finally { 
+            //Fazer aqui a verificação de login
+            //Provavelmente tem outro try catch aqui para dar excecao Usuário Nao Encontrado
+        }
+        System.out.println("Tentou fazer login");
+    }
+    
+    public void cadastro(){
+        
     }
     
     
