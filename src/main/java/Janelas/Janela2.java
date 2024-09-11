@@ -201,4 +201,9 @@ public class Janela2 {
     }
     
     
+    
+    public void removeUsuario(){
+        //diferenciar usuario ativo
+        
+    }
 }
