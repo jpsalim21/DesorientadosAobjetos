@@ -170,4 +170,9 @@ public class Janela2 {
             JOptionPane.showMessageDialog(tela, "A senha é invalida!");
         }
     }
+    
+    public void removeUsuario(){
+        //diferenciar usuario ativo
+        
+    }
 }
