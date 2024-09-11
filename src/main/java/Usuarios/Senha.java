@@ -14,9 +14,10 @@ import java.util.regex.Pattern;
 public class Senha {
     private String senha;
     //confirmar validade desse ReGex
+    //A1b@cdef
     //formato digito, lowercase, uppercase, caracter especial, sem espaço, minimo de tamanho 8
-    private final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-    private final Pattern padrao;
+    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    private static Pattern padrao;
     
     public Senha(String senha) throws ExcecaoDeSenha{
         padrao = Pattern.compile(senhaRegex);

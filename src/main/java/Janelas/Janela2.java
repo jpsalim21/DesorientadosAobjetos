@@ -38,8 +38,6 @@ public class Janela2 {
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
-        //FIXME: Por algum motivo essa linha zoa todo o resto do código
-        //Possilvemente, a função de fechar a janela não sai, fica rodando infinitametne
         tela.addWindowListener(new GerenciaUsuarios(this));
         
         tela.setSize(WIDTH, HEIGHT);
@@ -98,7 +96,7 @@ public class Janela2 {
         JButton btnCadastrar = new JButton("Cadastrar");
         
         btnLogin.addActionListener(new BotaoLogin(this));
-        
+        btnCadastrar.addActionListener(new AdicionaUsuario(this));
         JPanel botoes = new JPanel();
         botoes.add(btnLogin);
         botoes.add(btnCadastrar);
@@ -201,12 +199,6 @@ public class Janela2 {
         }
         System.out.println("Tentou fazer login");
     }
-    
-    public void cadastro(){
-        
-    }
-    
-    
     
     public void removeUsuario(){
         //diferenciar usuario ativo

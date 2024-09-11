@@ -5,8 +5,10 @@
 
 package Persistencias;
 import Usuarios.Jogador;
+
 import java.io.File;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
