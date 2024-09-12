@@ -16,12 +16,19 @@ import java.util.List;
  * @author mateu
  */
 public class GerenciaUsuarios implements WindowListener{
-    private final Janela2 tela;
-    
-    
+    private static GerenciaUsuarios singleton;
+    List<Jogador> jogadores;
+    List<Juiz> juizes;
+    List<Admin> administradores;
 
-    public GerenciaUsuarios(Janela2 tela) {
-        this.tela = tela;
+    public GerenciaUsuarios() {
+        if(singleton != null){
+            return;
+        }
+        singleton = this;
+    }
+    public static GerenciaUsuarios getSingleton(){
+        return singleton;
     }
     
     @Override
@@ -29,25 +36,24 @@ public class GerenciaUsuarios implements WindowListener{
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
-        List<Jogador> l1 = jogPersistencia.findAll();
-        List<Juiz> l2 = juiPersistencia.findAll();
-        List<Admin> l3 = admPersistencia.findAll();
-        tela.carregaUsuarios(l1, l2, l3);
+        jogadores = jogPersistencia.findAll();
+        juizes = juiPersistencia.findAll();
+        administradores = admPersistencia.findAll();
     }
     
     @Override
     public void windowClosing(WindowEvent e) {
-        if(tela.listaJogadores() != null){
+        if(jogadores != null){
             Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
-            jogPersistencia.save(tela.listaJogadores());
+            jogPersistencia.save(jogadores);
         }
-        if(tela.listaJuizes() != null){
+        if(juizes != null){
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
-            juiPersistencia.save(tela.listaJuizes());
+            juiPersistencia.save(juizes);
         }
-        if(tela.listaAdmins() != null){
+        if(administradores != null){
             Persistencia<Admin> admPersistencia = new AdminPersistencia();
-            admPersistencia.save(tela.listaAdmins());
+            admPersistencia.save(administradores);
         }
     }
     @Override

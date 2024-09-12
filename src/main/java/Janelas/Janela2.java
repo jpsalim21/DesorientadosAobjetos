@@ -38,7 +38,7 @@ public class Janela2 {
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
-        tela.addWindowListener(new GerenciaUsuarios(this));
+        tela.addWindowListener(GerenciaUsuarios.getSingleton());
         
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,48 +105,6 @@ public class Janela2 {
         
         painel.add(botoes,BorderLayout.SOUTH);
         tela.getContentPane().add(painel, BorderLayout.CENTER);
-    }
-
-    public void carregaUsuarios(List<Jogador> jogador, List<Juiz> juiz, List<Admin> adm){
-        DefaultListModel<Jogador> l1 = (DefaultListModel<Jogador>)jogadores.getModel();
-        DefaultListModel<Juiz> l2 = (DefaultListModel<Juiz>)juizes.getModel();
-        DefaultListModel<Admin> l3 = (DefaultListModel<Admin>)admins.getModel();
-        for(Jogador j: jogador){
-            l1.addElement(j);
-        }
-        for(Juiz j : juiz){
-            l2.addElement(j);
-        }
-        for(Admin a: adm){
-            l3.addElement(a);
-        }
-    }
-    
-    public List<Jogador> listaJogadores(){
-        DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
-        List<Jogador> jog = new ArrayList<>();
-        
-        for(int i = 0; i < lista.size(); i++)
-            jog.add(lista.get(i));
-        return jog;
-    }
-    
-    public List<Juiz> listaJuizes(){
-        DefaultListModel<Juiz> lista = (DefaultListModel<Juiz>)juizes.getModel();
-        List<Juiz> juiz = new ArrayList<>();
-        
-        for(int i = 0; i < lista.size(); i++)
-            juiz.add(lista.get(i));
-        return juiz;
-    }
-    
-    public List<Admin> listaAdmins(){
-        DefaultListModel<Admin> lista = (DefaultListModel<Admin>)admins.getModel();
-        List<Admin> adm = new ArrayList<>();
-        
-        for(int i = 0; i < lista.size(); i++)
-            adm.add(lista.get(i));
-        return adm;
     }
     
     public void addUsuario(){

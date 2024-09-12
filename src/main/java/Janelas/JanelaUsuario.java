@@ -93,7 +93,7 @@ public class JanelaUsuario {
         torneiosEntrados = new JList<>(model);
         JScrollPane painelScrollTorneios = new JScrollPane(torneiosEntrados);
         painelScrollTorneios.setPreferredSize(new Dimension(WIDTH * 5/8, HEIGHT*3/5));
-        torneiosList.add(painelScrollTorneios, BorderLayout.NORTH);
+        torneiosList.add(painelScrollTorneios, BorderLayout.CENTER);
         
         JButton btnAcessar = new JButton("Acessar Torneio");
         JButton btnDeslogar = new JButton("Deslogar da Conta");
