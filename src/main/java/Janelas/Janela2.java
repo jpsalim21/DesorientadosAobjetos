@@ -5,7 +5,7 @@
 package Janelas;
 
 import Eventos.*;
-import Excecao.ExcecaoDeSenha;
+import Excecao.*;
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -142,17 +142,52 @@ public class Janela2 {
     
     public void addUsuario(){
         int index = tipoUsuario.getSelectedIndex();
-        
+        try{
+            
         if(index != -1){
-            if(index == 0)
+            if(index == 0){
+                findPlayer(new Jogador(tfnome.getText(), new Senha(tfsenha.getText())));
                 addJogador();
-            if(index == 1)
+            }
+            if(index == 1){
+                findJudge(new Juiz(tfnome.getText(), new Senha(tfsenha.getText())));
                 addJuiz();
-            if(index == 2)
+            }
+            if(index == 2){
+                findAdmin(new Admin(tfnome.getText(), new Senha(tfsenha.getText())));
                 addAdmin();
+            }
+            }
+        } catch (ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane.showMessageDialog(tela,"Usuario não encontrado!");
+        } catch (ExcecaoDeSenha e){
+            JOptionPane.showMessageDialog(tela, "A senha é invalida!");
         }
     }
     //implementar função de busca de usuario se usuario for cadastrado return true
+    public void findPlayer(Jogador jogador) throws ExcessaoUsuarioNaoEncontrado{
+        DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
+        for(int i = 0; i < lista.size(); i++)
+            if(jogador.equals(lista.get(i)))
+                return;
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    
+    public void findJudge(Juiz juiz) throws ExcessaoUsuarioNaoEncontrado{
+        DefaultListModel<Juiz> lista = (DefaultListModel<Juiz>)juizes.getModel();
+        for(int i = 0; i < lista.size(); i++)
+            if(juiz.equals(lista.get(i)))
+                return;
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    
+    public void findAdmin(Admin adm) throws ExcessaoUsuarioNaoEncontrado{
+        DefaultListModel<Admin> lista = (DefaultListModel<Admin>)admins.getModel();
+        for(int i = 0; i < lista.size(); i++)
+            if(adm.equals(lista.get(i)))
+                return;
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
     
     public void addJogador(){
         DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
