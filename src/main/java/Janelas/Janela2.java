@@ -73,12 +73,12 @@ public class Janela2 {
         descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP + 10));
         descricao.add(new JLabel("Nome"));
         descricao.add(new JLabel("Senha"));
-        descricao.add(new JLabel());
+        descricao.add(new JLabel("Acessar como:"));
         
         JPanel campos = new JPanel();
         campos.setLayout(new GridLayout(0,1, H_GAP,V_GAP));
         tfnome = new JTextField(20);
-        tfsenha = new JTextField(20);
+        tfsenha = new JPasswordField(20);
 //      tfsenha = new JPasswordField(20) ;  Esse é campo de senha que o gleiph disse
         
         campos.add(tfnome);
