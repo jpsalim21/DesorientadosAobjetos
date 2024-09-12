@@ -5,26 +5,22 @@
 package Eventos;
 
 import Janelas.Janela2;
-import Janelas.JanelaUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  *
- * @author PC12643
+ * @author Anderson
  */
-public class BotaoLogin implements ActionListener{
-    private final Janela2 tela;
-    
-    public BotaoLogin(Janela2 tela){
+public class ExcluiUsuario implements ActionListener{
+     private final Janela2 tela;
+     
+     public ExcluiUsuario(Janela2 tela){
         this.tela = tela;
     }
-    
-    @Override
+     @Override
     public void actionPerformed(ActionEvent e){
-        tela.login();
-        JanelaUsuario secondFrame = new JanelaUsuario();
-        
-        tela.dispose();
+        tela.removeUsuario();
+
     }
 }

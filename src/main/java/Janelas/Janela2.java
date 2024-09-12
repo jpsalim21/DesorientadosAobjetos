@@ -49,6 +49,12 @@ public class Janela2 {
         
         tela.pack();
     }
+
+    public void dispose() {
+        if (tela != null) {
+            tela.dispose();
+        }
+    }
     
     private void desenhaLogin(){
         DefaultListModel<Jogador> l1 = new DefaultListModel<>();
@@ -73,6 +79,7 @@ public class Janela2 {
         campos.setLayout(new GridLayout(0,1, H_GAP,V_GAP));
         tfnome = new JTextField(20);
         tfsenha = new JTextField(20);
+//      tfsenha = new JPasswordField(20) ;  Esse é campo de senha que o gleiph disse
         
         campos.add(tfnome);
         campos.add(tfsenha);
@@ -87,9 +94,11 @@ public class Janela2 {
         tipoUsuario.setSelectedIndex(0);
         JButton btnLogin = new JButton("Login");
         JButton btnCadastrar = new JButton("Cadastrar");
+        JButton btnExclui = new JButton("Exclui conta");
         
         btnLogin.addActionListener(new BotaoLogin(this));
         btnCadastrar.addActionListener(new AdicionaUsuario(this));
+        btnExclui.addActionListener(new ExcluiUsuario(this));
         JPanel botoes = new JPanel();
         botoes.add(btnLogin);
         botoes.add(btnCadastrar);
@@ -225,6 +234,7 @@ public class Janela2 {
         } finally { 
             //Fazer aqui a verificação de login
             //Provavelmente tem outro try catch aqui para dar excecao Usuário Nao Encontrado
+            
         }
         System.out.println("Tentou fazer login");
     }
