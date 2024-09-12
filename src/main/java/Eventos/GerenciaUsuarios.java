@@ -80,4 +80,8 @@ public class GerenciaUsuarios implements WindowListener{
     public void windowDeactivated(WindowEvent e) {
 
     }
+    
+    public void adicionaUsuario(){
+        
+    }
 }

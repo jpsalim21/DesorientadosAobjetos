@@ -14,6 +14,7 @@ public class Juiz extends Usuario {
 
     public Juiz(String nome, Senha senha) {
         super(nome, senha);
+        tipo = TipoUsuario.JUIZ;
     }
     
 }

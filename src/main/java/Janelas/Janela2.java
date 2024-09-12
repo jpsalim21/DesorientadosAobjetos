@@ -79,7 +79,6 @@ public class Janela2 {
         campos.setLayout(new GridLayout(0,1, H_GAP,V_GAP));
         tfnome = new JTextField(20);
         tfsenha = new JPasswordField(20);
-//      tfsenha = new JPasswordField(20) ;  Esse é campo de senha que o gleiph disse
         
         campos.add(tfnome);
         campos.add(tfsenha);

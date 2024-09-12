@@ -12,6 +12,7 @@ public class Admin extends Juiz {
 
     public Admin(String nome, Senha senha) {
         super(nome, senha);
+        tipo = TipoUsuario.ADMIN;
     }
     void criarTorneio(){
         
