@@ -6,6 +6,7 @@ package Janelas;
 
 import Eventos.*;
 import Excecao.ExcecaoDeSenha;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -48,6 +49,12 @@ public class Janela2 {
         desenhaLogin();
         
         tela.pack();
+    }
+
+    public void dispose() {
+        if (tela != null) {
+            tela.dispose();
+        }
     }
     
     private void desenhaLogin(){
@@ -190,6 +197,7 @@ public class Janela2 {
         } finally { 
             //Fazer aqui a verificação de login
             //Provavelmente tem outro try catch aqui para dar excecao Usuário Nao Encontrado
+            
         }
         System.out.println("Tentou fazer login");
     }

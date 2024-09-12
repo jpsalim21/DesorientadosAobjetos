@@ -5,6 +5,7 @@
 package Eventos;
 
 import Janelas.Janela2;
+import Janelas.JanelaUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,5 +23,8 @@ public class BotaoLogin implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         tela.login();
+        JanelaUsuario secondFrame = new JanelaUsuario();
+        
+        tela.dispose();
     }
 }
