@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 /**
  *
- * @author Anderson
+ * @author Thales
  */
 public class ExcluiUsuario implements ActionListener{
      private final Janela2 tela;

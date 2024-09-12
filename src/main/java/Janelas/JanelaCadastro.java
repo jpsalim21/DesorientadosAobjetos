@@ -19,7 +19,7 @@ public class JanelaCadastro {
     private final int H_GAP = 5;
     String[] usuarios = {"Jogador","Juiz","Admin"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
-    //FIXME: tenta mexer no tamang=ho desse bgl ai
+    //FIXME: tenta mexer no tamanho desse bgl ai
     
     public JanelaCadastro() {
         this.tela  = new JFrame("Cadastro");

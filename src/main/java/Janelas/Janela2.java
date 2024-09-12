@@ -126,7 +126,7 @@ public class Janela2 {
     public List<Jogador> listaJogadores(){
         DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
         List<Jogador> jog = new ArrayList<>();
-        
+   
         for(int i = 0; i < lista.size(); i++)
             jog.add(lista.get(i));
         return jog;
@@ -206,7 +206,19 @@ public class Janela2 {
     }
     
     public void removeUsuario(){
-        //diferenciar usuario ativo
+        //Como faço isso???diferenciar usuario ativo 
+       int index = tipoUsuario.getSelectedIndex();
+       if(index !=-1){
+           if(index == 0){
+               
+           }
+           if(index == 1){
+               
+           }
+           if(index == 2){
+               
+           }
+       }
         
     }
 }
