@@ -103,11 +103,11 @@ public class Janela2 {
         JPanel botoes = new JPanel();
         botoes.add(btnLogin);
         botoes.add(btnCadastrar);
+        botoes.add(btnExclui);
         
         painel.add(botoes,BorderLayout.SOUTH);
         tela.getContentPane().add(painel, BorderLayout.CENTER);
     }
-    
     public void addUsuario(){
         int index = tipoUsuario.getSelectedIndex();
         try{
@@ -146,7 +146,24 @@ public class Janela2 {
     }
     
     public void removeUsuario(){
-        //diferenciar usuario ativo
+       int index = tipoUsuario.getSelectedIndex();
+       if(index !=-1){
+           if(index == 0){
+        int selectedIndex = jogadores.getSelectedIndex();
+        DefaultListModel<Jogador> modelo = (DefaultListModel<Jogador>) jogadores.getModel();
+        modelo.remove(selectedIndex);
+           }
+           if(index == 1){
+        int selectedIndex = juizes.getSelectedIndex();
+        DefaultListModel<Juiz> modelo = (DefaultListModel<Juiz>) juizes.getModel();
+        modelo.remove(selectedIndex);
+           }
+           if(index == 2){
+        int selectedIndex = admins.getSelectedIndex();
+        DefaultListModel<Admin> modelo = (DefaultListModel<Admin>) admins.getModel();
+        modelo.remove(selectedIndex);       
+           }
+       }
         
     }
 }
