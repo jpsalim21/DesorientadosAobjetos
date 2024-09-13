@@ -4,11 +4,13 @@
  */
 package Eventos;
 
+import Excecao.ExcecaoUsuarioJaExistente;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
-import Janelas.Janela2;
 import Persistencias.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,12 +18,20 @@ import java.util.List;
  * @author mateu
  */
 public class GerenciaUsuarios implements WindowListener{
-    private final Janela2 tela;
-    
-    
+    private static GerenciaUsuarios singleton;
+    List<Jogador> jogadores;
+    List<Juiz> juizes;
+    List<Admin> administradores;
+    List<Usuario> usuarios;
 
-    public GerenciaUsuarios(Janela2 tela) {
-        this.tela = tela;
+    public GerenciaUsuarios() {
+        if(singleton != null){
+            return;
+        }
+        singleton = this;
+    }
+    public static GerenciaUsuarios getSingleton(){
+        return singleton;
     }
     
     @Override
@@ -29,25 +39,28 @@ public class GerenciaUsuarios implements WindowListener{
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
-        List<Jogador> l1 = jogPersistencia.findAll();
-        List<Juiz> l2 = juiPersistencia.findAll();
-        List<Admin> l3 = admPersistencia.findAll();
-        tela.carregaUsuarios(l1, l2, l3);
+        jogadores = jogPersistencia.findAll();
+        juizes = juiPersistencia.findAll();
+        administradores = admPersistencia.findAll();
+        usuarios = new ArrayList<>();
+        usuarios.addAll(juizes);
+        usuarios.addAll(jogadores);
+        usuarios.addAll(administradores);
     }
     
     @Override
     public void windowClosing(WindowEvent e) {
-        if(tela.listaJogadores() != null){
+        if(jogadores != null){
             Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
-            jogPersistencia.save(tela.listaJogadores());
+            jogPersistencia.save(jogadores);
         }
-        if(tela.listaJuizes() != null){
+        if(juizes != null){
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
-            juiPersistencia.save(tela.listaJuizes());
+            juiPersistencia.save(juizes);
         }
-        if(tela.listaAdmins() != null){
+        if(administradores != null){
             Persistencia<Admin> admPersistencia = new AdminPersistencia();
-            admPersistencia.save(tela.listaAdmins());
+            admPersistencia.save(administradores);
         }
     }
     @Override
@@ -73,5 +86,47 @@ public class GerenciaUsuarios implements WindowListener{
     @Override
     public void windowDeactivated(WindowEvent e) {
 
+    }
+    public void adicionaJogador(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+        procuraNomeIgual(nome);
+        Jogador newJogador = new Jogador(nome, senha);
+        jogadores.add(newJogador);
+        usuarios.add(newJogador);
+        System.out.println("Adicionou novo jogador");
+    }
+    public void adicionaJuiz(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+        procuraNomeIgual(nome);
+        Juiz newJuiz = new Juiz(nome, senha);
+        juizes.add(newJuiz);
+        usuarios.add(newJuiz);
+        System.out.println("Adicionou novo juiz");
+    }
+    public void adicionaAdmin(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+        procuraNomeIgual(nome);
+        Admin newAdmin = new Admin(nome, senha);
+        administradores.add(newAdmin);
+        usuarios.add(newAdmin);
+        System.out.println("Adicionou novo admin");
+    }
+    private void procuraNomeIgual(String nome) throws ExcecaoUsuarioJaExistente{
+        for(Usuario u : usuarios){
+            if(u.getNome().equals(nome)){
+                throw new ExcecaoUsuarioJaExistente();
+            }
+        }
+    }
+    
+    public void tentaLogin(String nome, Senha senha) throws ExcessaoUsuarioNaoEncontrado{
+        for(Usuario u : usuarios){
+            if(u.getNome().equals(nome)){
+                //FIXME: Isso tá muito feio, quero arrumar isso. 
+                //Mas parece que o problema é a classe Senha
+                if(u.getSenha().getSenha().equals(senha.getSenha())){
+                    return;
+                    
+                }
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
     }
 }

@@ -5,7 +5,12 @@
 package Janelas;
 
 import Eventos.*;
+<<<<<<< HEAD
 import Excecao.ExcecaoDeSenha;
+=======
+import Excecao.*;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
+>>>>>>> a77b39b866c305ee515c5983bab0fd29e70a131a
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -38,7 +43,7 @@ public class Janela2 {
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
-        tela.addWindowListener(new GerenciaUsuarios(this));
+        tela.addWindowListener(GerenciaUsuarios.getSingleton());
         
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,13 +78,12 @@ public class Janela2 {
         descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP + 10));
         descricao.add(new JLabel("Nome"));
         descricao.add(new JLabel("Senha"));
-        descricao.add(new JLabel());
+        descricao.add(new JLabel("Acessar como:"));
         
         JPanel campos = new JPanel();
         campos.setLayout(new GridLayout(0,1, H_GAP,V_GAP));
         tfnome = new JTextField(20);
-        tfsenha = new JTextField(20);
-//      tfsenha = new JPasswordField(20) ;  Esse é campo de senha que o gleiph disse
+        tfsenha = new JPasswordField(20);
         
         campos.add(tfnome);
         campos.add(tfsenha);
@@ -99,6 +103,7 @@ public class Janela2 {
         btnLogin.addActionListener(new BotaoLogin(this));
         btnCadastrar.addActionListener(new AdicionaUsuario(this));
         btnExclui.addActionListener(new ExcluiUsuario(this));
+        
         JPanel botoes = new JPanel();
         botoes.add(btnLogin);
         botoes.add(btnCadastrar);
@@ -107,87 +112,24 @@ public class Janela2 {
         painel.add(botoes,BorderLayout.SOUTH);
         tela.getContentPane().add(painel, BorderLayout.CENTER);
     }
-
-    public void carregaUsuarios(List<Jogador> jogador, List<Juiz> juiz, List<Admin> adm){
-        DefaultListModel<Jogador> l1 = (DefaultListModel<Jogador>)jogadores.getModel();
-        DefaultListModel<Juiz> l2 = (DefaultListModel<Juiz>)juizes.getModel();
-        DefaultListModel<Admin> l3 = (DefaultListModel<Admin>)admins.getModel();
-        for(Jogador j: jogador){
-            l1.addElement(j);
-        }
-        for(Juiz j : juiz){
-            l2.addElement(j);
-        }
-        for(Admin a: adm){
-            l3.addElement(a);
-        }
-    }
-    
-    public List<Jogador> listaJogadores(){
-        DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
-        List<Jogador> jog = new ArrayList<>();
-   
-        for(int i = 0; i < lista.size(); i++)
-            jog.add(lista.get(i));
-        return jog;
-    }
-    
-    public List<Juiz> listaJuizes(){
-        DefaultListModel<Juiz> lista = (DefaultListModel<Juiz>)juizes.getModel();
-        List<Juiz> juiz = new ArrayList<>();
-        
-        for(int i = 0; i < lista.size(); i++)
-            juiz.add(lista.get(i));
-        return juiz;
-    }
-    
-    public List<Admin> listaAdmins(){
-        DefaultListModel<Admin> lista = (DefaultListModel<Admin>)admins.getModel();
-        List<Admin> adm = new ArrayList<>();
-        
-        for(int i = 0; i < lista.size(); i++)
-            adm.add(lista.get(i));
-        return adm;
-    }
-    
     public void addUsuario(){
         int index = tipoUsuario.getSelectedIndex();
-        
-        if(index != -1){
-            if(index == 0)
-                addJogador();
-            if(index == 1)
-                addJuiz();
-            if(index == 2)
-                addAdmin();
-        }
-    }
-    //implementar função de busca de usuario se usuario for cadastrado return true
-    
-    public void addJogador(){
-        DefaultListModel<Jogador> lista = (DefaultListModel<Jogador>)jogadores.getModel();
-        try {
-            lista.addElement(new Jogador(tfnome.getText(),new Senha(tfsenha.getText())));
+        try{
+            if(index != -1){
+                if(index == 0){
+                    GerenciaUsuarios.getSingleton().adicionaJogador(tfnome.getText(), new Senha(tfsenha.getText()));
+                }
+                if(index == 1){
+                    GerenciaUsuarios.getSingleton().adicionaJuiz(tfnome.getText(), new Senha(tfsenha.getText()));
+                }
+                if(index == 2){
+                    GerenciaUsuarios.getSingleton().adicionaAdmin(tfnome.getText(), new Senha(tfsenha.getText()));
+                }
+            }
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é invalida!");
-        }
-    }
-    
-    public void addJuiz(){
-        DefaultListModel<Juiz> lista = (DefaultListModel<Juiz>)juizes.getModel();
-        try {
-            lista.addElement(new Juiz(tfnome.getText(),new Senha(tfsenha.getText())));
-        } catch (ExcecaoDeSenha e){
-            JOptionPane.showMessageDialog(tela, "A senha é invalida!");
-        }
-    }
-    
-    public void addAdmin(){
-        DefaultListModel<Admin> lista = (DefaultListModel<Admin>)admins.getModel();
-        try {
-            lista.addElement(new Admin(tfnome.getText(),new Senha(tfsenha.getText())));
-        } catch (ExcecaoDeSenha e){
-            JOptionPane.showMessageDialog(tela, "A senha é invalida!");
+        } catch (ExcecaoUsuarioJaExistente e){
+            JOptionPane.showMessageDialog(tela, "Usuário já existe");
         }
     }
     
@@ -195,14 +137,16 @@ public class Janela2 {
         String nome = tfnome.getText();
         try{
             Senha senha = new Senha(tfsenha.getText());
+            GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");
-        } finally { 
-            //Fazer aqui a verificação de login
-            //Provavelmente tem outro try catch aqui para dar excecao Usuário Nao Encontrado
-            
+            return;
+        } catch (ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane.showMessageDialog(tela, "Usuario ou senha não estão corretos. Digite novamente");
+            return;
         }
-        System.out.println("Tentou fazer login");
+        JanelaUsuario secondFrame = new JanelaUsuario();
+        tela.dispose();
     }
     
     //FIXME esse bgl ta o mais primitivo possivel peço perdão

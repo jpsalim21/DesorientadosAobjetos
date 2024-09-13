@@ -13,6 +13,14 @@ public abstract class Usuario {
     private String nome;
     private Senha senha;
     protected List<Torneio> torneio = new ArrayList<>();
+    //ALERT: Pode não ser tão importante assim no final. 
+    //APAGAR
+    enum TipoUsuario{
+        JOGADOR,
+        JUIZ,
+        ADMIN
+    }
+    protected TipoUsuario tipo;
     
     public Usuario(String nome, Senha senha){
         this.nome = nome;
@@ -37,5 +45,23 @@ public abstract class Usuario {
     }
     
     //TODO:criar comparação entre usuario, sobrescrever equals tavez?
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(nome, other.getNome())) {
+            return false;
+        }
+        return senha.equals(other.getSenha());
+    }
     
 }
