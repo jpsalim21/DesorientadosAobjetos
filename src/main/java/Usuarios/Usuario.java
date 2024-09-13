@@ -11,8 +11,10 @@ import Torneios.*;
  */
 public abstract class Usuario {
     private String nome;
-    private Senha senha;
+    private String senha;
     protected List<Torneio> torneio = new ArrayList<>();
+    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    private static Pattern padrao;
     //ALERT: Pode não ser tão importante assim no final. 
     //APAGAR
     enum TipoUsuario{
@@ -22,8 +24,21 @@ public abstract class Usuario {
     }
     protected TipoUsuario tipo;
     
-    public Usuario(String nome, Senha senha){
+    public Usuario(String nome, String senha) throws ExcecaoDeSenha{
+        padrao = Pattern.compile(senhaRegex);
+        setSenha(senha);
         this.nome = nome;
+    }
+    
+    public boolean validaSenha(String senha){
+        Matcher pareador = padrao.matcher(senha);
+        return pareador.matches();
+    }
+    
+    private void setSenha(String senha)throws ExcecaoDeSenha{
+        if(!validaSenha(senha))
+            throw new ExcecaoDeSenha();
+        
         this.senha = senha;
     }
     
@@ -35,7 +50,7 @@ public abstract class Usuario {
         return nome;
     }
 
-    public Senha getSenha() {
+    public String getSenha() {
         return senha;
     }
 
@@ -44,7 +59,6 @@ public abstract class Usuario {
         return torneio;
     }
     
-    //TODO:criar comparação entre usuario, sobrescrever equals tavez?
 
     @Override
     public boolean equals(Object obj) {
@@ -61,7 +75,7 @@ public abstract class Usuario {
         if (!Objects.equals(nome, other.getNome())) {
             return false;
         }
-        return senha.equals(other.getSenha());
+        return Object.equals(this.senha,other.getSenha);
     }
     
 }
