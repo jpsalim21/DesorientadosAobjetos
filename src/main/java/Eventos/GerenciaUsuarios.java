@@ -115,7 +115,31 @@ public class GerenciaUsuarios implements WindowListener{
             }
         }
     }
-    
+    public void remove(String nome, int tipo){
+       int cont =0;
+        for(Usuario u : usuarios){
+            if(u.getNome().equals(nome)){
+                break;
+            }else
+                cont++;
+        }
+       if(tipo == 0){
+         Jogador jogador = jogadores.get(cont);
+        jogadores.remove(jogador);
+        usuarios.remove(jogador);
+       }
+       if(tipo == 1){
+        Juiz juiz =juizes.get(cont);
+        juizes.remove(juiz);
+        usuarios.remove(juiz);
+       }
+       if(tipo == 3){
+          Admin adm = administradores.get(cont);
+        administradores.remove(adm);
+        usuarios.remove(adm);    
+       }
+    }
+   
     public void tentaLogin(String nome, Senha senha) throws ExcessaoUsuarioNaoEncontrado{
         for(Usuario u : usuarios){
             if(u.getNome().equals(nome)){

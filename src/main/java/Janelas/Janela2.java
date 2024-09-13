@@ -5,9 +5,7 @@
 package Janelas;
 
 import Eventos.*;
-import Excecao.ExcecaoDeSenha;
 import Excecao.*;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -62,6 +60,7 @@ public class Janela2 {
         DefaultListModel<Jogador> l1 = new DefaultListModel<>();
         DefaultListModel<Juiz> l2 = new DefaultListModel<>();
         DefaultListModel<Admin> l3 = new DefaultListModel<>();
+
         jogadores = new JList<>(l1);
         juizes = new JList<>(l2);
         admins = new JList<>(l3);
@@ -146,34 +145,36 @@ public class Janela2 {
         tela.dispose();
     }
     
-    //FIXME esse bgl ta o mais primitivo possivel peço perdão
-    //Agr ta melhor, mas ainda vou ver oq devo começar a fazer
+    //FIXME ta menos pior, mas ainda não sei pq ta dando -1 no selected
     
     public void removeUsuario(){
        int index = tipoUsuario.getSelectedIndex();
+       GerenciaUsuarios gere = GerenciaUsuarios.getSingleton();
 
        if(index !=-1){
            if(index == 0){
-               //GerenciaUsuarios.getSingleton().;
-                    JOptionPane.showMessageDialog(tela, "Usuário removido");
-                } else {
-                    System.out.println("Nenhum jogador selecionado.");
+                gere.remove(tfnome.getText(),index);
+                   JOptionPane.showMessageDialog(tela, "Jogador removido");
+             }  else {
+                  System.out.println("Nenhum jogador selecionado.");
                 }
-           
+            
            if(index == 1){
-                     //GerenciaUsuarios.getSingleton().;
-                    JOptionPane.showMessageDialog(tela, "Usuário removido");
+                 gere.remove(tfnome.getText(),index);
+                JOptionPane.showMessageDialog(tela, "Juiz removido");
                 } else {
                     System.out.println("Nenhum juiz selecionado.");
                 }
-           }
+           
            if(index == 2){
-                    //GerenciaUsuarios.getSingleton().;
-                    JOptionPane.showMessageDialog(tela, "Usuário removido");
+                gere.remove(tfnome.getText(),index);
+                JOptionPane.showMessageDialog(tela, "Administrador removido");
                 } else {
                     System.out.println("Nenhum administrador selecionado.");
                 }
        
            }
-       } 
+        }
+   } 
+  
     

@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-[{"derrotas":0,"empates":0,"vitorias":0,"nome":"usuario","senha":{"senha":"seNha15#"},"torneio":[]},{"derrotas":0,"empates":0,"vitorias":0,"nome":"usuario","senha":{"senha":"seNha15#"},"torneio":[]}]
-=======
+
 [{"derrotas":0,"empates":0,"vitorias":0,"nome":"jogador","senha":{"senha":"A1b@cdef"},"torneio":[],"tipo":"JOGADOR"}]
->>>>>>> a77b39b866c305ee515c5983bab0fd29e70a131a
+
