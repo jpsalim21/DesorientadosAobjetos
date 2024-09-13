@@ -5,12 +5,9 @@
 package Janelas;
 
 import Eventos.*;
-<<<<<<< HEAD
 import Excecao.ExcecaoDeSenha;
-=======
 import Excecao.*;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
->>>>>>> a77b39b866c305ee515c5983bab0fd29e70a131a
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -150,44 +147,33 @@ public class Janela2 {
     }
     
     //FIXME esse bgl ta o mais primitivo possivel peço perdão
-    //Esse negocio ficou pior pq tinha esquecido do singleton
-    //Devo melhorar isso dps
+    //Agr ta melhor, mas ainda vou ver oq devo começar a fazer
     
     public void removeUsuario(){
        int index = tipoUsuario.getSelectedIndex();
 
        if(index !=-1){
            if(index == 0){
-         int selectedIndex = jogadores.getSelectedIndex();
-                if (selectedIndex != -1 && selectedIndex < jogadores.getModel().getSize()) {
-                    DefaultListModel<Jogador> model = (DefaultListModel<Jogador>) jogadores.getModel();
-                    model.remove(selectedIndex);
+               //GerenciaUsuarios.getSingleton().;
                     JOptionPane.showMessageDialog(tela, "Usuário removido");
                 } else {
-                    System.out.println("Nenhum jogador selecionado ou índice fora dos limites.");
+                    System.out.println("Nenhum jogador selecionado.");
                 }
-           }
+           
            if(index == 1){
-        int selectedIndex = juizes.getSelectedIndex();
-                if (selectedIndex != -1 && selectedIndex < juizes.getModel().getSize()) {
-                    DefaultListModel<Juiz> model = (DefaultListModel<Juiz>) juizes.getModel();
-                    model.remove(selectedIndex);
+                     //GerenciaUsuarios.getSingleton().;
                     JOptionPane.showMessageDialog(tela, "Usuário removido");
                 } else {
-                    System.out.println("Nenhum juiz selecionado ou índice fora dos limites.");
+                    System.out.println("Nenhum juiz selecionado.");
                 }
            }
            if(index == 2){
-        int selectedIndex = admins.getSelectedIndex();
-                if (selectedIndex != -1 && selectedIndex < admins.getModel().getSize()) {
-                    DefaultListModel<Admin> model = (DefaultListModel<Admin>) admins.getModel();
-                    model.remove(selectedIndex);
+                    //GerenciaUsuarios.getSingleton().;
                     JOptionPane.showMessageDialog(tela, "Usuário removido");
                 } else {
-                    System.out.println("Nenhum administrador selecionado ou índice fora dos limites.");
+                    System.out.println("Nenhum administrador selecionado.");
                 }
        
            }
        } 
-    }
-}
+    
