@@ -91,16 +91,19 @@ public class GerenciaUsuarios implements WindowListener{
         procuraNomeIgual(nome);
         Jogador newJogador = new Jogador(nome, senha);
         jogadores.add(newJogador);
+        System.out.println("Adicionou novo jogador");
     }
     public void adicionaJuiz(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
         procuraNomeIgual(nome);
         Juiz newJuiz = new Juiz(nome, senha);
         juizes.add(newJuiz);
+        System.out.println("Adicionou novo juiz");
     }
     public void adicionaAdmin(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
         procuraNomeIgual(nome);
         Admin newAdmin = new Admin(nome, senha);
         administradores.add(newAdmin);
+        System.out.println("Adicionou novo admin");
     }
     private void procuraNomeIgual(String nome) throws ExcecaoUsuarioJaExistente{
         for(Usuario u : usuarios){
@@ -112,8 +115,13 @@ public class GerenciaUsuarios implements WindowListener{
     
     public void tentaLogin(String nome, Senha senha) throws ExcessaoUsuarioNaoEncontrado{
         for(Usuario u : usuarios){
-            if(u.getNome().equals(nome) && u.getSenha().equals(senha)){
-                return;
+            if(u.getNome().equals(nome)){
+                //FIXME: Isso tá muito feio, quero arrumar isso. 
+                //Mas parece que o problema é a classe Senha
+                if(u.getSenha().getSenha().equals(senha.getSenha())){
+                    return;
+                    
+                }
             }
         }
         throw new ExcessaoUsuarioNaoEncontrado();
