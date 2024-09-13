@@ -4,11 +4,13 @@
  */
 package Eventos;
 
+import Excecao.ExcecaoUsuarioJaExistente;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
-import Janelas.Janela2;
 import Persistencias.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +22,7 @@ public class GerenciaUsuarios implements WindowListener{
     List<Jogador> jogadores;
     List<Juiz> juizes;
     List<Admin> administradores;
+    List<Usuario> usuarios;
 
     public GerenciaUsuarios() {
         if(singleton != null){
@@ -39,6 +42,10 @@ public class GerenciaUsuarios implements WindowListener{
         jogadores = jogPersistencia.findAll();
         juizes = juiPersistencia.findAll();
         administradores = admPersistencia.findAll();
+        usuarios = new ArrayList<>();
+        usuarios.addAll(juizes);
+        usuarios.addAll(jogadores);
+        usuarios.addAll(administradores);
     }
     
     @Override
@@ -80,8 +87,35 @@ public class GerenciaUsuarios implements WindowListener{
     public void windowDeactivated(WindowEvent e) {
 
     }
+    public void adicionaJogador(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+        procuraNomeIgual(nome);
+        Jogador newJogador = new Jogador(nome, senha);
+        jogadores.add(newJogador);
+    }
+    public void adicionaJuiz(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+        procuraNomeIgual(nome);
+        Juiz newJuiz = new Juiz(nome, senha);
+        juizes.add(newJuiz);
+    }
+    public void adicionaAdmin(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+        procuraNomeIgual(nome);
+        Admin newAdmin = new Admin(nome, senha);
+        administradores.add(newAdmin);
+    }
+    private void procuraNomeIgual(String nome) throws ExcecaoUsuarioJaExistente{
+        for(Usuario u : usuarios){
+            if(u.getNome().equals(nome)){
+                throw new ExcecaoUsuarioJaExistente();
+            }
+        }
+    }
     
-    public void adicionaUsuario(){
-        
+    public void tentaLogin(String nome, Senha senha) throws ExcessaoUsuarioNaoEncontrado{
+        for(Usuario u : usuarios){
+            if(u.getNome().equals(nome) && u.getSenha().equals(senha)){
+                return;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
     }
 }

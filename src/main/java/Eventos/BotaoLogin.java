@@ -23,8 +23,5 @@ public class BotaoLogin implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         tela.login();
-        JanelaUsuario secondFrame = new JanelaUsuario();
-        
-        tela.dispose();
     }
 }
