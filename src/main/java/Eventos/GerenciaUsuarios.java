@@ -91,18 +91,21 @@ public class GerenciaUsuarios implements WindowListener{
         procuraNomeIgual(nome);
         Jogador newJogador = new Jogador(nome, senha);
         jogadores.add(newJogador);
+        usuarios.add(newJogador);
         System.out.println("Adicionou novo jogador");
     }
     public void adicionaJuiz(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
         procuraNomeIgual(nome);
         Juiz newJuiz = new Juiz(nome, senha);
         juizes.add(newJuiz);
+        usuarios.add(newJuiz);
         System.out.println("Adicionou novo juiz");
     }
     public void adicionaAdmin(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
         procuraNomeIgual(nome);
         Admin newAdmin = new Admin(nome, senha);
         administradores.add(newAdmin);
+        usuarios.add(newAdmin);
         System.out.println("Adicionou novo admin");
     }
     private void procuraNomeIgual(String nome) throws ExcecaoUsuarioJaExistente{
