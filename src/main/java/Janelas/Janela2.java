@@ -145,36 +145,35 @@ public class Janela2 {
         tela.dispose();
     }
     
-    //FIXME ta menos pior, mas ainda não sei pq ta dando -1 no selected
     
     public void removeUsuario(){
-       int index = tipoUsuario.getSelectedIndex();
-       GerenciaUsuarios gere = GerenciaUsuarios.getSingleton();
-
-       if(index !=-1){
-           if(index == 0){
-                gere.remove(tfnome.getText(),index);
-                   JOptionPane.showMessageDialog(tela, "Jogador removido");
-             }  else {
-                  System.out.println("Nenhum jogador selecionado.");
-                }
-            
-           if(index == 1){
-                 gere.remove(tfnome.getText(),index);
-                JOptionPane.showMessageDialog(tela, "Juiz removido");
-                } else {
-                    System.out.println("Nenhum juiz selecionado.");
-                }
-           
-           if(index == 2){
-                gere.remove(tfnome.getText(),index);
-                JOptionPane.showMessageDialog(tela, "Administrador removido");
-                } else {
-                    System.out.println("Nenhum administrador selecionado.");
-                }
-       
-           }
+        int index = tipoUsuario.getSelectedIndex();
+        GerenciaUsuarios gere = GerenciaUsuarios.getSingleton();
+    
+        if (index == -1) {
+            JOptionPane.showMessageDialog(tela, "Nenhum usuário selecionado.");
+            return;
         }
-   } 
+    
+        String nome = tfnome.getText();
+        switch (index) {
+            case 0:
+                gere.remove(nome, index);
+                JOptionPane.showMessageDialog(tela, "Jogador removido");
+                break;
+            case 1:
+                gere.remove(nome, index);
+                JOptionPane.showMessageDialog(tela, "Juiz removido");
+                break;
+            case 2:
+                gere.remove(nome, index);
+                JOptionPane.showMessageDialog(tela, "Admin removido");
+                break;
+            default:
+                JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
+                break;
+        }
+   }
+} 
   
     

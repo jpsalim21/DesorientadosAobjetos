@@ -116,28 +116,52 @@ public class GerenciaUsuarios implements WindowListener{
         }
     }
     public void remove(String nome, int tipo){
-       int cont =0;
-        for(Usuario u : usuarios){
-            if(u.getNome().equals(nome)){
+        int cont = -1;
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getNome().equals(nome)) {
+                cont = i;
                 break;
-            }else
-                cont++;
+            }
         }
-       if(tipo == 0){
-         Jogador jogador = jogadores.get(cont);
-        jogadores.remove(jogador);
-        usuarios.remove(jogador);
-       }
-       if(tipo == 1){
-        Juiz juiz =juizes.get(cont);
-        juizes.remove(juiz);
-        usuarios.remove(juiz);
-       }
-       if(tipo == 3){
-          Admin adm = administradores.get(cont);
-        administradores.remove(adm);
-        usuarios.remove(adm);    
-       }
+    
+        if (cont == -1) {
+            System.out.println("Usuário não encontrado.");
+            return;
+        }
+    
+        Usuario usuario = usuarios.get(cont);
+        switch (tipo) {
+            case 0:
+                if (usuario instanceof Jogador) {
+                    jogadores.remove(usuario);
+                    usuarios.remove(usuario);
+                    System.out.println("Jogador removido.");
+                } else {
+                    System.out.println("Usuário não é um jogador.");
+                }
+                break;
+            case 1:
+                if (usuario instanceof Juiz) {
+                    juizes.remove(usuario);
+                    usuarios.remove(usuario);
+                    System.out.println("Juiz removido.");
+                } else {
+                    System.out.println("Usuário não é um juiz.");
+                }
+                break;
+            case 2:
+                if (usuario instanceof Admin) {
+                    administradores.remove(usuario);
+                    usuarios.remove(usuario);
+                    System.out.println("Admin removido.");
+                } else {
+                    System.out.println("Usuário não é um admin.");
+                }
+                break;
+            default:
+                System.out.println("Tipo de usuário desconhecido.");
+                break;
+        }
     }
    
     public void tentaLogin(String nome, Senha senha) throws ExcessaoUsuarioNaoEncontrado{
