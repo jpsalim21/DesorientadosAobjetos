@@ -4,6 +4,7 @@
  */
 package Janelas;
 import Excecao.ExcecaoDeSenha;
+import Eventos.DeslogaUsuário;
 import Torneios.Torneio;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
@@ -60,6 +61,12 @@ public class JanelaUsuario {
         }
     }
     
+     public void dispose() {
+        if (janela != null) {
+            janela.dispose();
+        }
+    }
+    
     private void desenhaTela(){
         DefaultListModel<Torneio> model = new DefaultListModel<>();
         
@@ -97,6 +104,10 @@ public class JanelaUsuario {
         
         JButton btnAcessar = new JButton("Acessar Torneio");
         JButton btnDeslogar = new JButton("Deslogar da Conta");
+        
+       // btnAcessar.addActionListener(l); quem quiser mexer com o acesso a torenios ai
+        btnDeslogar.addActionListener(new DeslogaUsuário(this));
+        
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnDeslogar);
         
@@ -112,5 +123,9 @@ public class JanelaUsuario {
         janela.add(painelPrincipal);
         janela.pack();
     }
-    
+    public void Desloga(){
+        Janela2 janelas = new Janela2(); 
+        janelas.desenha();
+        janela.dispose();
+    }
 }

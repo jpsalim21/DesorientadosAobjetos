@@ -71,7 +71,7 @@ public class Janela2 {
         JPanel formulario = new JPanel();
         JPanel descricao = new JPanel();
         //nao sabemos o pq funciona mas isso arruma o layout da tela de login
-        descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP + 10));
+        descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP+ 10));
         descricao.add(new JLabel("Nome"));
         descricao.add(new JLabel("Senha"));
         descricao.add(new JLabel("Acessar como:"));
@@ -130,10 +130,10 @@ public class Janela2 {
     }
     
     public void login(){
-        String nome = tfnome.getText();
+        String name = tfnome.getText();
         try{
-            Senha senha = new Senha(tfsenha.getText());
-            GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
+            Senha senh = new Senha(tfsenha.getText());
+            GerenciaUsuarios.getSingleton().tentaLogin(name, senh);
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");
             return;
@@ -141,7 +141,7 @@ public class Janela2 {
             JOptionPane.showMessageDialog(tela, "Usuario ou senha não estão corretos. Digite novamente");
             return;
         }
-        JanelaUsuario secondFrame = new JanelaUsuario();
+        JanelaUsuario janelaUsuario = new JanelaUsuario(); 
         tela.dispose();
     }
     
@@ -155,23 +155,21 @@ public class Janela2 {
             return;
         }
     
-        String nome = tfnome.getText();
+        String name = tfnome.getText();
         switch (index) {
-            case 0:
-                gere.remove(nome, index);
+            case 0 -> {
+                gere.remove(name, index);
                 JOptionPane.showMessageDialog(tela, "Jogador removido");
-                break;
-            case 1:
-                gere.remove(nome, index);
+            }
+            case 1 -> {
+                gere.remove(name, index);
                 JOptionPane.showMessageDialog(tela, "Juiz removido");
-                break;
-            case 2:
-                gere.remove(nome, index);
+            }
+            case 2 -> {
+                gere.remove(name, index);
                 JOptionPane.showMessageDialog(tela, "Admin removido");
-                break;
-            default:
-                JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
-                break;
+            }
+            default -> JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
         }
    }
 } 

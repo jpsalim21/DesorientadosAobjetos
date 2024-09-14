@@ -131,7 +131,7 @@ public class GerenciaUsuarios implements WindowListener{
     
         Usuario usuario = usuarios.get(cont);
         switch (tipo) {
-            case 0:
+            case 0 -> {
                 if (usuario instanceof Jogador) {
                     jogadores.remove(usuario);
                     usuarios.remove(usuario);
@@ -139,8 +139,8 @@ public class GerenciaUsuarios implements WindowListener{
                 } else {
                     System.out.println("Usuário não é um jogador.");
                 }
-                break;
-            case 1:
+            }
+            case 1 -> {
                 if (usuario instanceof Juiz) {
                     juizes.remove(usuario);
                     usuarios.remove(usuario);
@@ -148,8 +148,8 @@ public class GerenciaUsuarios implements WindowListener{
                 } else {
                     System.out.println("Usuário não é um juiz.");
                 }
-                break;
-            case 2:
+            }
+            case 2 -> {
                 if (usuario instanceof Admin) {
                     administradores.remove(usuario);
                     usuarios.remove(usuario);
@@ -157,10 +157,8 @@ public class GerenciaUsuarios implements WindowListener{
                 } else {
                     System.out.println("Usuário não é um admin.");
                 }
-                break;
-            default:
-                System.out.println("Tipo de usuário desconhecido.");
-                break;
+            }
+            default -> System.out.println("Tipo de usuário desconhecido.");
         }
     }
    
