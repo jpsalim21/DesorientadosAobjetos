@@ -34,7 +34,7 @@ public class JanelaUsuario {
         janela.setLayout(new BorderLayout());
         //Provisório
         try{
-            jogadorLogado = new Jogador("Joaquim", new Senha("A1b@cdef"));
+            jogadorLogado = new Jogador("Joaquim", "A1b@cdef");
         } catch(ExcecaoDeSenha e){
             System.out.println("Senha inválida");
         }

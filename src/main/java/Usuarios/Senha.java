@@ -11,6 +11,9 @@ import java.util.regex.Pattern;
  *
  * @author mateu
  */
+
+//TODO: possivelmente deletar essa classe/arquivo
+
 public class Senha {
     private String senha;
     //confirmar validade desse ReGex

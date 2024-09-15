@@ -4,13 +4,15 @@
  */
 package Usuarios;
 
+import Excecao.*;
+
 /**
  *
  * @author ice
  */
 public class Admin extends Juiz {
 
-    public Admin(String nome, Senha senha) {
+    public Admin(String nome, String senha)  throws ExcecaoDeSenha{
         super(nome, senha);
         tipo = TipoUsuario.ADMIN;
     }

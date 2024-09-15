@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Usuarios;
+import Excecao.*;
 /**
  *
  * @author ice
@@ -12,7 +13,7 @@ public class Jogador extends Usuario {
     private int empates;
     private int vitorias;
     
-    public Jogador(String nome, Senha senha) {
+    public Jogador(String nome, String senha) throws ExcecaoDeSenha{
         super(nome, senha);
         tipo = TipoUsuario.JOGADOR;
     }

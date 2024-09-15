@@ -4,6 +4,7 @@
  */
 package Eventos;
 
+import Excecao.ExcecaoDeSenha;
 import Excecao.ExcecaoUsuarioJaExistente;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
@@ -87,21 +88,21 @@ public class GerenciaUsuarios implements WindowListener{
     public void windowDeactivated(WindowEvent e) {
 
     }
-    public void adicionaJogador(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+    public void adicionaJogador(String nome, String senha) throws ExcecaoUsuarioJaExistente,ExcecaoDeSenha{
         procuraNomeIgual(nome);
         Jogador newJogador = new Jogador(nome, senha);
         jogadores.add(newJogador);
         usuarios.add(newJogador);
         System.out.println("Adicionou novo jogador");
     }
-    public void adicionaJuiz(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+    public void adicionaJuiz(String nome, String senha) throws ExcecaoUsuarioJaExistente,ExcecaoDeSenha{
         procuraNomeIgual(nome);
         Juiz newJuiz = new Juiz(nome, senha);
         juizes.add(newJuiz);
         usuarios.add(newJuiz);
         System.out.println("Adicionou novo juiz");
     }
-    public void adicionaAdmin(String nome, Senha senha) throws ExcecaoUsuarioJaExistente{
+    public void adicionaAdmin(String nome, String senha) throws ExcecaoUsuarioJaExistente, ExcecaoDeSenha{
         procuraNomeIgual(nome);
         Admin newAdmin = new Admin(nome, senha);
         administradores.add(newAdmin);
@@ -161,9 +162,13 @@ public class GerenciaUsuarios implements WindowListener{
             default -> System.out.println("Tipo de usuário desconhecido.");
         }
     }
-   
-    public void tentaLogin(String nome, Senha senha) throws ExcessaoUsuarioNaoEncontrado{
+
+    public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
+            
+            //TODO: arrumar solução ja que o equals do user agr ja faz o equals de nome e senha
+            //porem não é possivel instanciar um usuario
+            /*
             if(u.getNome().equals(nome)){
                 //FIXME: Isso tá muito feio, quero arrumar isso. 
                 //Mas parece que o problema é a classe Senha
@@ -171,7 +176,7 @@ public class GerenciaUsuarios implements WindowListener{
                     return;
                     
                 }
-            }
+            }*/
         }
         throw new ExcessaoUsuarioNaoEncontrado();
     }
