@@ -14,6 +14,7 @@ public class Jogador extends Usuario {
     
     public Jogador(String nome, Senha senha) {
         super(nome, senha);
+        tipo = TipoUsuario.JOGADOR;
     }
     
     public int getDerrotas() {
