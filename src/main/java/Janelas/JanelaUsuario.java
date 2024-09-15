@@ -4,15 +4,17 @@
  */
 package Janelas;
 import Eventos.AcessaTorneio;
+import Eventos.GerenciaUsuarios;
 import Excecao.ExcecaoDeSenha;
 import Eventos.DeslogaUsuário;
 import Torneios.Torneio;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
-import Usuarios.Senha;
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import javax.swing.*;
+import java.util.*;
 /**
  *
  * @author Thales
@@ -46,8 +48,8 @@ public class JanelaUsuario {
         jogadorLogado.addVitorias();
         Torneio novoTorneio = new TorneioSuico("Torneio de Xadrez", 5);
         Torneio torneio2 = new TorneioSuico("Torneio de MK11", 10);
-        jogadorLogado.addTorneio(torneio2);
-        jogadorLogado.addTorneio(novoTorneio);
+        torneio2.adicionarParticipante(jogadorLogado);
+        novoTorneio.adicionarParticipante(jogadorLogado);
         
         desenhaTela();
         carregarTorneios();
@@ -55,8 +57,10 @@ public class JanelaUsuario {
     
     private void carregarTorneios(){
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        List<Torneio> torneios;
+        torneios = GerenciaUsuarios.getSingleton().getTorneios(jogadorLogado.getTorneios());
         
-        for(Torneio t : jogadorLogado.getTorneio()){
+        for(Torneio t : torneios){
             model.addElement(t);
             
         }
