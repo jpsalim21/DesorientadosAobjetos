@@ -127,10 +127,10 @@ public class Janela2 {
     }
     
     public void login(){
-
+        //não sei pq, mas isso aq não funciona
         String nome = tfnome.getText();
         String senha = tfsenha.getText();
-        Usuario u = null;
+        Usuario u;
         try{
             //Senha senha = new Senha(tfsenha.getText());
             u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
@@ -183,7 +183,7 @@ public class Janela2 {
             }
             default -> JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
         }
-   }
+   } 
 } 
   
     

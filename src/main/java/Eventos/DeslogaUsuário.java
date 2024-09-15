@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Eventos;
-import Janelas.JanelaUsuario;
+import Janelas.JanelaJogador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,9 +12,9 @@ import java.awt.event.ActionListener;
  * @author Anderson
  */
 public class DeslogaUsuário implements ActionListener{
-    private final JanelaUsuario tela;
+    private final JanelaJogador tela;
     
-    public DeslogaUsuário(JanelaUsuario tela){
+    public DeslogaUsuário(JanelaJogador tela){
         this.tela = tela;
     }
             

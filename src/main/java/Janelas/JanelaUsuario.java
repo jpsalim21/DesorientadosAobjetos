@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Janelas;
-import Eventos.AcessaTorneio;
+import Eventos.AcessaJogador;
+import Eventos.Desloga;
 import Eventos.GerenciaUsuarios;
 import Excecao.ExcecaoDeSenha;
 import Eventos.DeslogaUsuário;
@@ -86,13 +87,13 @@ public class JanelaUsuario {
         painelInformacoes.setBorder(BorderFactory.createTitledBorder("Suas informações"));
         painelInformacoes.setPreferredSize(new Dimension(WIDTH/8, HEIGHT));
         
-        JLabel nome = new JLabel("Nome: " + usuarioLogado.getNome());
+//        JLabel nome = new JLabel("Nome: " + usuarioLogado.getNome());
 //        JLabel vitorias = new JLabel("Vitórias: " + jogadorLogado.getVitorias());
 //        JLabel empates = new JLabel("Empates: " + jogadorLogado.getEmpates());
 //        JLabel derrotas = new JLabel("Derrotas: " + jogadorLogado.getDerrotas());
         
         painelInformacoesAux.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
-        painelInformacoesAux.add(nome);
+//        painelInformacoesAux.add(nome);
 //        painelInformacoesAux.add(vitorias);
 //        painelInformacoesAux.add(empates);
 //        painelInformacoesAux.add(derrotas);
@@ -111,8 +112,8 @@ public class JanelaUsuario {
         JButton btnAcessar = new JButton("Acessar Torneio");
         JButton btnDeslogar = new JButton("Deslogar da Conta");
         
-        btnAcessar.addActionListener(new AcessaTorneio(this)); 
-        btnDeslogar.addActionListener(new DeslogaUsuário(this));
+        btnAcessar.addActionListener(new AcessaJogador(this)); 
+        btnDeslogar.addActionListener(new Desloga(this));
         
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnDeslogar);
@@ -130,17 +131,16 @@ public class JanelaUsuario {
         janela.pack();
     }
     
-    public void AcessaTorneio(){
+    public void AcessaJogador(){
         //faz a nova janela
         String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
         //chama a nova janela com essa string de torneio
         JTorneio torneio = new JTorneio(tipoT);
         janela.dispose();
     }
-    
-    public void Desloga(){
+       public void Desloga(){
         Janela2 janelas = new Janela2(); 
         janelas.desenha();
         janela.dispose();
-    }
+    } 
 }
