@@ -4,6 +4,7 @@
  */
 package Usuarios;
 
+import Excecao.*;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public class Juiz extends Usuario {
 
-    public Juiz(String nome, Senha senha) {
+    public Juiz(String nome, String senha)  throws ExcecaoDeSenha{
         super(nome, senha);
         tipo = TipoUsuario.JUIZ;
     }

@@ -29,9 +29,6 @@ public class Janela2 {
     private JList<Jogador> jogadores;
     private JList<Juiz> juizes;
     private JList<Admin> admins;
-    
-    private JTextField nome;
-    private JTextField senha;
     String[] usuarios = {"Jogador","Juiz","Administrador"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
@@ -131,8 +128,9 @@ public class Janela2 {
     
     public void login(){
         String nome = tfnome.getText();
+        String senha = tfsenha.getText();
         try{
-            Senha senha = new Senha(tfsenha.getText());
+            //Senha senha = new Senha(tfsenha.getText());
             GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");

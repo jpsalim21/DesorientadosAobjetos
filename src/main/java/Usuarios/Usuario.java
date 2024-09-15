@@ -5,6 +5,9 @@
 package Usuarios;
 import java.util.*;
 import Torneios.*;
+import java.util.regex.Pattern;
+import Excecao.*;
+import java.util.regex.Matcher;
 /**
  *
  * @author Thales
@@ -58,7 +61,6 @@ public abstract class Usuario {
     public List<Torneio> getTorneio() {
         return torneio;
     }
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -72,10 +74,10 @@ public abstract class Usuario {
             return false;
         }
         final Usuario other = (Usuario) obj;
-        if (!Objects.equals(nome, other.getNome())) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        return Object.equals(this.senha,other.getSenha);
+        return Objects.equals(this.senha, other.getSenha());
     }
     
 }
