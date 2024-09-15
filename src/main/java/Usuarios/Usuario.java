@@ -4,7 +4,6 @@
  */
 package Usuarios;
 import java.util.*;
-import Torneios.*;
 import java.util.regex.Pattern;
 import Excecao.*;
 import java.util.regex.Matcher;
@@ -13,14 +12,14 @@ import java.util.regex.Matcher;
  * @author Thales
  */
 public abstract class Usuario {
-    private String nome;
+    private final String nome;
     private String senha;
     protected List<Integer> torneio = new ArrayList<>();
     private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
     private static Pattern padrao;
     //ALERT: Pode não ser tão importante assim no final. 
     //APAGAR
-    enum TipoUsuario{
+    public enum TipoUsuario{
         JOGADOR,
         JUIZ,
         ADMIN
@@ -61,6 +60,9 @@ public abstract class Usuario {
     //faz sentido assim?
     public List<Integer> getTorneios() {
         return torneio;
+    }
+    public TipoUsuario getTipoUsuario(){
+        return tipo;
     }
 
     @Override

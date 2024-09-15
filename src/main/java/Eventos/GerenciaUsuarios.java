@@ -170,7 +170,7 @@ public class GerenciaUsuarios implements WindowListener{
         for(Usuario u : usuarios){
             if(u.getNome().equals(nome)){
                 if(u.getSenha().equals(senha)){
-                    return;
+                    return u;
                 }
             }
         }

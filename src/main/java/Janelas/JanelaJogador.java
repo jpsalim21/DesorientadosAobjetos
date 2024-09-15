@@ -1,56 +1,40 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Janelas;
-import Eventos.AcessaTorneio;
+
 import Eventos.GerenciaUsuarios;
-import Excecao.ExcecaoDeSenha;
-import Eventos.DeslogaUsuário;
 import Torneios.Torneio;
-import Torneios.TorneioSuico;
 import Usuarios.Jogador;
-import Usuarios.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.*;
-import java.util.*;
-/**
- *
- * @author Thales
- */
-public class JanelaUsuario {
+import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+
+public class JanelaJogador{
     
-    private JFrame janela;
-    private final int WIDTH = 1920;
-    private final int HEIGHT = 1080;
-    private final int V_GAP = 10;
-    private final int H_GAP = 5;
-    private Jogador jogadorLogado;
-    private JList<Torneio> torneiosEntrados;
+    private final JFrame janela;
+    protected final int WIDTH = 1920;
+    protected final int HEIGHT = 1080;
+    protected final int V_GAP = 10;
+    protected final int H_GAP = 5;
+    protected final Jogador jogadorLogado;
+    protected JList<Torneio> torneiosEntrados;
     
-    public JanelaUsuario(){
+    public JanelaJogador(Jogador j){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        //Provisório
-        try{
-            jogadorLogado = new Jogador("Joaquim", "A1b@cdef");
-        } catch(ExcecaoDeSenha e){
-            System.out.println("Senha inválida");
-        }
-        jogadorLogado.addDerrotas();
-        jogadorLogado.addEmpates();
-        jogadorLogado.addVitorias();
-        jogadorLogado.addVitorias();
-        jogadorLogado.addVitorias();
-        Torneio novoTorneio = new TorneioSuico("Torneio de Xadrez", 5);
-        Torneio torneio2 = new TorneioSuico("Torneio de MK11", 10);
-        torneio2.adicionarParticipante(jogadorLogado);
-        novoTorneio.adicionarParticipante(jogadorLogado);
+        jogadorLogado = j;
+        System.out.println(j.getClass());
         
         desenhaTela();
         carregarTorneios();
@@ -67,12 +51,6 @@ public class JanelaUsuario {
         }
     }
     
-     public void dispose() {
-        if (janela != null) {
-            janela.dispose();
-        }
-    }
-    
     private void desenhaTela(){
         DefaultListModel<Torneio> model = new DefaultListModel<>();
         
@@ -86,16 +64,16 @@ public class JanelaUsuario {
         painelInformacoes.setBorder(BorderFactory.createTitledBorder("Suas informações"));
         painelInformacoes.setPreferredSize(new Dimension(WIDTH/8, HEIGHT));
         
-        JLabel nome = new JLabel("Nome: " + usuarioLogado.getNome());
-//        JLabel vitorias = new JLabel("Vitórias: " + jogadorLogado.getVitorias());
-//        JLabel empates = new JLabel("Empates: " + jogadorLogado.getEmpates());
-//        JLabel derrotas = new JLabel("Derrotas: " + jogadorLogado.getDerrotas());
+        JLabel nome = new JLabel("Nome: " + jogadorLogado.getNome());
+        JLabel vitorias = new JLabel("Vitórias: " + jogadorLogado.getVitorias());
+        JLabel empates = new JLabel("Empates: " + jogadorLogado.getEmpates());
+        JLabel derrotas = new JLabel("Derrotas: " + jogadorLogado.getDerrotas());
         
         painelInformacoesAux.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
         painelInformacoesAux.add(nome);
-//        painelInformacoesAux.add(vitorias);
-//        painelInformacoesAux.add(empates);
-//        painelInformacoesAux.add(derrotas);
+        painelInformacoesAux.add(vitorias);
+        painelInformacoesAux.add(empates);
+        painelInformacoesAux.add(derrotas);
         
         
         JPanel painelTorneios = new JPanel();
@@ -110,10 +88,6 @@ public class JanelaUsuario {
         
         JButton btnAcessar = new JButton("Acessar Torneio");
         JButton btnDeslogar = new JButton("Deslogar da Conta");
-        
-        btnAcessar.addActionListener(new AcessaTorneio(this)); 
-        btnDeslogar.addActionListener(new DeslogaUsuário(this));
-        
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnDeslogar);
         
@@ -128,19 +102,5 @@ public class JanelaUsuario {
         painelPrincipal.add(painelTorneios, BorderLayout.CENTER);
         janela.add(painelPrincipal);
         janela.pack();
-    }
-    
-    public void AcessaTorneio(){
-        //faz a nova janela
-        String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
-        //chama a nova janela com essa string de torneio
-        JTorneio torneio = new JTorneio(tipoT);
-        janela.dispose();
-    }
-    
-    public void Desloga(){
-        Janela2 janelas = new Janela2(); 
-        janelas.desenha();
-        janela.dispose();
     }
 }
