@@ -15,7 +15,7 @@ import java.util.regex.Matcher;
 public abstract class Usuario {
     private String nome;
     private String senha;
-    protected List<Torneio> torneio = new ArrayList<>();
+    protected List<Integer> torneio = new ArrayList<>();
     private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
     private static Pattern padrao;
     //ALERT: Pode não ser tão importante assim no final. 
@@ -45,8 +45,8 @@ public abstract class Usuario {
         this.senha = senha;
     }
     
-    public void addTorneio(Torneio torneio){
-        this.torneio.add(torneio);
+    public void addTorneio(int indiceTorneio){
+        this.torneio.add(indiceTorneio);
     }
     
     public String getNome() {
@@ -58,7 +58,7 @@ public abstract class Usuario {
     }
 
     //faz sentido assim?
-    public List<Torneio> getTorneio() {
+    public List<Integer> getTorneios() {
         return torneio;
     }
 

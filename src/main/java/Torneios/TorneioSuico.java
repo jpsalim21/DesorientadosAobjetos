@@ -73,5 +73,8 @@ public class TorneioSuico extends Torneio{
     public List<Confronto> getRodadaInfo(int rodadaDesejada){
         return infoRodadas.get(rodadaDesejada);
     }
-    
+    @Override
+    public String toString(){
+        return "Torneio suico: " + nome;
+    }
 }

@@ -9,6 +9,7 @@ import Excecao.ExcecaoUsuarioJaExistente;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
 import Persistencias.*;
+import Torneios.Torneio;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
@@ -20,16 +21,18 @@ import java.util.List;
  */
 public class GerenciaUsuarios implements WindowListener{
     private static GerenciaUsuarios singleton;
-    List<Jogador> jogadores;
-    List<Juiz> juizes;
-    List<Admin> administradores;
-    List<Usuario> usuarios;
-
+    private List<Jogador> jogadores;
+    private List<Juiz> juizes;
+    private List<Admin> administradores;
+    private List<Usuario> usuarios;
+    private List<Torneio> torneios;
+    
     public GerenciaUsuarios() {
         if(singleton != null){
             return;
         }
         singleton = this;
+        torneios = new ArrayList<>();
     }
     public static GerenciaUsuarios getSingleton(){
         return singleton;
@@ -37,6 +40,7 @@ public class GerenciaUsuarios implements WindowListener{
     
     @Override
     public void windowOpened(WindowEvent e){
+        
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
@@ -119,19 +123,28 @@ public class GerenciaUsuarios implements WindowListener{
     
     public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
-            
-            //TODO: arrumar solução ja que o equals do user agr ja faz o equals de nome e senha
-            //porem não é possivel instanciar um usuario
-            /*
             if(u.getNome().equals(nome)){
-                //FIXME: Isso tá muito feio, quero arrumar isso. 
-                //Mas parece que o problema é a classe Senha
-                if(u.getSenha().getSenha().equals(senha.getSenha())){
+                if(u.getSenha().equals(senha)){
                     return;
-                    
                 }
-            }*/
+            }
         }
         throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    
+    public void adicionaTorneio(Torneio t){
+        torneios.add(t);
+    }
+    
+    public List<Torneio> getTorneios(List<Integer> ids){
+        List<Torneio> retorno = new ArrayList<>();
+        for(int id : ids){
+            for(Torneio t : torneios){
+                if(t.getId() == id){
+                    retorno.add(t);
+                }
+            }
+        }
+        return retorno;
     }
 }

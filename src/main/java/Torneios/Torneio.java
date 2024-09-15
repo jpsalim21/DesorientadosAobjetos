@@ -4,6 +4,7 @@
  */
 package Torneios;
 
+import Eventos.GerenciaUsuarios;
 import Usuarios.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,9 @@ import java.util.List;
  * 
  */
 public class Torneio {
-    private final String nome;
+    protected final String nome;
+    private static int index = 0;
+    private final int codigo;
     List<Juiz> juizes;
     List<JogadorParticipante> participantes;
     List<Admin> admins;
@@ -26,9 +29,12 @@ public class Torneio {
         juizes = new ArrayList<>();
         participantes = new ArrayList<>();
         admins = new ArrayList<>();
+        codigo = index++;
+        GerenciaUsuarios.getSingleton().adicionaTorneio(this);
     }
     
     public void adicionarParticipante(Jogador novoJogador){
+        novoJogador.addTorneio(codigo);
         JogadorParticipante novoElemento = new JogadorParticipante(novoJogador);
         participantes.add(novoElemento);
     }
@@ -41,6 +47,10 @@ public class Torneio {
     @Override
     public String toString(){
         return "Torneio: " + nome;
+    }
+    
+    public int getId(){
+        return codigo;
     }
     
 }
