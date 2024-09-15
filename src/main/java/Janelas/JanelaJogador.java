@@ -1,31 +1,57 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Janelas;
+
 import Eventos.GerenciaUsuarios;
-import Excecao.ExcecaoDeSenha;
 import Torneios.Torneio;
-import Torneios.TorneioSuico;
 import Usuarios.Jogador;
-import Usuarios.Usuario;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import javax.swing.*;
-import java.util.*;
-/**
- *
- * @author Thales
- */
-public class JanelaUsuario {
+import java.util.List;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+
+public class JanelaJogador{
     
-    public static void CarregaJanelaAdequada(){
+    private final JFrame janela;
+    protected final int WIDTH = 1920;
+    protected final int HEIGHT = 1080;
+    protected final int V_GAP = 10;
+    protected final int H_GAP = 5;
+    protected final Jogador jogadorLogado;
+    protected JList<Torneio> torneiosEntrados;
+    
+    public JanelaJogador(Jogador j){
+        janela = new JFrame();
+        janela.setSize(new Dimension(WIDTH, HEIGHT));
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setVisible(true);
+        janela.setLayout(new BorderLayout());
+        jogadorLogado = j;
+        System.out.println(j.getClass());
         
+        desenhaTela();
+        carregarTorneios();
     }
     
-    /*
-    protected void desenhaTela(){
+    private void carregarTorneios(){
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        List<Torneio> torneios;
+        torneios = GerenciaUsuarios.getSingleton().getTorneios(jogadorLogado.getTorneios());
+        
+        for(Torneio t : torneios){
+            model.addElement(t);
+            
+        }
+    }
+    
+    private void desenhaTela(){
         DefaultListModel<Torneio> model = new DefaultListModel<>();
         
         JPanel painelPrincipal = new JPanel();
@@ -38,16 +64,16 @@ public class JanelaUsuario {
         painelInformacoes.setBorder(BorderFactory.createTitledBorder("Suas informações"));
         painelInformacoes.setPreferredSize(new Dimension(WIDTH/8, HEIGHT));
         
-        JLabel nome = new JLabel("Nome: " + usuarioLogado.getNome());
-//        JLabel vitorias = new JLabel("Vitórias: " + jogadorLogado.getVitorias());
-//        JLabel empates = new JLabel("Empates: " + jogadorLogado.getEmpates());
-//        JLabel derrotas = new JLabel("Derrotas: " + jogadorLogado.getDerrotas());
+        JLabel nome = new JLabel("Nome: " + jogadorLogado.getNome());
+        JLabel vitorias = new JLabel("Vitórias: " + jogadorLogado.getVitorias());
+        JLabel empates = new JLabel("Empates: " + jogadorLogado.getEmpates());
+        JLabel derrotas = new JLabel("Derrotas: " + jogadorLogado.getDerrotas());
         
         painelInformacoesAux.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
         painelInformacoesAux.add(nome);
-//        painelInformacoesAux.add(vitorias);
-//        painelInformacoesAux.add(empates);
-//        painelInformacoesAux.add(derrotas);
+        painelInformacoesAux.add(vitorias);
+        painelInformacoesAux.add(empates);
+        painelInformacoesAux.add(derrotas);
         
         
         JPanel painelTorneios = new JPanel();
@@ -77,6 +103,4 @@ public class JanelaUsuario {
         janela.add(painelPrincipal);
         janela.pack();
     }
-*/
-    
 }

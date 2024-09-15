@@ -129,9 +129,10 @@ public class Janela2 {
     public void login(){
         String nome = tfnome.getText();
         String senha = tfsenha.getText();
+        Usuario u = null;
         try{
             //Senha senha = new Senha(tfsenha.getText());
-            GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
+            u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");
             return;
@@ -139,7 +140,19 @@ public class Janela2 {
             JOptionPane.showMessageDialog(tela, "Usuario ou senha não estão corretos. Digite novamente");
             return;
         }
-        JanelaUsuario secondFrame = new JanelaUsuario();
+        
+        if(u != null){
+            if(u instanceof Jogador jogador){
+                JanelaJogador janelaJogador = new JanelaJogador(jogador);
+            } else if (u instanceof Juiz juiz){
+                //Implementar aqui a função
+            } else if (u instanceof Admin admin){
+                //Implementar aqui a função
+            } else {
+                JOptionPane.showMessageDialog(tela, "Problemas ao fazer login. Por favor, tente novamente");
+                return;
+            }
+        }
         tela.dispose();
     }
     

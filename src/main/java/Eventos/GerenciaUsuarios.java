@@ -119,12 +119,11 @@ public class GerenciaUsuarios implements WindowListener{
             }
         }
     }
-    
-    public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
+    public Usuario tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
             if(u.getNome().equals(nome)){
                 if(u.getSenha().equals(senha)){
-                    return;
+                    return u;
                 }
             }
         }
