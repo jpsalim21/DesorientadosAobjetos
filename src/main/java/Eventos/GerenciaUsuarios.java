@@ -40,7 +40,6 @@ public class GerenciaUsuarios implements WindowListener{
     
     @Override
     public void windowOpened(WindowEvent e){
-        
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();

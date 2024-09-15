@@ -16,7 +16,7 @@ public abstract class Usuario {
     private String nome;
     private String senha;
     protected List<Integer> torneio = new ArrayList<>();
-    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
     private static Pattern padrao;
     //ALERT: Pode não ser tão importante assim no final. 
     //APAGAR
@@ -35,6 +35,7 @@ public abstract class Usuario {
     
     public boolean validaSenha(String senha){
         Matcher pareador = padrao.matcher(senha);
+        System.out.println(pareador.matches());
         return pareador.matches();
     }
     
