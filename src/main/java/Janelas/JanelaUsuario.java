@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Janelas;
+import Eventos.AcessaTorneio;
 import Excecao.ExcecaoDeSenha;
 import Eventos.DeslogaUsuário;
 import Torneios.Torneio;
@@ -105,7 +106,7 @@ public class JanelaUsuario {
         JButton btnAcessar = new JButton("Acessar Torneio");
         JButton btnDeslogar = new JButton("Deslogar da Conta");
         
-       // btnAcessar.addActionListener(l); quem quiser mexer com o acesso a torenios ai
+        btnAcessar.addActionListener(new AcessaTorneio(this)); 
         btnDeslogar.addActionListener(new DeslogaUsuário(this));
         
         botoesPainelTorneios.add(btnAcessar);
@@ -123,6 +124,15 @@ public class JanelaUsuario {
         janela.add(painelPrincipal);
         janela.pack();
     }
+    
+    public void AcessaTorneio(){
+        //faz a nova janela
+        String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
+        //chama a nova janela com essa string de torneio
+        JTorneio torneio = new JTorneio(tipoT);
+        janela.dispose();
+    }
+    
     public void Desloga(){
         Janela2 janelas = new Janela2(); 
         janelas.desenha();
