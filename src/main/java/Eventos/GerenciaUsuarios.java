@@ -117,7 +117,7 @@ public class GerenciaUsuarios implements WindowListener{
         }
     }
     
-    public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado{
+    public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
             
             //TODO: arrumar solução ja que o equals do user agr ja faz o equals de nome e senha

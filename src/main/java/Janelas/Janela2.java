@@ -110,13 +110,13 @@ public class Janela2 {
         try{
             if(index != -1){
                 if(index == 0){
-                    GerenciaUsuarios.getSingleton().adicionaJogador(tfnome.getText(), new Senha(tfsenha.getText()));
+                    GerenciaUsuarios.getSingleton().adicionaJogador(tfnome.getText(), tfsenha.getText());
                 }
                 if(index == 1){
-                    GerenciaUsuarios.getSingleton().adicionaJuiz(tfnome.getText(), new Senha(tfsenha.getText()));
+                    GerenciaUsuarios.getSingleton().adicionaJuiz(tfnome.getText(), tfsenha.getText());
                 }
                 if(index == 2){
-                    GerenciaUsuarios.getSingleton().adicionaAdmin(tfnome.getText(), new Senha(tfsenha.getText()));
+                    GerenciaUsuarios.getSingleton().adicionaAdmin(tfnome.getText(), tfsenha.getText());
                 }
             }
         } catch (ExcecaoDeSenha e){
