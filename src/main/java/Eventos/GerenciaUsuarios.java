@@ -27,14 +27,13 @@ public class GerenciaUsuarios implements WindowListener{
     private List<Usuario> usuarios;
     private List<Torneio> torneios;
     
-    public GerenciaUsuarios() {
-        if(singleton != null){
-            return;
-        }
-        singleton = this;
+    private GerenciaUsuarios() {
         torneios = new ArrayList<>();
     }
     public static GerenciaUsuarios getSingleton(){
+        if(singleton != null){
+            singleton = new GerenciaUsuarios();
+        }
         return singleton;
     }
     

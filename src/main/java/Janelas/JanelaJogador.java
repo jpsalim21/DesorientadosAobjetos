@@ -4,6 +4,7 @@ import Eventos.AcessaTorneio;
 import Eventos.DeslogaUsuário;
 import Eventos.GerenciaUsuarios;
 import Torneios.Torneio;
+import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -38,6 +39,9 @@ public class JanelaJogador{
         janela.setLayout(new BorderLayout());
         jogadorLogado = j;
         System.out.println(j.getClass());
+        Torneio t = new TorneioSuico("Nome do torneio", 5);
+        t.adicionarParticipante(jogadorLogado);
+        t.adicionarParticipante(jogadorLogado);
         
         desenhaTela();
         carregarTorneios();
@@ -86,7 +90,7 @@ public class JanelaJogador{
         JPanel botoesPainelTorneios = new JPanel();
         torneiosEntrados = new JList<>(model);
         JScrollPane painelScrollTorneios = new JScrollPane(torneiosEntrados);
-        painelScrollTorneios.setPreferredSize(new Dimension(WIDTH * 5/8, HEIGHT*3/5));
+        painelScrollTorneios.setPreferredSize(new Dimension(WIDTH * 4/8, HEIGHT*2/5));
         torneiosList.add(painelScrollTorneios, BorderLayout.CENTER);
         
         JButton btnAcessar = new JButton("Acessar Torneio");
