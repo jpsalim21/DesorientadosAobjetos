@@ -31,7 +31,7 @@ public class GerenciaUsuarios implements WindowListener{
         torneios = new ArrayList<>();
     }
     public static GerenciaUsuarios getSingleton(){
-        if(singleton != null){
+        if(singleton == null){
             singleton = new GerenciaUsuarios();
         }
         return singleton;
