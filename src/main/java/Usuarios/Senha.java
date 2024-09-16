@@ -20,7 +20,7 @@ public class Senha {
     //A1b@cdef
     //A1@bcdef
     //formato digito, lowercase, uppercase, caracter especial, sem espaço, minimo de tamanho 8
-    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
+    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@*#$%^&+=])(?=\\S+$).{8,}$";
     private static Pattern padrao;
     
     public Senha(String senha) throws ExcecaoDeSenha{
