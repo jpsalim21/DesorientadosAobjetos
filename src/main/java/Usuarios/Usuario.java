@@ -15,7 +15,7 @@ public abstract class Usuario {
     private final String nome;
     private String senha;
     protected List<Integer> torneio = new ArrayList<>();
-    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+    private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@*#$%^&+=!])(?=\\S+$).{8,}$";
     private static Pattern padrao;
     //ALERT: Pode não ser tão importante assim no final. 
     //APAGAR
