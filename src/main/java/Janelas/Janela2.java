@@ -141,16 +141,12 @@ public class Janela2 {
             return;
         }
         
-        if(u != null){
-            if(u instanceof Jogador jogador){
-                JanelaJogador janelaJogador = new JanelaJogador(jogador);
-            } else if (u instanceof Juiz juiz){
-                //Implementar aqui a função
-            } else if (u instanceof Admin admin){
-                //Implementar aqui a função
-            } else {
-                JOptionPane.showMessageDialog(tela, "Problemas ao fazer login. Por favor, tente novamente");
-                return;
+        switch(u.getTipoUsuario()){
+            case JOGADOR -> {
+                JanelaJogador janelaJogador = new JanelaJogador((Jogador)u);
+            }
+            case JUIZ -> {
+                System.out.println("Ainda não implementamos essa funcionalidade");
             }
         }
         tela.dispose();
