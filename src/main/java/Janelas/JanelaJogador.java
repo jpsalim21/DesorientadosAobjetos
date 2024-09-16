@@ -1,3 +1,8 @@
+/*
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
+ */
 package Janelas;
 
 import Eventos.AcessaTorneio;
@@ -18,7 +23,6 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 
 public class JanelaJogador{
     

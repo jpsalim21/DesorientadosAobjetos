@@ -1,15 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 
 package com.mycompany.desorientadosaobjetos;
 import Eventos.GerenciaUsuarios;
 import Janelas.*;
-
-/**
- *
- * @author Thales
- */
 
 public class DesorientadosAobjetos {
 

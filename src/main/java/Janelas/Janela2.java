@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Janelas;
 
@@ -12,10 +13,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 import java.util.List;
 
-/**
- *
- * @author mateu
- */
 public class Janela2 {
     
     private JFrame tela;
