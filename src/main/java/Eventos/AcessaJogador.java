@@ -4,23 +4,24 @@
  */
 package Eventos;
 
-import Janelas.Janela2;
+import Janelas.JanelaUsuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  *
- * @author PC12643
+ * @author Thales
  */
-public class BotaoLogin implements ActionListener{
-    private final Janela2 tela;
-    
-    public BotaoLogin(Janela2 tela){
+public class AcessaJogador implements ActionListener{
+     private final JanelaUsuario tela;
+
+    public AcessaJogador (JanelaUsuario tela){
         this.tela = tela;
     }
     
+    
     @Override
-    public void actionPerformed(ActionEvent e){
-        tela.login();
+    public void actionPerformed(ActionEvent e) {
+       tela.AcessaJogador();
     }
 }

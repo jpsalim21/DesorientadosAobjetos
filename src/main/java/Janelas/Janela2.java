@@ -6,7 +6,6 @@ package Janelas;
 
 import Eventos.*;
 import Excecao.*;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -58,6 +57,7 @@ public class Janela2 {
         DefaultListModel<Jogador> l1 = new DefaultListModel<>();
         DefaultListModel<Juiz> l2 = new DefaultListModel<>();
         DefaultListModel<Admin> l3 = new DefaultListModel<>();
+
         jogadores = new JList<>(l1);
         juizes = new JList<>(l2);
         admins = new JList<>(l3);
@@ -68,7 +68,7 @@ public class Janela2 {
         JPanel formulario = new JPanel();
         JPanel descricao = new JPanel();
         //nao sabemos o pq funciona mas isso arruma o layout da tela de login
-        descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP + 10));
+        descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP+ 10));
         descricao.add(new JLabel("Nome"));
         descricao.add(new JLabel("Senha"));
         descricao.add(new JLabel("Acessar como:"));
@@ -127,9 +127,10 @@ public class Janela2 {
     }
     
     public void login(){
+        //não sei pq, mas isso aq não funciona
         String nome = tfnome.getText();
         String senha = tfsenha.getText();
-        Usuario u = null;
+        Usuario u;
         try{
             //Senha senha = new Senha(tfsenha.getText());
             u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
@@ -141,40 +142,44 @@ public class Janela2 {
             return;
         }
         
-        if(u != null){
-            if(u instanceof Jogador jogador){
-                JanelaJogador janelaJogador = new JanelaJogador(jogador);
-            } else if (u instanceof Juiz juiz){
-                //Implementar aqui a função
-            } else if (u instanceof Admin admin){
-                //Implementar aqui a função
-            } else {
-                JOptionPane.showMessageDialog(tela, "Problemas ao fazer login. Por favor, tente novamente");
-                return;
+        switch(u.getTipoUsuario()){
+            case JOGADOR -> {
+                JanelaJogador janelaJogador = new JanelaJogador((Jogador)u);
+            }
+            case JUIZ -> {
+                System.out.println("Ainda não implementamos essa funcionalidade");
             }
         }
         tela.dispose();
     }
     
+    
     public void removeUsuario(){
-       int index = tipoUsuario.getSelectedIndex();
-       if(index !=-1){
-           if(index == 0){
-        int selectedIndex = jogadores.getSelectedIndex();
-        DefaultListModel<Jogador> modelo = (DefaultListModel<Jogador>) jogadores.getModel();
-        modelo.remove(selectedIndex);
-           }
-           if(index == 1){
-        int selectedIndex = juizes.getSelectedIndex();
-        DefaultListModel<Juiz> modelo = (DefaultListModel<Juiz>) juizes.getModel();
-        modelo.remove(selectedIndex);
-           }
-           if(index == 2){
-        int selectedIndex = admins.getSelectedIndex();
-        DefaultListModel<Admin> modelo = (DefaultListModel<Admin>) admins.getModel();
-        modelo.remove(selectedIndex);       
-           }
-       }
-        
-    }
-}
+        int index = tipoUsuario.getSelectedIndex();
+        GerenciaUsuarios gere = GerenciaUsuarios.getSingleton();
+    
+        if (index == -1) {
+            JOptionPane.showMessageDialog(tela, "Nenhum usuário selecionado.");
+            return;
+        }
+    
+        String name = tfnome.getText();
+        switch (index) {
+            case 0 -> {
+                gere.remove(name, index);
+                JOptionPane.showMessageDialog(tela, "Jogador removido");
+            }
+            case 1 -> {
+                gere.remove(name, index);
+                JOptionPane.showMessageDialog(tela, "Juiz removido");
+            }
+            case 2 -> {
+                gere.remove(name, index);
+                JOptionPane.showMessageDialog(tela, "Admin removido");
+            }
+            default -> JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
+        }
+   } 
+} 
+  
+    

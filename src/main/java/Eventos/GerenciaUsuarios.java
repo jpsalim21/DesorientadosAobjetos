@@ -125,6 +125,53 @@ public class GerenciaUsuarios implements WindowListener{
             }
         }
     }
+    public void remove(String nome, int tipo){
+        int cont = -1;
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getNome().equals(nome)) {
+                cont = i;
+                break;
+            }
+        }
+    
+        if (cont == -1) {
+            System.out.println("Usuário não encontrado.");
+            return;
+        }
+    
+        Usuario usuario = usuarios.get(cont);
+        switch (tipo) {
+            case 0 -> {
+                if (usuario instanceof Jogador) {
+                    jogadores.remove(usuario);
+                    usuarios.remove(usuario);
+                    System.out.println("Jogador removido.");
+                } else {
+                    System.out.println("Usuário não é um jogador.");
+                }
+            }
+            case 1 -> {
+                if (usuario instanceof Juiz) {
+                    juizes.remove(usuario);
+                    usuarios.remove(usuario);
+                    System.out.println("Juiz removido.");
+                } else {
+                    System.out.println("Usuário não é um juiz.");
+                }
+            }
+            case 2 -> {
+                if (usuario instanceof Admin) {
+                    administradores.remove(usuario);
+                    usuarios.remove(usuario);
+                    System.out.println("Admin removido.");
+                } else {
+                    System.out.println("Usuário não é um admin.");
+                }
+            }
+            default -> System.out.println("Tipo de usuário desconhecido.");
+        }
+    }
+
     public Usuario tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
             if(u.getNome().equals(nome)){

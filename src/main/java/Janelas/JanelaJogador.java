@@ -1,5 +1,7 @@
 package Janelas;
 
+import Eventos.AcessaTorneio;
+import Eventos.DeslogaUsuário;
 import Eventos.GerenciaUsuarios;
 import Torneios.Torneio;
 import Usuarios.Jogador;
@@ -13,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -88,6 +91,10 @@ public class JanelaJogador{
         
         JButton btnAcessar = new JButton("Acessar Torneio");
         JButton btnDeslogar = new JButton("Deslogar da Conta");
+        
+        btnAcessar.addActionListener(new AcessaTorneio(this)); 
+        btnDeslogar.addActionListener(new DeslogaUsuário(this));
+        
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnDeslogar);
         
@@ -102,5 +109,19 @@ public class JanelaJogador{
         painelPrincipal.add(painelTorneios, BorderLayout.CENTER);
         janela.add(painelPrincipal);
         janela.pack();
+    }
+    
+    public void AcessaTorneio(){
+        //faz a nova janela
+        String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
+        //chama a nova janela com essa string de torneio
+        JTorneio torneio = new JTorneio(tipoT);
+        janela.dispose();
+    }
+    
+    public void Desloga(){
+        Janela2 janelas = new Janela2(); 
+        janelas.desenha();
+        janela.dispose();
     }
 }
