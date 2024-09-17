@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Janelas;
+import Eventos.DeslogaJuiz;
 import Torneios.Torneio;
 import java.awt.event.*;
 import java.awt.*;
@@ -12,6 +13,9 @@ import javax.swing.*;
  * @author Thales
  */
 public class AdmJuizJanela{
+    
+    //Oq falta aqui é mexer com a edição de torneio e no negocio de acessar torneio
+    //ver com eles um jeito de mexer no torneio
     private final JFrame tela;
     private final int WIDTH = 500;
     private final int HEIGHT = 500;
@@ -57,21 +61,29 @@ public class AdmJuizJanela{
         forms.setPreferredSize(new Dimension(WIDTH,HEIGHT*2));
         forms.setLayout(new GridLayout(0, 1, H_GAP,V_GAP));
        
-        JButton botao = new JButton("Editar");
-        JButton botao2 = new JButton("Adicionar");
-        JButton botao3 = new JButton("Remover");
+        JButton btnComeça = new JButton("Começar Torneio");
+        JButton btnEdita = new JButton("Editar Torneio");
+        JButton btnSai = new JButton("Sair");
+        JButton botao2 = new JButton("Adicionar Jogador");
+        JButton botao3 = new JButton("Remover Jogador");
+//        JButton botao2 = new JButton("Adicionar Juiz");
+//        JButton botao3 = new JButton("Remover Juiz");
+//          minha ideia aqui é passar o tipo  (juiz ou adm e dai deixa esses botões visiveis pro adm)       
+        btnSai.addActionListener(new DeslogaJuiz(this));
         
-        botoes.add(botao);
+        botoes.add(btnComeça);
+        botoes.add(btnEdita);
         botoes.add(botao2);
         botoes.add(botao3);
+        botoes.add(btnSai);
        
-        forms.add(new JLabel("Alguma coisa:"));
+        forms.add(new JLabel("Nome do torneio:"));
         forms.add(new JTextField(20));
         
-        forms.add(new JLabel("Alguma coisa 2:"));
+        forms.add(new JLabel("Participante:"));
         forms.add(new JTextField(20));
         
-        forms.add(new JLabel("Alguma coisa 3:"));
+        forms.add(new JLabel("Vitorias:"));
         forms.add(new JTextField(20));
         
         forms.add(botoes);
@@ -81,5 +93,10 @@ public class AdmJuizJanela{
         resto.add(resto2, BorderLayout.EAST);
         tela.getContentPane().add(resto);
         
+    }
+    
+     public void Desloga(){
+        JanelaUsuario janelas = new JanelaUsuario(); 
+        tela.dispose();
     }
 }
