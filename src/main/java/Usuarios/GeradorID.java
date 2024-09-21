@@ -29,11 +29,14 @@ public class GeradorID {
     }
     
     public static int generateID(){
-        return (ID++);
+        ID++;
+        return ID;
     }
     
     private int getLast(List<Usuario> user){
         int lastID = 0;
+        if(user.isEmpty())
+            return 0;
         for(Usuario u: user){
             if(u.getID() > lastID)
                 lastID = u.getID();
