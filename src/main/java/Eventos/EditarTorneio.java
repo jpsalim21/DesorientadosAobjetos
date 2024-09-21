@@ -20,7 +20,7 @@ public class EditarTorneio implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        janela.AddPlayer();
+        janela.Edita();
     }
     
 }
