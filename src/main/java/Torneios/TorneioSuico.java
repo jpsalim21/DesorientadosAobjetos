@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Torneios;
 
@@ -10,10 +11,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-/**
- *
- * @author Joao Pedro Miranda Salim
- */
 public class TorneioSuico extends Torneio{
     
     private List<List<JogadorParticipante>> infoClassificacao;

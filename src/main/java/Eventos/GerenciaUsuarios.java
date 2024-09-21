@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Eventos;
 
@@ -15,10 +16,6 @@ import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mateu
- */
 public class GerenciaUsuarios implements WindowListener{
     private static GerenciaUsuarios singleton;
     private List<Jogador> jogadores;
@@ -43,9 +40,11 @@ public class GerenciaUsuarios implements WindowListener{
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
+        Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
         jogadores = jogPersistencia.findAll();
         juizes = juiPersistencia.findAll();
         administradores = admPersistencia.findAll();
+        torneios = torPersistencia.findAll();
         usuarios = new ArrayList<>();
         usuarios.addAll(juizes);
         usuarios.addAll(jogadores);
@@ -65,6 +64,10 @@ public class GerenciaUsuarios implements WindowListener{
         if(administradores != null){
             Persistencia<Admin> admPersistencia = new AdminPersistencia();
             admPersistencia.save(administradores);
+        }
+        if(torneios != null){
+            Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
+            torPersistencia.save(torneios);
         }
     }
     @Override

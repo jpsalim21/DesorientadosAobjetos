@@ -1,16 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Usuarios;
 import java.util.*;
 import java.util.regex.Pattern;
 import Excecao.*;
 import java.util.regex.Matcher;
-/**
- *
- * @author Thales
- */
+
 public abstract class Usuario {
     private final String nome;
     private String senha;

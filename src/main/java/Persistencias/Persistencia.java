@@ -1,11 +1,12 @@
+/*
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
+ */
 package Persistencias;
 
 import java.util.List;
 
-/**
- *
- * @author mateu
- */
 public interface Persistencia<T> {
     
     String DIRECTORY = "data";
