@@ -5,6 +5,7 @@
  */
 package Janelas;
 
+import Torneios.Torneio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -16,27 +17,26 @@ import javax.swing.JPanel;
 public class JTorneio {
     // Não sei exatamente oq faço com esse torenio direito
     //TODO fazer um botão que volta a janela
-    private JFrame janela;
+    private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
     private final int HEIGHT = 1080;
     private final int V_GAP = 10;
     private final int H_GAP = 5;
     
-    public JTorneio(String torneio){
-     janela = new JFrame();
-     tipoT = torneio;
+    public JTorneio(Torneio torneio){
+        janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
         
-        Desenhapareamento();
+        desenhaPareamento();
         
         janela.pack();
         
     }
-    public final void Desenhapareamento(){
+    public final void desenhaPareamento(){
         JPanel principal = new JPanel();
         
         principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
