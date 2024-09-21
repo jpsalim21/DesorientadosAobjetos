@@ -52,5 +52,15 @@ public class Torneio {
     public int getId(){
         return codigo;
     }
+
+    public Object getNome() {
+        return nome;
+    }
+
+    public List<JogadorParticipante> getParticipantes() {
+        return participantes;
+    }
+    
+    
     
 }

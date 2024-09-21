@@ -3,28 +3,41 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Janelas;
+import Eventos.AdicionaJogador;
 import Eventos.DeslogaJuiz;
+import Eventos.RemoveJogador;
 import Torneios.Torneio;
+import Usuarios.Jogador;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
+import java.util.List;
+import Persistencias.*;
+import Torneios.JogadorParticipante;
 /**
  *
  * @author Thales
  */
 public class AdmJuizJanela{
     
-    //Oq falta aqui é mexer com a edição de torneio e no negocio de acessar torneio
-    //ver com eles um jeito de mexer no torneio
+    //dei uma alterada e coloquei as funções em quase tudo
     private final JFrame tela;
     private final int WIDTH = 500;
     private final int HEIGHT = 500;
     private final int V_GAP = 10;
     private final int H_GAP = 5;
+    private JTextField Nome;
+    private JTextField Torneio;
     
-    private JList<Torneio>torneios;
+    private List<Torneio> torneios;
+    private final List<Jogador> jogadores;
     
     public AdmJuizJanela(){
+        Persistencia tor = new TorneiosPersistencia();
+        torneios = tor.findAll();
+        Persistencia jog = new JogadorPersistencia();
+        jogadores = jog.findAll();
         tela = new JFrame("Tela Adm e Juiz");
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,10 +57,9 @@ public class AdmJuizJanela{
         painel.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
         painel.setLayout(new BorderLayout());
         
-        torneios = new JList<>();
-        //torneios.addListSelectionListener(listener);
+        torneios = new ArrayList<>();
         painel.setPreferredSize(new Dimension(550,HEIGHT));
-        painel.add(new JScrollPane(torneios), BorderLayout.CENTER);
+        painel.add(new JScrollPane((Component) torneios), BorderLayout.CENTER);
         tela.getContentPane().add(painel,BorderLayout.WEST);
     }
     
@@ -61,15 +73,17 @@ public class AdmJuizJanela{
         forms.setPreferredSize(new Dimension(WIDTH,HEIGHT*2));
         forms.setLayout(new GridLayout(0, 1, H_GAP,V_GAP));
        
-        JButton btnComeça = new JButton("Começar Torneio");
-        JButton btnEdita = new JButton("Editar Torneio");
+        JButton btnComeça = new JButton("Começar Torneio"); //vai ficar de enfeite
+        JButton btnEdita = new JButton("Editar Torneio"); //não sei exatamente oq fazer com isso;
         JButton btnSai = new JButton("Sair");
         JButton botao2 = new JButton("Adicionar Jogador");
         JButton botao3 = new JButton("Remover Jogador");
 //        JButton botao2 = new JButton("Adicionar Juiz");
 //        JButton botao3 = new JButton("Remover Juiz");
 //          minha ideia aqui é passar o tipo  (juiz ou adm e dai deixa esses botões visiveis pro adm)       
-        btnSai.addActionListener(new DeslogaJuiz(this));
+    botao2.addActionListener(new AdicionaJogador(this));
+    botao3.addActionListener(new RemoveJogador(this));
+    btnSai.addActionListener(new DeslogaJuiz(this));
         
         botoes.add(btnComeça);
         botoes.add(btnEdita);
@@ -78,13 +92,12 @@ public class AdmJuizJanela{
         botoes.add(btnSai);
        
         forms.add(new JLabel("Nome do torneio:"));
-        forms.add(new JTextField(20));
+        Torneio =new JTextField(20);
+        forms.add(Torneio);
         
         forms.add(new JLabel("Participante:"));
-        forms.add(new JTextField(20));
-        
-        forms.add(new JLabel("Vitorias:"));
-        forms.add(new JTextField(20));
+        Nome = new JTextField(20); 
+        forms.add(Nome);
         
         forms.add(botoes);
         
@@ -93,6 +106,70 @@ public class AdmJuizJanela{
         resto.add(resto2, BorderLayout.EAST);
         tela.getContentPane().add(resto);
         
+    }
+    
+    public void AddPlayer(){
+        String nomeJogador = Nome.getText();
+        String nomeTorneio = Torneio.getText();
+         if (nomeJogador.isEmpty() || nomeTorneio.isEmpty()) {
+        JOptionPane.showMessageDialog(tela, "Nome do jogador ou do torneio não pode estar vazio.");
+        return;
+    }
+         
+         Jogador jogador = null;
+    for (Jogador j : jogadores) {
+        if (j.getNome().equals(nomeJogador)) {
+            jogador = j;
+            break;
+        }
+    }
+
+    if (jogador == null) {
+        JOptionPane.showMessageDialog(tela, "Jogador não encontrado.");
+        return;
+    }
+
+    Torneio torneio = null;
+    for (Torneio t : torneios) {
+        if (t.getNome().equals(nomeTorneio)) {
+            torneio = t;
+            break;
+        }
+    }
+
+    if (torneio == null) {
+        JOptionPane.showMessageDialog(tela, "Torneio não encontrado.");
+        return;
+    }
+
+    torneio.adicionarParticipante(jogador);
+    JOptionPane.showMessageDialog(tela, "Jogador adicionado ao torneio com sucesso.");
+    }
+    
+    public void RemoveJogador(){
+         String nomeJogador = Nome.getText();
+        String nomeTorneio = Torneio.getText();
+        
+        Torneio torneio = null;
+    for (Torneio t : torneios) {
+        if (t.getNome().equals(nomeTorneio)) {
+            torneio = t;
+            break;
+        }
+    }
+
+    if (torneio == null) {
+        JOptionPane.showMessageDialog(tela, "Torneio não encontrado.");
+        return;
+    }
+    
+        List<JogadorParticipante> aux = torneio.getParticipantes();
+      
+        for(JogadorParticipante a : aux){
+            if(a.getUsuario().getNome().equals(nomeJogador)){
+                torneio.removerParticipante(a);
+            }
+        }
     }
     
      public void Desloga(){
