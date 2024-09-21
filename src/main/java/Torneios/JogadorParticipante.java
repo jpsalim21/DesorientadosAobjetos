@@ -1,15 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Torneios;
 
 import Usuarios.Jogador;
 
-/**
- *
- * @author ice
- */
 public class JogadorParticipante implements Comparable<JogadorParticipante>{
     private Jogador usuario;
     private float pontuacao;

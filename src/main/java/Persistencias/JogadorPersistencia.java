@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 
 package Persistencias;
@@ -12,10 +13,7 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
-/**
- *
- * @author mateu
- */
+
 public class JogadorPersistencia implements Persistencia<Jogador>{
     
     private static final String PATH = DIRECTORY+ File.separator +"jogadores.json";

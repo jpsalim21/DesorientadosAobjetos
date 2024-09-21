@@ -1,16 +1,14 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Eventos;
 
 import java.awt.event.ActionListener;
 import Janelas.*;
 import java.awt.event.ActionEvent;
-/**
- *
- * @author mateu
- */
+
 public class AdicionaUsuario implements ActionListener{
     private final Janela2 tela;
     

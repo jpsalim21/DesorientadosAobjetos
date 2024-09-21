@@ -1,15 +1,12 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Persistencias;
 
 import java.io.*;
 
-/**
- *
- * @author mateu
- */
 public class Arquivo {
     public static String le(String caminhoArq){
         StringBuilder conteudo = new StringBuilder();
