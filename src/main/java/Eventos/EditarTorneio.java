@@ -12,10 +12,9 @@ import java.awt.event.ActionListener;
  *
  * @author Thales
  */
-public class AdicionaJogador implements ActionListener{
+public class EditarTorneio implements ActionListener{
     private final AdmJuizJanela janela;
-
-    public AdicionaJogador(Janelas.AdmJuizJanela janela) {
+    public EditarTorneio(AdmJuizJanela janela) {
         this.janela = janela;
     }
     

@@ -6,6 +6,7 @@
 package Janelas;
 import Eventos.AdicionaJogador;
 import Eventos.DeslogaJuiz;
+import Eventos.EditarTorneio;
 import Eventos.RemoveJogador;
 import Torneios.Torneio;
 import Usuarios.Jogador;
@@ -76,13 +77,14 @@ public class AdmJuizJanela{
         forms.setLayout(new GridLayout(0, 1, H_GAP,V_GAP));
        
         JButton btnComeça = new JButton("Começar Torneio"); //vai ficar de enfeite
-        JButton btnEdita = new JButton("Editar Torneio"); //não sei exatamente oq fazer com isso;
+        JButton btnEdita = new JButton("Editar Torneio"); //chama a janela e da
         JButton btnSai = new JButton("Sair");
         JButton botao2 = new JButton("Adicionar Jogador");
         JButton botao3 = new JButton("Remover Jogador");
 //        JButton botao2 = new JButton("Adicionar Juiz");
 //        JButton botao3 = new JButton("Remover Juiz");
 //          minha ideia aqui é passar o tipo  (juiz ou adm e dai deixa esses botões visiveis pro adm)       
+    btnEdita.addActionListener(new EditarTorneio(this));
     botao2.addActionListener(new AdicionaJogador(this));
     botao3.addActionListener(new RemoveJogador(this));
     btnSai.addActionListener(new DeslogaJuiz(this));
@@ -172,6 +174,18 @@ public class AdmJuizJanela{
                 torneio.removerParticipante(a);
             }
         }
+    }
+    
+    public void Edita(){
+        String nomeTorneio = Torneio.getText();
+              Torneio torneio = null;
+    for (Torneio t : torneios) {
+        if (t.getNome().equals(nomeTorneio)) {
+            torneio = t;
+            break;
+        }
+    }
+        JCriacaoEdicaoTorneio aux = new JCriacaoEdicaoTorneio(torneio);
     }
     
      public void Desloga(){
