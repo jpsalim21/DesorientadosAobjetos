@@ -49,4 +49,9 @@ public class Confronto {
     public boolean getTerminouConfronto(){
         return terminouConfronto;
     }
+    //FIXME: Podemos encontrar outra forma de fazer isso
+    @Override
+    public String toString(){
+        return jogador1.getUsuario().getNome() + " x " + jogador2.getUsuario().getNome();
+    }
 }
