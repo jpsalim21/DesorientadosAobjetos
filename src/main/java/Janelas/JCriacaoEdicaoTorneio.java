@@ -9,6 +9,7 @@ import Torneios.Torneio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.*;
 
@@ -76,4 +77,28 @@ public class JCriacaoEdicaoTorneio {
         
     }
     
+    //metodos de remoção e adição de jogador nos torneios
+    //Caso queira pode mudar o metodo de remoção e adição
+    
+    public void AdcionaJogador(){
+        List<JogadorParticipante> participante= torneio.getParticipantes();
+        
+        for(JogadorParticipante u : participante){
+//            if(u.getUsuario().getNome().equals(/*um jogador*/)){
+//                JOptionPane.showMessageDialog(janela, "Jogador já adcionado");
+//                return;
+//            }
+            torneio.adicionarParticipante(u.getUsuario());
+        }
+    }
+    
+    public void RemoveJogador(){
+          List<JogadorParticipante> aux = torneio.getParticipantes();
+      
+        for(JogadorParticipante a : aux){
+//            if(a.getUsuario().getNome().equals(/*um jogador*/)){
+//                torneio.removerParticipante(a);
+//            }
+        }
+    }
 }

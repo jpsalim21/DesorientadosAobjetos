@@ -111,70 +111,71 @@ public class AdmJuizJanela{
         tela.getContentPane().add(resto);
         
     }
-    
-    public void AddPlayer(){
-        String nomeJogador = Nome.getText();
-        String nomeTorneio = Torneio.getText();
-         if (nomeJogador.isEmpty() || nomeTorneio.isEmpty()) {
-        JOptionPane.showMessageDialog(tela, "Nome do jogador ou do torneio não pode estar vazio.");
-        return;
-    }
-         
-         Jogador jogador = null;
-    for (Jogador j : jogadores) {
-        if (j.getNome().equals(nomeJogador)) {
-            jogador = j;
-            break;
-        }
-    }
 
-    if (jogador == null) {
-        JOptionPane.showMessageDialog(tela, "Jogador não encontrado.");
-        return;
-    }
-
-    Torneio torneio = null;
-    for (Torneio t : torneios) {
-        if (t.getNome().equals(nomeTorneio)) {
-            torneio = t;
-            break;
-        }
-    }
-
-    if (torneio == null) {
-        JOptionPane.showMessageDialog(tela, "Torneio não encontrado.");
-        return;
-    }
-
-    torneio.adicionarParticipante(jogador);
-    JOptionPane.showMessageDialog(tela, "Jogador adicionado ao torneio com sucesso.");
-    }
-    
-    public void RemoveJogador(){
-         String nomeJogador = Nome.getText();
-        String nomeTorneio = Torneio.getText();
-        
-        Torneio torneio = null;
-    for (Torneio t : torneios) {
-        if (t.getNome().equals(nomeTorneio)) {
-            torneio = t;
-            break;
-        }
-    }
-
-    if (torneio == null) {
-        JOptionPane.showMessageDialog(tela, "Torneio não encontrado.");
-        return;
-    }
-    
-        List<JogadorParticipante> aux = torneio.getParticipantes();
-      
-        for(JogadorParticipante a : aux){
-            if(a.getUsuario().getNome().equals(nomeJogador)){
-                torneio.removerParticipante(a);
-            }
-        }
-    }
+//Isso aqui cai em desuso com os botões da JCriacao    
+//    public void AddPlayer(){
+//        String nomeJogador = Nome.getText();
+//        String nomeTorneio = Torneio.getText();
+//         if (nomeJogador.isEmpty() || nomeTorneio.isEmpty()) {
+//        JOptionPane.showMessageDialog(tela, "Nome do jogador ou do torneio não pode estar vazio.");
+//        return;
+//    }
+//         
+//         Jogador jogador = null;
+//    for (Jogador j : jogadores) {
+//        if (j.getNome().equals(nomeJogador)) {
+//            jogador = j;
+//            break;
+//        }
+//    }
+//
+//    if (jogador == null) {
+//        JOptionPane.showMessageDialog(tela, "Jogador não encontrado.");
+//        return;
+//    }
+//
+//    Torneio torneio = null;
+//    for (Torneio t : torneios) {
+//        if (t.getNome().equals(nomeTorneio)) {
+//            torneio = t;
+//            break;
+//        }
+//    }
+//
+//    if (torneio == null) {
+//        JOptionPane.showMessageDialog(tela, "Torneio não encontrado.");
+//        return;
+//    }
+//
+//    torneio.adicionarParticipante(jogador);
+//    JOptionPane.showMessageDialog(tela, "Jogador adicionado ao torneio com sucesso.");
+//    }
+//    
+//    public void RemoveJogador(){
+//         String nomeJogador = Nome.getText();
+//        String nomeTorneio = Torneio.getText();
+//        
+//        Torneio torneio = null;
+//    for (Torneio t : torneios) {
+//        if (t.getNome().equals(nomeTorneio)) {
+//            torneio = t;
+//            break;
+//        }
+//    }
+//
+//    if (torneio == null) {
+//        JOptionPane.showMessageDialog(tela, "Torneio não encontrado.");
+//        return;
+//    }
+//    
+//        List<JogadorParticipante> aux = torneio.getParticipantes();
+//      
+//        for(JogadorParticipante a : aux){
+//            if(a.getUsuario().getNome().equals(nomeJogador)){
+//                torneio.removerParticipante(a);
+//            }
+//        }
+//    }
     
     public void Edita(){
         String nomeTorneio = Torneio.getText();
