@@ -5,24 +5,16 @@
  */
 package Janelas;
 
-import Eventos.AdicionaJogador;
 import Eventos.DeslogaJuiz;
 import Eventos.EditarTorneio;
-import Eventos.RemoveJogador;
 import Torneios.Torneio;
 import Usuarios.Jogador;
-import java.awt.event.*;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import java.util.List;
 import Persistencias.*;
-import Torneios.JogadorParticipante;
 
-/**
- *
- * @author Thales
- */
 
 public class AdmJuizJanela {
 

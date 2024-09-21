@@ -1,30 +1,32 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim
+ * Mateus Lopes Felício
+ * Thales Gomes Batista
  */
 package Janelas;
 
 import Torneios.JogadorParticipante;
 import Torneios.Torneio;
+import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.*;
+import Persistencias.*;
 
-/**
- *
- * @author ice
- */
 public class JCriacaoEdicaoTorneio {
     private final JFrame janela;
     protected final int WIDTH = 1920;
     protected final int HEIGHT = 1080;
     protected final int V_GAP = 10;
     protected final int H_GAP = 5;
-    private Torneio torneio;
+    
+    private JTextField nTorneio;
+    private final Torneio torneio;
     private JList<JogadorParticipante> jogadores;
+    private List<Jogador> jogar;
     
     public JCriacaoEdicaoTorneio(Torneio t){
         janela = new JFrame();
@@ -39,6 +41,8 @@ public class JCriacaoEdicaoTorneio {
     }
     
     private void desenhaTela(){
+        Persistencia jog = new JogadorPersistencia();
+        jogar = jog.findAll();
         DefaultListModel<JogadorParticipante> model = new DefaultListModel<>();
         
         JPanel painel = new JPanel();
@@ -55,7 +59,8 @@ public class JCriacaoEdicaoTorneio {
         inputPanel.setLayout(new GridLayout(0, 2, H_GAP, V_GAP));
         JLabel nome = new JLabel("Nome do torneio");
         inputPanel.add(nome);
-        inputPanel.add(new JTextField());
+        nTorneio =new JTextField();
+        inputPanel.add(nTorneio);
         torneioPanel.add(inputPanel);
         
 //        jogadores = new JList<>(model);
@@ -82,23 +87,37 @@ public class JCriacaoEdicaoTorneio {
     
     public void AdcionaJogador(){
         List<JogadorParticipante> participante= torneio.getParticipantes();
-        
+        if(!(torneio.getNome().equals(nTorneio))){
+             JOptionPane.showMessageDialog(janela, "Torneio não encontrado");
+             return;
+        }
+        String naux = JOptionPane.showInputDialog("Digite o nome do jogador a ser adcionado:");
         for(JogadorParticipante u : participante){
-//            if(u.getUsuario().getNome().equals(/*um jogador*/)){
-//                JOptionPane.showMessageDialog(janela, "Jogador já adcionado");
-//                return;
-//            }
-            torneio.adicionarParticipante(u.getUsuario());
+            if(u.getUsuario().getNome().equals(naux)){
+                JOptionPane.showMessageDialog(janela, "Jogador já adcionado");
+                return;
+            }
+         
+        for(Jogador t : jogar){
+            if(t.getNome().equals(naux)){
+                torneio.adicionarParticipante(t);
+            }
+        }
         }
     }
     
     public void RemoveJogador(){
           List<JogadorParticipante> aux = torneio.getParticipantes();
-      
+          if(!(torneio.getNome().equals(nTorneio))){
+             JOptionPane.showMessageDialog(janela, "Torneio não encontrado");
+             return;
+          }
+          
         for(JogadorParticipante a : aux){
-//            if(a.getUsuario().getNome().equals(/*um jogador*/)){
-//                torneio.removerParticipante(a);
-//            }
+            String naux = JOptionPane.showInputDialog("Digite o nome do jogador a ser removido:");
+            if(a.getUsuario().getNome().equals(naux)){
+                torneio.removerParticipante(a);
+            }
         }
     }
 }

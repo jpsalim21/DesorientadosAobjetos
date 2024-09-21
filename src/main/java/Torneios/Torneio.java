@@ -53,8 +53,5 @@ public class Torneio {
 
     public List<JogadorParticipante> getParticipantes() {
         return participantes;
-    }
-    
-    
-    
+    }  
 }
