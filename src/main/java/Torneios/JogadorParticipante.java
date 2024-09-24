@@ -8,7 +8,7 @@ package Torneios;
 import Usuarios.Jogador;
 
 public class JogadorParticipante implements Comparable<JogadorParticipante>{
-    private Jogador usuario;
+    private final Jogador usuario;
     private float pontuacao;
     private boolean bye;
     

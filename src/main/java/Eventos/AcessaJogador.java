@@ -19,6 +19,6 @@ public class AcessaJogador implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-       tela.AcessaJogador();
+       //tela.AcessaJogador();
     }
 }

@@ -42,7 +42,6 @@ public class JanelaJogador{
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
         jogadorLogado = j;
-        System.out.println(j.getClass());
         Torneio t = new TorneioSuico("Nome do torneio", 5);
         t.adicionarParticipante(jogadorLogado);
         t.adicionarParticipante(jogadorLogado);
@@ -120,10 +119,17 @@ public class JanelaJogador{
     }
     
     public void AcessaTorneio(){
-        //faz a nova janela
-        String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
-        //chama a nova janela com essa string de torneio
-        JTorneio torneio = new JTorneio(tipoT);
+        int selectedIndex = torneiosEntrados.getSelectedIndex();
+        
+        Torneio torneio;
+        if(selectedIndex == -1){
+            JOptionPane aviso = new JOptionPane("Selecione um torneio para acessar.");
+            return;
+        }
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        torneio = model.get(selectedIndex);
+        JTorneio janelaTorneio = new JTorneio(torneio);
+        
         janela.dispose();
     }
     

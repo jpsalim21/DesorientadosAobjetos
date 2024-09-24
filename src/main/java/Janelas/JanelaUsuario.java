@@ -129,13 +129,13 @@ public class JanelaUsuario {
         janela.pack();
     }
     
-    public void AcessaJogador(){
-        //faz a nova janela
-        String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
-        //chama a nova janela com essa string de torneio
-        JTorneio torneio = new JTorneio(tipoT);
-        janela.dispose();
-    }
+//    public void AcessaJogador(){
+//        //faz a nova janela
+//        String tipoT = JOptionPane.showInputDialog("Informe qual torneio deseja acessar:");
+//        //chama a nova janela com essa string de torneio
+//        JTorneio torneio = new JTorneio(tipoT);
+//        janela.dispose();
+//    }
        public void Desloga(){
         Janela2 janelas = new Janela2(); 
         janelas.desenha();
