@@ -12,9 +12,6 @@ import java.util.List;
 import java.util.Set;
 
 public class TorneioSuico extends Torneio{
-    
-    private List<List<JogadorParticipante>> infoClassificacao;
-    private List<List<Confronto>> infoRodadas;
     private int rodadaAtual;
     
     public TorneioSuico(String nome, int rodadas) {
