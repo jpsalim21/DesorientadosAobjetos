@@ -128,7 +128,7 @@ public class JanelaJogador{
         }
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
         torneio = model.get(selectedIndex);
-        JTorneio janelaTorneio = new JTorneio(torneio);
+        JTorneio janelaTorneio = new JTorneio(torneio, jogadorLogado);
         
         janela.dispose();
     }
