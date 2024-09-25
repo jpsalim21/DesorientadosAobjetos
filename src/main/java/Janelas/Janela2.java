@@ -9,9 +9,7 @@ import Eventos.*;
 import Excecao.*;
 import Usuarios.*;
 import java.awt.*;
-import java.util.ArrayList;
 import javax.swing.*;
-import java.util.List;
 
 public class Janela2 {
     
@@ -22,9 +20,6 @@ public class Janela2 {
     private final int H_GAP = 5;
     private JTextField tfnome;
     private JTextField tfsenha;
-    private JList<Jogador> jogadores;
-    private JList<Juiz> juizes;
-    private JList<Admin> admins;
     String[] usuarios = {"Jogador","Juiz","Administrador"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
@@ -51,13 +46,6 @@ public class Janela2 {
     }
     
     private void desenhaLogin(){
-        DefaultListModel<Jogador> l1 = new DefaultListModel<>();
-        DefaultListModel<Juiz> l2 = new DefaultListModel<>();
-        DefaultListModel<Admin> l3 = new DefaultListModel<>();
-
-        jogadores = new JList<>(l1);
-        juizes = new JList<>(l2);
-        admins = new JList<>(l3);
         JPanel painel = new JPanel();
         painel.setPreferredSize(new Dimension(WIDTH*2/3, HEIGHT*2/3));
         painel.setBorder(BorderFactory.createTitledBorder("Bem-Vindo"));
@@ -124,18 +112,16 @@ public class Janela2 {
     }
     
     public void login(){
-        //não sei pq, mas isso aq não funciona
         String nome = tfnome.getText();
         String senha = tfsenha.getText();
         Usuario u;
         try{
-            //Senha senha = new Senha(tfsenha.getText());
             u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");
             return;
         } catch (ExcessaoUsuarioNaoEncontrado e){
-            JOptionPane.showMessageDialog(tela, "Usuario ou senha não estão corretos. Digite novamente");
+            JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
             return;
         }
         

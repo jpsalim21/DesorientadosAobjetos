@@ -1,17 +1,1 @@
-[{
-        "derrotas": 0,
-        "empates": 0,
-        "vitorias": 0,
-        "nome": "testeuser",
-        "senha": "A1@bcdef",
-        "torneio": [],
-        "tipo": "JOGADOR"
-    }, {
-        "derrotas": 0,
-        "empates": 0,
-        "vitorias": 0,
-        "nome": "Daigo",
-        "senha": "A1@bcdef",
-        "torneio": [],
-        "tipo": "JOGADOR"
-    }]
+[{"derrotas":0,"empates":0,"vitorias":0,"nome":"testeuser","senha":"A1@bcdef","torneio":[],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":0,"nome":"Daigo","senha":"A1@bcdef","torneio":[],"tipo":"JOGADOR"}]

@@ -15,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class JTorneio {
-    // Não sei exatamente oq faço com esse torenio direito
-    //TODO fazer um botão que volta a janela
     private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
