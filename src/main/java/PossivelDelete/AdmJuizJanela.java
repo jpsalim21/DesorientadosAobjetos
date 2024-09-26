@@ -3,10 +3,10 @@
  * Mateus Lopes Felício
  * Thales Gomes Batista
  */
-package Janelas;
+package PossivelDelete;
 
-import Eventos.DeslogaJuiz;
 import Eventos.EditarTorneio;
+import Janelas.JCriacaoEdicaoTorneio;
 import Torneios.Torneio;
 import Usuarios.Jogador;
 import java.awt.*;
@@ -74,7 +74,7 @@ public class AdmJuizJanela {
         JButton btnEdita = new JButton("Editar Torneio"); //chama a janela e da
         JButton btnSai = new JButton("Sair");
         btnEdita.addActionListener(new EditarTorneio(this));
-        btnSai.addActionListener(new DeslogaJuiz(this));
+        //btnSai.addActionListener(new DeslogaJuiz(this));
 
         botoes.add(btnComeça);
         botoes.add(btnEdita);

@@ -5,8 +5,6 @@
  */
 package Janelas;
 
-import Eventos.AcessaTorneio;
-import Eventos.DeslogaUsuário;
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;

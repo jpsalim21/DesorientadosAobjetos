@@ -4,11 +4,10 @@
  */
 package Janelas;
 
-import Eventos.AcessaTorneio;
-import Eventos.DeslogaUsuário;
 import Eventos.GerenciaUsuarios;
+import Eventos.Interface.Confirmar;
+import Eventos.Interface.Retornar;
 import Torneios.Torneio;
-import Torneios.TorneioSuico;
 import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -17,7 +16,6 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,7 +24,7 @@ import javax.swing.JScrollPane;
  *
  * @author PC12643
  */
-public class JanelaJuizNew {
+public class JanelaJuizNew implements JanelaInterface{
     private final JFrame janela;
     protected final int WIDTH = 1920;
     protected final int HEIGHT = 1080;
@@ -75,8 +73,12 @@ public class JanelaJuizNew {
         torneiosList.add(painelScrollTorneios, BorderLayout.CENTER);
         
         JButton btnAcessar = new JButton("Acessar Torneio");
+        btnAcessar.addActionListener(new Confirmar(this));
+        
         JButton btnCriar = new JButton("Criar Torneio");
+        
         JButton btnDeslogar = new JButton("Deslogar da Conta");
+        btnDeslogar.addActionListener(new Retornar(this));
         
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnCriar);
@@ -90,5 +92,15 @@ public class JanelaJuizNew {
         painelPrincipal.add(painelInformacoes, BorderLayout.WEST);
         painelPrincipal.add(painelTorneios, BorderLayout.CENTER);
         janela.add(painelPrincipal);
+    }
+
+    @Override
+    public void confirmar() {
+        
+    }
+
+    @Override
+    public void retornar() {
+        
     }
 }

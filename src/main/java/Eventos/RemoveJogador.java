@@ -23,5 +23,4 @@ public class RemoveJogador implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         janela.RemoveJogador();
     }
-    
 }
