@@ -3,24 +3,21 @@
  * Mateus Lopes Felício
  * Thales Gomes Batista
  */
-package Eventos;
+package Eventos.JTorneio;
 
-import Janelas.JCriacaoEdicaoTorneio;
+import Janelas.JTorneio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-public class RemoveJogador implements ActionListener{
-    
-    private final JCriacaoEdicaoTorneio janela;
-    
-    public RemoveJogador(JCriacaoEdicaoTorneio janela){
+public class RodadaAnterior implements ActionListener{
+    private final JTorneio janela;
+    public RodadaAnterior(JTorneio janela) {
         this.janela = janela;
-        
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        janela.RemoveJogador();
+        janela.mudaRodada(-1);
     }
+    
 }

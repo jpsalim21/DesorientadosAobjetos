@@ -3,7 +3,7 @@
  * Mateus Lopes Felício
  * Thales Gomes Batista
  */
-package Eventos;
+package Eventos.Janela2;
 
 import Janelas.Janela2;
 import java.awt.event.ActionEvent;

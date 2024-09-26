@@ -3,21 +3,22 @@
  * Mateus Lopes Felício
  * Thales Gomes Batista
  */
-package Eventos;
+package Eventos.JCriacao;
 
-import PossivelDelete.AdmJuizJanela;
+import Janelas.JCriacaoEdicaoTorneio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class EditarTorneio implements ActionListener{
-    private final AdmJuizJanela janela;
-    public EditarTorneio(AdmJuizJanela janela) {
+public class AdicionaJogador implements ActionListener{
+    private final JCriacaoEdicaoTorneio janela;
+
+    public AdicionaJogador(JCriacaoEdicaoTorneio janela) {
         this.janela = janela;
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        janela.Edita();
+        janela.AdcionaJogador();
     }
     
 }

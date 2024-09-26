@@ -5,6 +5,8 @@
  */
 package Janelas;
 
+import Eventos.Janela2.ExcluiUsuario;
+import Eventos.Janela2.AdicionaUsuario;
 import Eventos.*;
 import Eventos.Interface.Confirmar;
 import Excecao.*;
