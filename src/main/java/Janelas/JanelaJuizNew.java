@@ -7,6 +7,7 @@ package Janelas;
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
+import Eventos.JanelaJuiz.CriarTorneio;
 import Torneios.Torneio;
 import Usuarios.Juiz;
 import java.awt.BorderLayout;
@@ -52,7 +53,7 @@ public class JanelaJuizNew implements JanelaInterface{
         
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        painelPrincipal.setBorder(BorderFactory.createTitledBorder("Tela do jogador"));
+        painelPrincipal.setBorder(BorderFactory.createTitledBorder("Tela do juiz"));
         painelPrincipal.setLayout(new BorderLayout());
         
         JPanel painelInformacoes = new JPanel();
@@ -76,6 +77,7 @@ public class JanelaJuizNew implements JanelaInterface{
         btnAcessar.addActionListener(new Confirmar(this));
         
         JButton btnCriar = new JButton("Criar Torneio");
+        btnCriar.addActionListener(new CriarTorneio(this));
         
         JButton btnDeslogar = new JButton("Deslogar da Conta");
         btnDeslogar.addActionListener(new Retornar(this));
@@ -102,5 +104,9 @@ public class JanelaJuizNew implements JanelaInterface{
     @Override
     public void retornar() {
         
+    }
+    public void criarTorneio(){
+        JCriacaoTorneio janelaNova = new JCriacaoTorneio();
+        janela.dispose();
     }
 }
