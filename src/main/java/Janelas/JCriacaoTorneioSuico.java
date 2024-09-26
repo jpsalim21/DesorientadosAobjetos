@@ -4,22 +4,31 @@
  */
 package Janelas;
 
+import Eventos.GerenciaUsuarios;
+import Eventos.Interface.Confirmar;
+import Eventos.Interface.Retornar;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Torneios.TorneioSuico;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class JCriacaoTorneioSuico {
+public class JCriacaoTorneioSuico implements JanelaInterface{
     private final JFrame janela;
     private final int WIDTH = 1000;
     private final int HEIGHT = 400;
     private final int V_GAP = 10;
     private final int H_GAP = 5;
+    
+    JTextField nomeField, rodadasField;
     
     public JCriacaoTorneioSuico(){
         janela = new JFrame();
@@ -42,10 +51,21 @@ public class JCriacaoTorneioSuico {
         formulario.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
         
         JLabel nomeLabel = new JLabel("Nome do torneio: ");
-        JTextField nomeField = new JTextField(20);
+        nomeField = new JTextField(20);
         
         JLabel rodadasLabel = new JLabel("Quantas rodadas: ");
-        JTextField rodadasField = new JTextField(2);
+        rodadasField = new JTextField(2);
+        
+        JPanel painelBtn = new JPanel();
+        painelBtn.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
+        
+        JButton btnVoltar = new JButton("Voltar");
+        btnVoltar.addActionListener(new Retornar(this));
+        JButton btnConfirmar = new JButton("Confirmar");
+        btnConfirmar.addActionListener(new Confirmar(this));
+        
+        painelBtn.add(btnVoltar);
+        painelBtn.add(btnConfirmar);
         
         formulario.add(nomeLabel);
         formulario.add(nomeField);
@@ -53,8 +73,32 @@ public class JCriacaoTorneioSuico {
         formulario.add(rodadasField);
         
         painelPrincipal.add(formulario);
-        
+        painelPrincipal.add(painelBtn, BorderLayout.SOUTH);
         
         janela.add(painelPrincipal);
+    }
+
+    @Override
+    public void confirmar() {
+        String nomeTorneio = nomeField.getText();
+        int rodadas = 0;
+        try{
+            rodadas = Integer.parseInt(rodadasField.getText());
+        } catch(NumberFormatException e){
+            JOptionPane jop = new JOptionPane("Digite um número válido de rodadas");
+            return;
+        }
+        TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, rodadas);
+        
+    }
+
+    @Override
+    public void retornar() {
+        try{
+            GerenciaUsuarios.getSingleton().fazLogin();
+        } catch (ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane jop = new JOptionPane("Algum erro aconteceu. Reinicie o programa");
+        }
+        janela.dispose();
     }
 }
