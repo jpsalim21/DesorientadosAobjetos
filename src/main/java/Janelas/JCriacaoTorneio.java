@@ -18,7 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 
 public class JCriacaoTorneio implements JanelaInterface{
@@ -77,7 +76,8 @@ public class JCriacaoTorneio implements JanelaInterface{
 
     @Override
     public void confirmar() {
-        
+        JCriacaoTorneioSuico novaJanela = new JCriacaoTorneioSuico();
+        janela.dispose();
     }
 
     @Override
