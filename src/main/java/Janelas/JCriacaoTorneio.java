@@ -29,9 +29,9 @@ public class JCriacaoTorneio implements JanelaInterface{
     private final int H_GAP = 5;
     
     String[] torneios = {"Suíço","Mata-mata"};
+    JComboBox tipoTorneio = new JComboBox(torneios);
     
     public JCriacaoTorneio(){
-        System.out.println("Abriu a tela");
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,14 +52,8 @@ public class JCriacaoTorneio implements JanelaInterface{
         JPanel painelFormulario = new JPanel();
         painelFormulario.setLayout(new GridLayout(0, 2, H_GAP, V_GAP));
         
-        JLabel nomeLabel = new JLabel("Nome do torneio:");
-        JTextField nomeField = new JTextField();
-        
         JLabel torneioLabel = new JLabel("Tipo do torneio:");
-        JComboBox tipoTorneio = new JComboBox(torneios);
-        
-        painelFormulario.add(nomeLabel);
-        painelFormulario.add(nomeField);
+
         painelFormulario.add(torneioLabel);
         painelFormulario.add(tipoTorneio);
         
