@@ -7,6 +7,7 @@ package Janelas;
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -26,7 +28,7 @@ public class JCriacaoTorneio implements JanelaInterface{
     private final int V_GAP = 10;
     private final int H_GAP = 5;
     
-    String[] torneios = {"Suico","Mata-mata"};
+    String[] torneios = {"Suíço","Mata-mata"};
     
     public JCriacaoTorneio(){
         System.out.println("Abriu a tela");
@@ -81,12 +83,17 @@ public class JCriacaoTorneio implements JanelaInterface{
 
     @Override
     public void confirmar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void retornar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        try{
+            GerenciaUsuarios.getSingleton().fazLogin();
+        } catch(ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane j = new JOptionPane("Algo deu errado. Reinicie o programa");
+        }
+        janela.dispose();
     }
     
 }

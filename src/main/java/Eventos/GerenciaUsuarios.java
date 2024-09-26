@@ -8,9 +8,13 @@ package Eventos;
 import Excecao.ExcecaoDeSenha;
 import Excecao.ExcecaoUsuarioJaExistente;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Janelas.JanelaJogador;
+import Janelas.JanelaJuizNew;
 import Usuarios.*;
 import Persistencias.*;
 import Torneios.Torneio;
+import static Usuarios.Usuario.TipoUsuario.JOGADOR;
+import static Usuarios.Usuario.TipoUsuario.JUIZ;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
@@ -23,6 +27,8 @@ public class GerenciaUsuarios implements WindowListener{
     private List<Admin> administradores;
     private List<Usuario> usuarios;
     private List<Torneio> torneios;
+    
+    private Usuario usuarioLogado;
     
     private GerenciaUsuarios() {
         torneios = new ArrayList<>();
@@ -138,8 +144,8 @@ public class GerenciaUsuarios implements WindowListener{
         Usuario usuario = usuarios.get(cont);
         switch (tipo) {
             case 0 -> {
-                if (usuario instanceof Jogador) {
-                    jogadores.remove(usuario);
+                if (usuario instanceof Jogador j) {
+                    jogadores.remove(j);
                     usuarios.remove(usuario);
                     System.out.println("Jogador removido.");
                 } else {
@@ -147,8 +153,8 @@ public class GerenciaUsuarios implements WindowListener{
                 }
             }
             case 1 -> {
-                if (usuario instanceof Juiz) {
-                    juizes.remove(usuario);
+                if (usuario instanceof Juiz j) {
+                    juizes.remove(j);
                     usuarios.remove(usuario);
                     System.out.println("Juiz removido.");
                 } else {
@@ -156,8 +162,8 @@ public class GerenciaUsuarios implements WindowListener{
                 }
             }
             case 2 -> {
-                if (usuario instanceof Admin) {
-                    administradores.remove(usuario);
+                if (usuario instanceof Admin a) {
+                    administradores.remove(a);
                     usuarios.remove(usuario);
                     System.out.println("Admin removido.");
                 } else {
@@ -168,16 +174,33 @@ public class GerenciaUsuarios implements WindowListener{
         }
     }
 
-    public Usuario tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
+    public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
             if(u.getNome().equals(nome)){
                 if(u.getSenha().equals(senha)){
-                    return u;
+                    usuarioLogado = u;
+                    return;
                 }
             }
         }
         throw new ExcessaoUsuarioNaoEncontrado();
     }
+    
+    public void fazLogin() throws ExcessaoUsuarioNaoEncontrado{
+        if(usuarioLogado == null) {
+            throw new ExcessaoUsuarioNaoEncontrado();
+        }
+        
+        switch(usuarioLogado.getTipoUsuario()){
+            case JOGADOR -> {
+                JanelaJogador janelaJogador = new JanelaJogador((Jogador)usuarioLogado);
+            }
+            case JUIZ -> {
+                JanelaJuizNew janelaJuiz = new JanelaJuizNew((Juiz)usuarioLogado);
+            }
+        }
+    }
+    
     
     public void adicionaTorneio(Torneio t){
         torneios.add(t);
