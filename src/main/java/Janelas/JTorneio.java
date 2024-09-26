@@ -8,6 +8,8 @@ package Janelas;
 import Eventos.GerenciaUsuarios;
 import Torneios.Confronto;
 import Eventos.DeslogaTorneio;
+import Eventos.Interface.Retornar;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Torneios.Torneio;
 import Usuarios.Jogador;
 import java.awt.BorderLayout;
@@ -21,17 +23,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JTorneio {
+public class JTorneio implements JanelaInterface{
     private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
     private final int HEIGHT = 1080;
     private final int V_GAP = 10;
     private final int H_GAP = 5;
-    protected final Jogador jogadorLogado;
     
     private Torneio torneio;
     private JList<Confronto> confrontosRodadaAtual;
@@ -50,7 +52,6 @@ public class JTorneio {
         carregarRodada();
         
         janela.pack();
-        this.jogadorLogado = jogadorLogado;
         
     }
     public final void desenhaPareamento(){
@@ -86,7 +87,7 @@ public class JTorneio {
         JPanel botoes =  new JPanel();
         
         JButton btnSai = new JButton("Deslogar");
-        btnSai.addActionListener(new DeslogaTorneio(this));
+        btnSai.addActionListener(new Retornar(this));
         
         classfi.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         classfi.setBorder(BorderFactory.createTitledBorder("Classificação"));
@@ -118,9 +119,19 @@ public class JTorneio {
         }
         carregarRodada();
     }
+
+    @Override
+    public void confirmar() {
     
-    public void Desloga(){
-        JanelaJogador janelas = new JanelaJogador(jogadorLogado); 
+    }
+
+    @Override
+    public void retornar() {
+        try{
+            GerenciaUsuarios.getSingleton().fazLogin();
+        } catch(ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane optionPane = new JOptionPane("Algum problema ocorreu. Reinicie o programa");
+        }
         janela.dispose();
-    } 
+    }
 }
