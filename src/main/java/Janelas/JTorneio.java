@@ -35,7 +35,8 @@ public class JTorneio {
     
     private Torneio torneio;
     private JList<Confronto> confrontosRodadaAtual;
-    private int rodadaAtual = 0;
+    private int rodadaAtual = 1;
+    private JLabel rodadaLabel;
     
 
     public JTorneio(Torneio torneio){
@@ -74,7 +75,7 @@ public class JTorneio {
         JPanel pareamentoBotoes = new JPanel();
         pareamentoBotoes.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
         JButton anterior = new JButton("Anterior");
-        JLabel rodadaLabel = new JLabel("Rodada 1");
+        rodadaLabel = new JLabel("Rodada "+rodadaAtual);
         JButton proxima = new JButton("Proxima");
         proxima.addActionListener(new ProximaRodada(this));
         anterior.addActionListener(new RodadaAnterior(this));
@@ -108,11 +109,13 @@ public class JTorneio {
         for(Confronto c : confrontos){
             model.addElement(c);
         }
+        rodadaLabel.setText("Rodada: "+rodadaAtual);
+       
     }
     public void mudaRodada(int soma){
         rodadaAtual += soma;
-        if(rodadaAtual < 0){
-            rodadaAtual = 0;
+        if(rodadaAtual < 1){
+            rodadaAtual = 1;
         }
         carregarRodada();
     }
