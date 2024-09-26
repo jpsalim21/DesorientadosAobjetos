@@ -5,6 +5,7 @@
  */
 package Eventos;
 
+import PossivelDelete.Admin;
 import Excecao.ExcecaoDeSenha;
 import Excecao.ExcecaoUsuarioJaExistente;
 import Excecao.ExcessaoUsuarioNaoEncontrado;

@@ -3,9 +3,10 @@
  * Mateus Lopes Felício
  * Thales Gomes Batista
  */
-package Usuarios;
+package PossivelDelete;
 
 import Excecao.*;
+import Usuarios.Juiz;
 
 public class Admin extends Juiz {
 

@@ -6,7 +6,7 @@
 package Persistencias;
 
 import static Persistencias.Persistencia.DIRECTORY;
-import Usuarios.Admin;
+import PossivelDelete.Admin;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.File;
