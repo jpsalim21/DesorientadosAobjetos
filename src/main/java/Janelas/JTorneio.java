@@ -6,10 +6,12 @@
 package Janelas;
 
 import Eventos.GerenciaUsuarios;
-import Eventos.JTorneio.ProximaRodada;
-import Eventos.JTorneio.RodadaAnterior;
 import Torneios.Confronto;
+import Eventos.DeslogaTorneio;
+import Eventos.Interface.Retornar;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Torneios.Torneio;
+import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -21,11 +23,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JTorneio {
-
+public class JTorneio implements JanelaInterface{
     private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
@@ -35,10 +37,9 @@ public class JTorneio {
     
     private Torneio torneio;
     private JList<Confronto> confrontosRodadaAtual;
-    private int rodadaAtual = 1;
-    private JLabel rodadaLabel;
+    private int rodadaAtual = 0;
     
-
+    
     public JTorneio(Torneio torneio){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
@@ -54,18 +55,17 @@ public class JTorneio {
         
     }
     public final void desenhaPareamento(){
-         DefaultListModel<Confronto> model = new DefaultListModel<>();
+        DefaultListModel<Confronto> model = new DefaultListModel<>();
         
         JPanel principal = new JPanel();
         
-        principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        //principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         principal.setBorder(BorderFactory.createTitledBorder(tipoT));
         principal.setLayout(new BorderLayout());
         
         JPanel pareamento = new JPanel();
         pareamento.setBorder(BorderFactory.createTitledBorder("Pareamento"));
-        pareamento.setLayout(new BorderLayout());
-        pareamento.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+        //pareamento.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         
         confrontosRodadaAtual = new JList<>(model);
         JScrollPane painelScroll = new JScrollPane(confrontosRodadaAtual);
@@ -75,10 +75,8 @@ public class JTorneio {
         JPanel pareamentoBotoes = new JPanel();
         pareamentoBotoes.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
         JButton anterior = new JButton("Anterior");
-        rodadaLabel = new JLabel("Rodada "+rodadaAtual);
+        JLabel rodadaLabel = new JLabel("Rodada 1");
         JButton proxima = new JButton("Proxima");
-        proxima.addActionListener(new ProximaRodada(this));
-        anterior.addActionListener(new RodadaAnterior(this));
         pareamentoBotoes.add(anterior);
         pareamentoBotoes.add(rodadaLabel);
         pareamentoBotoes.add(proxima);
@@ -86,8 +84,12 @@ public class JTorneio {
         pareamento.add(pareamentoBotoes, BorderLayout.SOUTH);
         
         JPanel classfi = new JPanel();
+        JPanel botoes =  new JPanel();
         
-        classfi.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+        JButton btnSai = new JButton("Deslogar");
+        btnSai.addActionListener(new Retornar(this));
+        
+        classfi.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         classfi.setBorder(BorderFactory.createTitledBorder("Classificação"));
         classfi.setLayout(new BorderLayout());
         JLabel test = new JLabel("test pra classificação");
@@ -95,11 +97,11 @@ public class JTorneio {
         
         principal.add(pareamento,BorderLayout.WEST);
         principal.add(classfi,BorderLayout.CENTER);
+        principal.add(botoes, BorderLayout.SOUTH);
         
         janela.add(principal);
     }
-
-        private void carregarRodada(){
+    private void carregarRodada(){
         DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)confrontosRodadaAtual.getModel();
         List<Confronto> confrontos;
         confrontos = torneio.getInfoRodada(rodadaAtual);
@@ -109,15 +111,27 @@ public class JTorneio {
         for(Confronto c : confrontos){
             model.addElement(c);
         }
-        rodadaLabel.setText("Rodada: "+rodadaAtual);
-       
     }
     public void mudaRodada(int soma){
         rodadaAtual += soma;
-        if(rodadaAtual < 1){
-            rodadaAtual = 1;
+        if(rodadaAtual < 0){
+            rodadaAtual = 0;
         }
         carregarRodada();
     }
 
+    @Override
+    public void confirmar() {
+    
+    }
+
+    @Override
+    public void retornar() {
+        try{
+            GerenciaUsuarios.getSingleton().fazLogin();
+        } catch(ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane optionPane = new JOptionPane("Algum problema ocorreu. Reinicie o programa");
+        }
+        janela.dispose();
+    }
 }
