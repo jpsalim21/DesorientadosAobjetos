@@ -7,7 +7,9 @@ package Janelas;
 
 import Eventos.GerenciaUsuarios;
 import Torneios.Confronto;
+import Eventos.DeslogaTorneio;
 import Torneios.Torneio;
+import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -29,6 +31,7 @@ public class JTorneio {
     private final int HEIGHT = 1080;
     private final int V_GAP = 10;
     private final int H_GAP = 5;
+    protected final Jogador jogadorLogado;
     
     private Torneio torneio;
     private JList<Confronto> confrontosRodadaAtual;
@@ -47,6 +50,7 @@ public class JTorneio {
         carregarRodada();
         
         janela.pack();
+        this.jogadorLogado = jogadorLogado;
         
     }
     public final void desenhaPareamento(){
@@ -54,14 +58,13 @@ public class JTorneio {
         
         JPanel principal = new JPanel();
         
-        principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        //principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         principal.setBorder(BorderFactory.createTitledBorder(tipoT));
         principal.setLayout(new BorderLayout());
         
         JPanel pareamento = new JPanel();
         pareamento.setBorder(BorderFactory.createTitledBorder("Pareamento"));
-        pareamento.setLayout(new BorderLayout());
-        pareamento.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+        //pareamento.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         
         confrontosRodadaAtual = new JList<>(model);
         JScrollPane painelScroll = new JScrollPane(confrontosRodadaAtual);
@@ -80,8 +83,12 @@ public class JTorneio {
         pareamento.add(pareamentoBotoes, BorderLayout.SOUTH);
         
         JPanel classfi = new JPanel();
+        JPanel botoes =  new JPanel();
         
-        classfi.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+        JButton btnSai = new JButton("Deslogar");
+        btnSai.addActionListener(new DeslogaTorneio(this));
+        
+        classfi.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         classfi.setBorder(BorderFactory.createTitledBorder("Classificação"));
         classfi.setLayout(new BorderLayout());
         JLabel test = new JLabel("test pra classificação");
@@ -89,6 +96,7 @@ public class JTorneio {
         
         principal.add(pareamento,BorderLayout.WEST);
         principal.add(classfi,BorderLayout.CENTER);
+        principal.add(botoes, BorderLayout.SOUTH);
         
         janela.add(principal);
     }
@@ -110,4 +118,9 @@ public class JTorneio {
         }
         carregarRodada();
     }
+    
+    public void Desloga(){
+        JanelaJogador janelas = new JanelaJogador(jogadorLogado); 
+        janela.dispose();
+    } 
 }
