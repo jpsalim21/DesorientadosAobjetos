@@ -65,34 +65,19 @@ public class JTorneio {
         
         confrontosRodadaAtual = new JList<>(model);
         JScrollPane painelScroll = new JScrollPane(confrontosRodadaAtual);
+        painelScroll.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
         pareamento.add(painelScroll, BorderLayout.CENTER);
         
         JPanel pareamentoBotoes = new JPanel();
         pareamentoBotoes.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
         JButton anterior = new JButton("Anterior");
+        JLabel rodadaLabel = new JLabel("Rodada 1");
         JButton proxima = new JButton("Proxima");
         pareamentoBotoes.add(anterior);
+        pareamentoBotoes.add(rodadaLabel);
         pareamentoBotoes.add(proxima);
         
         pareamento.add(pareamentoBotoes, BorderLayout.SOUTH);
-        
-//        JPanel pareaAux = new JPanel();
-//        pareaAux.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
-        
-//        JLabel x1 = new JLabel("Time a VS time b");
-//        JLabel x2 = new JLabel("Time a VS time c");
-//        JLabel x3 = new JLabel("Time a VS time d");
-//        
-//        JLabel res1 = new JLabel("1 x 0");
-//        JLabel res2 = new JLabel("1 x 1");
-//        JLabel res3 = new JLabel("0 x 1");
-//        
-//        pareaAux.add(x1);
-//        pareaAux.add(res1);
-//        pareaAux.add(x2);
-//        pareaAux.add(res2);
-//        pareaAux.add(x3);
-//        pareaAux.add(res3);
         
         JPanel classfi = new JPanel();
         

@@ -130,7 +130,7 @@ public class Janela2 {
                 JanelaJogador janelaJogador = new JanelaJogador((Jogador)u);
             }
             case JUIZ -> {
-                System.out.println("Ainda não implementamos essa funcionalidade");
+                JanelaJuizNew janelaJuiz = new JanelaJuizNew((Juiz)u);
             }
         }
         tela.dispose();

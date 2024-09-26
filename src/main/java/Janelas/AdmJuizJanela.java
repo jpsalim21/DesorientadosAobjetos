@@ -110,7 +110,7 @@ public class AdmJuizJanela {
     }
 
     public void Desloga() {
-        JanelaUsuario janelas = new JanelaUsuario();
+        //JanelaUsuario janelas = new JanelaUsuario();
         tela.dispose();
     }
 }
