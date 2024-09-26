@@ -149,7 +149,7 @@ public class Janela2 implements JanelaInterface {
         String senha = tfsenha.getText();
         Usuario u;
         try{
-            u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
+            GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");
             return;
@@ -157,14 +157,12 @@ public class Janela2 implements JanelaInterface {
             JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
             return;
         }
-        
-        switch(u.getTipoUsuario()){
-            case JOGADOR -> {
-                JanelaJogador janelaJogador = new JanelaJogador((Jogador)u);
-            }
-            case JUIZ -> {
-                JanelaJuizNew janelaJuiz = new JanelaJuizNew((Juiz)u);
-            }
+        try{
+            GerenciaUsuarios.getSingleton().fazLogin();
+        } catch(ExcessaoUsuarioNaoEncontrado e){
+            System.out.println("Deu esse erro aqui");
+            JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
+            return;
         }
         tela.dispose();
     }
