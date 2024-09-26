@@ -20,7 +20,7 @@ import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GerenciaUsuarios implements WindowListener{
+public class GerenciaUsuarios {
     private static GerenciaUsuarios singleton;
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
@@ -40,8 +40,7 @@ public class GerenciaUsuarios implements WindowListener{
         return singleton;
     }
     
-    @Override
-    public void windowOpened(WindowEvent e){
+    public void carregaUsuarios(){
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<Admin> admPersistencia = new AdminPersistencia();
@@ -56,8 +55,7 @@ public class GerenciaUsuarios implements WindowListener{
         usuarios.addAll(administradores);
     }
     
-    @Override
-    public void windowClosing(WindowEvent e) {
+    public void chamaPersistencia() {
         if(jogadores != null){
             Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
             jogPersistencia.save(jogadores);
@@ -75,30 +73,7 @@ public class GerenciaUsuarios implements WindowListener{
             torPersistencia.save(torneios);
         }
     }
-    @Override
-    public void windowClosed(WindowEvent e) {
 
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-
-    }
     public void adicionaJogador(String nome, String senha) throws ExcecaoUsuarioJaExistente,ExcecaoDeSenha{
         procuraNomeIgual(nome);
         Jogador newJogador = new Jogador(nome, senha);

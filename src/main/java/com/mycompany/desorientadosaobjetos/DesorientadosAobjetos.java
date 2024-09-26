@@ -17,5 +17,6 @@ public class DesorientadosAobjetos {
     public static void main(String[] args) {
         Janela2 a = new Janela2();
         a.desenha();
+
     }
 }

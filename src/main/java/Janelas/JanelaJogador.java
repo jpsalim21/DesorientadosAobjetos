@@ -8,6 +8,7 @@ package Janelas;
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
+import Eventos.Listener;
 import Torneios.Torneio;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
@@ -41,7 +42,7 @@ public class JanelaJogador implements JanelaInterface{
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        janela.addWindowListener(GerenciaUsuarios.getSingleton());
+        janela.addWindowListener(new Listener());
         
         jogadorLogado = j;
         Torneio t = new TorneioSuico("Nome do torneio", 5);
