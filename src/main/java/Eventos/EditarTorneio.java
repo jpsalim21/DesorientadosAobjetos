@@ -5,7 +5,7 @@
  */
 package Eventos;
 
-import Janelas.AdmJuizJanela;
+import PossivelDelete.AdmJuizJanela;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

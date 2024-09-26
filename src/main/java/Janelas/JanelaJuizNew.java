@@ -1,7 +1,6 @@
 /*
- * João Pedro Miranda Salim
- * Mateus Lopes Felício
- * Thales Gomes Batista
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Janelas;
 
@@ -9,33 +8,32 @@ import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Torneios.Torneio;
-import Torneios.TorneioSuico;
-import Usuarios.Jogador;
+import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JanelaJogador implements JanelaInterface{
-    
+/**
+ *
+ * @author PC12643
+ */
+public class JanelaJuizNew implements JanelaInterface{
     private final JFrame janela;
     protected final int WIDTH = 1920;
     protected final int HEIGHT = 1080;
     protected final int V_GAP = 10;
     protected final int H_GAP = 5;
-    protected final Jogador jogadorLogado;
+    protected final Juiz juiz;
     protected JList<Torneio> torneiosEntrados;
     
-    public JanelaJogador(Jogador j){
+    public JanelaJuizNew(Juiz juiz){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,24 +41,10 @@ public class JanelaJogador implements JanelaInterface{
         janela.setLayout(new BorderLayout());
         janela.addWindowListener(GerenciaUsuarios.getSingleton());
         
-        jogadorLogado = j;
-        Torneio t = new TorneioSuico("Nome do torneio", 5);
-        t.adicionarParticipante(jogadorLogado);
-        t.adicionarParticipante(jogadorLogado);
+        this.juiz = juiz;
         
         desenhaTela();
-        carregarTorneios();
-    }
-    
-    private void carregarTorneios(){
-        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
-        List<Torneio> torneios;
-        torneios = GerenciaUsuarios.getSingleton().getTorneios(jogadorLogado.getTorneios());
-        
-        for(Torneio t : torneios){
-            model.addElement(t);
-            
-        }
+        janela.pack();
     }
     
     private void desenhaTela(){
@@ -76,17 +60,7 @@ public class JanelaJogador implements JanelaInterface{
         painelInformacoes.setBorder(BorderFactory.createTitledBorder("Suas informações"));
         painelInformacoes.setPreferredSize(new Dimension(WIDTH/8, HEIGHT));
         
-        JLabel nome = new JLabel("Nome: " + jogadorLogado.getNome());
-        JLabel vitorias = new JLabel("Vitórias: " + jogadorLogado.getVitorias());
-        JLabel empates = new JLabel("Empates: " + jogadorLogado.getEmpates());
-        JLabel derrotas = new JLabel("Derrotas: " + jogadorLogado.getDerrotas());
-        
         painelInformacoesAux.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
-        painelInformacoesAux.add(nome);
-        painelInformacoesAux.add(vitorias);
-        painelInformacoesAux.add(empates);
-        painelInformacoesAux.add(derrotas);
-        
         
         JPanel painelTorneios = new JPanel();
         painelTorneios.setBorder(BorderFactory.createTitledBorder("Seus torneios"));
@@ -99,12 +73,15 @@ public class JanelaJogador implements JanelaInterface{
         torneiosList.add(painelScrollTorneios, BorderLayout.CENTER);
         
         JButton btnAcessar = new JButton("Acessar Torneio");
-        JButton btnDeslogar = new JButton("Deslogar da Conta");
+        btnAcessar.addActionListener(new Confirmar(this));
         
-        btnAcessar.addActionListener(new Confirmar(this)); 
+        JButton btnCriar = new JButton("Criar Torneio");
+        
+        JButton btnDeslogar = new JButton("Deslogar da Conta");
         btnDeslogar.addActionListener(new Retornar(this));
         
         botoesPainelTorneios.add(btnAcessar);
+        botoesPainelTorneios.add(btnCriar);
         botoesPainelTorneios.add(btnDeslogar);
         
         painelTorneios.add(torneiosList, BorderLayout.NORTH);
@@ -115,30 +92,15 @@ public class JanelaJogador implements JanelaInterface{
         painelPrincipal.add(painelInformacoes, BorderLayout.WEST);
         painelPrincipal.add(painelTorneios, BorderLayout.CENTER);
         janela.add(painelPrincipal);
-        janela.pack();
     }
 
-    //NOVO MÉTODO ACESSAR TORNEIO, MAS DE FORMA QUE NÃO TEMOS MTAS CLASSES EVENTOS
     @Override
     public void confirmar() {
-        int selectedIndex = torneiosEntrados.getSelectedIndex();
         
-        Torneio torneio;
-        if(selectedIndex == -1){
-            JOptionPane aviso = new JOptionPane("Selecione um torneio para acessar.");
-            return;
-        }
-        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
-        torneio = model.get(selectedIndex);
-        JTorneio janelaTorneio = new JTorneio(torneio, jogadorLogado);
-        
-        janela.dispose();
     }
 
     @Override
     public void retornar() {
-        Janela2 janelas = new Janela2(); 
-        janelas.desenha();
-        janela.dispose();
+        
     }
 }

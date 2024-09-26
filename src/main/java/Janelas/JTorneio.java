@@ -5,20 +5,28 @@
  */
 package Janelas;
 
+
 import Eventos.DeslogaTorneio;
+import Eventos.GerenciaUsuarios;
+import Torneios.Confronto;
 import Torneios.Torneio;
 import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.ScrollPane;
+import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class JTorneio {
-    // Não sei exatamente oq faço com esse torenio direito
+
     private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
@@ -27,20 +35,32 @@ public class JTorneio {
     private final int H_GAP = 5;
      protected final Jogador jogadorLogado;
     
+
     public JTorneio(Torneio torneio, Usuarios.Jogador jogadorLogado){
+
+    private Torneio torneio;
+    private JList<Confronto> confrontosRodadaAtual;
+    private int rodadaAtual = 0;
+    
+    
+    public JTorneio(Torneio torneio){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
+        this.torneio = torneio;
         
         desenhaPareamento();
+        carregarRodada();
         
         janela.pack();
         this.jogadorLogado = jogadorLogado;
         
     }
     public final void desenhaPareamento(){
+        DefaultListModel<Confronto> model = new DefaultListModel<>();
+        
         JPanel principal = new JPanel();
         
         //principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -48,26 +68,27 @@ public class JTorneio {
         principal.setLayout(new BorderLayout());
         
         JPanel pareamento = new JPanel();
-        JPanel pareaAux = new JPanel();
-        
         pareamento.setBorder(BorderFactory.createTitledBorder("Pareamento"));
         //pareamento.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
+
+        pareamento.setLayout(new BorderLayout());
+        pareamento.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
         
-        JLabel x1 = new JLabel("Time a VS time b");
-        JLabel x2 = new JLabel("Time a VS time c");
-        JLabel x3 = new JLabel("Time a VS time d");
+        confrontosRodadaAtual = new JList<>(model);
+        JScrollPane painelScroll = new JScrollPane(confrontosRodadaAtual);
+        painelScroll.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
+        pareamento.add(painelScroll, BorderLayout.CENTER);
         
-        JLabel res1 = new JLabel("1 x 0");
-        JLabel res2 = new JLabel("1 x 1");
-        JLabel res3 = new JLabel("0 x 1");
+        JPanel pareamentoBotoes = new JPanel();
+        pareamentoBotoes.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
+        JButton anterior = new JButton("Anterior");
+        JLabel rodadaLabel = new JLabel("Rodada 1");
+        JButton proxima = new JButton("Proxima");
+        pareamentoBotoes.add(anterior);
+        pareamentoBotoes.add(rodadaLabel);
+        pareamentoBotoes.add(proxima);
         
-        pareaAux.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
-        pareaAux.add(x1);
-        pareaAux.add(res1);
-        pareaAux.add(x2);
-        pareaAux.add(res2);
-        pareaAux.add(x3);
-        pareaAux.add(res3);
+        pareamento.add(pareamentoBotoes, BorderLayout.SOUTH);
         
         JPanel classfi = new JPanel();
         JPanel botoes =  new JPanel();
@@ -77,21 +98,42 @@ public class JTorneio {
         
         botoes.add(btnSai);
         //classfi.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
+
+        classfi.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
         classfi.setBorder(BorderFactory.createTitledBorder("Classificação"));
         classfi.setLayout(new BorderLayout());
         JLabel test = new JLabel("test pra classificação");
         classfi.add(test);
         
-        pareamento.add(pareaAux);
         principal.add(pareamento,BorderLayout.WEST);
         principal.add(classfi,BorderLayout.CENTER);
         principal.add(botoes, BorderLayout.SOUTH);
         
         janela.add(principal);
     }
+
     
           public void Desloga(){
         JanelaJogador janelas = new JanelaJogador(jogadorLogado); 
         janela.dispose();
     } 
+        private void carregarRodada(){
+        DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)confrontosRodadaAtual.getModel();
+        List<Confronto> confrontos;
+        confrontos = torneio.getInfoRodada(rodadaAtual);
+        
+        if(confrontos == null) return; //PROVISÓRIO
+        
+        for(Confronto c : confrontos){
+            model.addElement(c);
+        }
+    }
+    public void mudaRodada(int soma){
+        rodadaAtual += soma;
+        if(rodadaAtual < 0){
+            rodadaAtual = 0;
+        }
+        carregarRodada();
+    }
+
 }

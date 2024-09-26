@@ -17,6 +17,8 @@ public class Torneio {
     List<Juiz> juizes;
     List<JogadorParticipante> participantes;
     List<Admin> admins;
+    protected List<List<JogadorParticipante>> infoClassificacao;
+    protected List<List<Confronto>> infoRodadas;
     
     public Torneio(String nome){
         this.nome = nome;
@@ -25,6 +27,8 @@ public class Torneio {
         admins = new ArrayList<>();
         codigo = index++;
         GerenciaUsuarios.getSingleton().adicionaTorneio(this);
+        
+        
     }
     
     public void adicionarParticipante(Jogador novoJogador){
@@ -54,4 +58,11 @@ public class Torneio {
     public List<JogadorParticipante> getParticipantes() {
         return participantes;
     }  
+    
+    public List<Confronto> getInfoRodada(int indexRodada){
+        if(infoRodadas.size() <= indexRodada){
+            return null;
+        }
+        return infoRodadas.get(indexRodada);
+    }
 }

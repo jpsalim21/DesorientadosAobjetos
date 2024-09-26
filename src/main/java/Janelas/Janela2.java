@@ -6,14 +6,15 @@
 package Janelas;
 
 import Eventos.*;
+import Eventos.Interface.Confirmar;
 import Excecao.*;
 import Usuarios.*;
+import static Usuarios.Usuario.TipoUsuario.JOGADOR;
+import static Usuarios.Usuario.TipoUsuario.JUIZ;
 import java.awt.*;
-import java.util.ArrayList;
 import javax.swing.*;
-import java.util.List;
 
-public class Janela2 {
+public class Janela2 implements JanelaInterface {
     
     private JFrame tela;
     private final int WIDTH = 1000;
@@ -22,9 +23,6 @@ public class Janela2 {
     private final int H_GAP = 5;
     private JTextField tfnome;
     private JTextField tfsenha;
-    private JList<Jogador> jogadores;
-    private JList<Juiz> juizes;
-    private JList<Admin> admins;
     String[] usuarios = {"Jogador","Juiz","Administrador"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
@@ -51,13 +49,6 @@ public class Janela2 {
     }
     
     private void desenhaLogin(){
-        DefaultListModel<Jogador> l1 = new DefaultListModel<>();
-        DefaultListModel<Juiz> l2 = new DefaultListModel<>();
-        DefaultListModel<Admin> l3 = new DefaultListModel<>();
-
-        jogadores = new JList<>(l1);
-        juizes = new JList<>(l2);
-        admins = new JList<>(l3);
         JPanel painel = new JPanel();
         painel.setPreferredSize(new Dimension(WIDTH*2/3, HEIGHT*2/3));
         painel.setBorder(BorderFactory.createTitledBorder("Bem-Vindo"));
@@ -90,7 +81,7 @@ public class Janela2 {
         JButton btnCadastrar = new JButton("Cadastrar");
         JButton btnExclui = new JButton("Exclui conta");
         
-        btnLogin.addActionListener(new BotaoLogin(this));
+        btnLogin.addActionListener(new Confirmar(this));
         btnCadastrar.addActionListener(new AdicionaUsuario(this));
         btnExclui.addActionListener(new ExcluiUsuario(this));
         
@@ -123,34 +114,6 @@ public class Janela2 {
         }
     }
     
-    public void login(){
-        //não sei pq, mas isso aq não funciona
-        String nome = tfnome.getText();
-        String senha = tfsenha.getText();
-        Usuario u;
-        try{
-            //Senha senha = new Senha(tfsenha.getText());
-            u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
-        } catch (ExcecaoDeSenha e){
-            JOptionPane.showMessageDialog(tela, "A senha é inválida!");
-            return;
-        } catch (ExcessaoUsuarioNaoEncontrado e){
-            JOptionPane.showMessageDialog(tela, "Usuario ou senha não estão corretos. Digite novamente");
-            return;
-        }
-        
-        switch(u.getTipoUsuario()){
-            case JOGADOR -> {
-                JanelaJogador janelaJogador = new JanelaJogador((Jogador)u);
-            }
-            case JUIZ -> {
-                System.out.println("Ainda não implementamos essa funcionalidade");
-            }
-        }
-        tela.dispose();
-    }
-    
-    
     public void removeUsuario(){
         int index = tipoUsuario.getSelectedIndex();
         GerenciaUsuarios gere = GerenciaUsuarios.getSingleton();
@@ -177,6 +140,37 @@ public class Janela2 {
             default -> JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
         }
    } 
+
+    @Override
+    public void confirmar() {
+        String nome = tfnome.getText();
+        String senha = tfsenha.getText();
+        Usuario u;
+        try{
+            u = GerenciaUsuarios.getSingleton().tentaLogin(nome, senha);
+        } catch (ExcecaoDeSenha e){
+            JOptionPane.showMessageDialog(tela, "A senha é inválida!");
+            return;
+        } catch (ExcessaoUsuarioNaoEncontrado e){
+            JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
+            return;
+        }
+        
+        switch(u.getTipoUsuario()){
+            case JOGADOR -> {
+                JanelaJogador janelaJogador = new JanelaJogador((Jogador)u);
+            }
+            case JUIZ -> {
+                JanelaJuizNew janelaJuiz = new JanelaJuizNew((Juiz)u);
+            }
+        }
+        tela.dispose();
+    }
+
+    @Override
+    public void retornar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 } 
   
     
