@@ -54,6 +54,7 @@ public class JCriacaoTorneioSuico {
         
         painelPrincipal.add(formulario);
         
+        
         janela.add(painelPrincipal);
     }
 }
