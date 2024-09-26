@@ -85,7 +85,8 @@ public class JCriacaoTorneio implements JanelaInterface{
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
         } catch(ExcessaoUsuarioNaoEncontrado e){
-            JOptionPane j = new JOptionPane("Algo deu errado. Reinicie o programa");
+            JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
+            return;
         }
         janela.dispose();
     }

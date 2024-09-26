@@ -85,7 +85,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         try{
             rodadas = Integer.parseInt(rodadasField.getText());
         } catch(NumberFormatException e){
-            JOptionPane jop = new JOptionPane("Digite um número válido de rodadas");
+            JOptionPane.showMessageDialog(janela, "Digite o número de rodadas corretamente");
             return;
         }
         TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, rodadas);
@@ -97,7 +97,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
         } catch (ExcessaoUsuarioNaoEncontrado e){
-            JOptionPane jop = new JOptionPane("Algum erro aconteceu. Reinicie o programa");
+            JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
         }
         janela.dispose();
     }
