@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 public abstract class Usuario {
     private final String nome;
     private String senha;
+    private final int ID;
     protected List<Integer> torneio = new ArrayList<>();
     private static final String senhaRegex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@*#$%^&+=!])(?=\\S+$).{8,}$";
     private static Pattern padrao;
@@ -28,6 +29,7 @@ public abstract class Usuario {
         padrao = Pattern.compile(senhaRegex);
         setSenha(senha);
         this.nome = nome;
+        ID = GeradorID.generateID();
     }
     
     public boolean validaSenha(String senha){
@@ -53,6 +55,10 @@ public abstract class Usuario {
 
     public String getSenha() {
         return senha;
+    }
+    
+    public int getID(){
+        return ID;
     }
 
     //faz sentido assim?

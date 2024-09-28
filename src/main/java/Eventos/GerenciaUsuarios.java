@@ -193,4 +193,8 @@ public class GerenciaUsuarios implements WindowListener{
         }
         return retorno;
     }
+    
+    public List<Usuario> getUsers(){
+        return usuarios;
+    }
 }
