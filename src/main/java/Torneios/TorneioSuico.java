@@ -5,6 +5,8 @@
  */
 package Torneios;
 
+import Eventos.GerenciaUsuarios;
+import Usuarios.Juiz;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.List;
 public class TorneioSuico extends Torneio{
     private int rodadaAtual;
     
-    public TorneioSuico(String nome, int rodadas) {
-        super(nome);
+    public TorneioSuico(String nome, Juiz juiz, int rodadas) {
+        super(nome, juiz);
         rodadaAtual = 0;
+        
+        GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         
         infoClassificacao = new ArrayList<>();
         infoRodadas = new ArrayList<>();
@@ -39,7 +43,6 @@ public class TorneioSuico extends Torneio{
             Confronto c = new Confronto(classificacao.get(i), classificacao.get(i + tamanho));
             infoRodadaAtual.add(c);
         }
-        
         
         rodadaAtual++;
         infoRodadas.add(infoRodadaAtual);

@@ -13,6 +13,7 @@ import Janelas.JanelaJuizNew;
 import Usuarios.*;
 import Persistencias.*;
 import Torneios.Torneio;
+import Torneios.TorneioSuico;
 import static Usuarios.Usuario.TipoUsuario.JOGADOR;
 import static Usuarios.Usuario.TipoUsuario.JUIZ;
 import java.awt.event.WindowEvent;
@@ -25,12 +26,13 @@ public class GerenciaUsuarios implements WindowListener{
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
     private List<Usuario> usuarios;
-    private List<Torneio> torneios;
+    //private List<Torneio> torneios;
+    private List<TorneioSuico> torneioSuico;
     
     private Usuario usuarioLogado;
     
     private GerenciaUsuarios() {
-        torneios = new ArrayList<>();
+        torneioSuico = new ArrayList<>();
     }
     public static GerenciaUsuarios getSingleton(){
         if(singleton == null){
@@ -39,14 +41,13 @@ public class GerenciaUsuarios implements WindowListener{
         return singleton;
     }
     
-    @Override
-    public void windowOpened(WindowEvent e){
+    public void abriuPrograma(){
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
-        Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
+        Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
         jogadores = jogPersistencia.findAll();
         juizes = juiPersistencia.findAll();
-        torneios = torPersistencia.findAll();
+        torneioSuico = torPersistencia.findAll();
         usuarios = new ArrayList<>();
         usuarios.addAll(juizes);
         usuarios.addAll(jogadores);
@@ -62,9 +63,11 @@ public class GerenciaUsuarios implements WindowListener{
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
             juiPersistencia.save(juizes);
         }
-        if(torneios != null){
-            Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
-            torPersistencia.save(torneios);
+        if(torneioSuico != null){
+            System.out.println("Salvou os torneios");
+            System.out.println("Temos x torneios:" + torneioSuico.size());
+            Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
+            torPersistencia.save(torneioSuico);
         }
     }
     @Override
@@ -188,14 +191,16 @@ public class GerenciaUsuarios implements WindowListener{
     }
     
     
-    public void adicionaTorneio(Torneio t){
-        torneios.add(t);
+    public void adicionaTorneio(TorneioSuico t){
+        System.out.println("Adicionamos um torneio");
+        torneioSuico.add(t);
+        System.out.println(torneioSuico.size());
     }
     
     public List<Torneio> getTorneios(List<Integer> ids){
         List<Torneio> retorno = new ArrayList<>();
         for(int id : ids){
-            for(Torneio t : torneios){
+            for(TorneioSuico t : torneioSuico){
                 if(t.getId() == id){
                     retorno.add(t);
                 }
@@ -206,5 +211,14 @@ public class GerenciaUsuarios implements WindowListener{
     
     public List<Usuario> getUsers(){
         return usuarios;
+    }
+    
+    public Usuario getUsuario(){
+        return usuarioLogado;
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        
     }
 }

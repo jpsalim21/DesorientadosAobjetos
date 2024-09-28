@@ -14,30 +14,30 @@ public class Torneio {
     protected final String nome;
     private static int index = 0;
     private final int codigo;
-    List<Juiz> juizes;
+    private final Juiz juiz;
     List<JogadorParticipante> participantes;
     protected List<List<JogadorParticipante>> infoClassificacao;
     protected List<List<Confronto>> infoRodadas;
     
-    public Torneio(String nome){
+    public Torneio(String nome, Juiz juiz){
         this.nome = nome;
-        juizes = new ArrayList<>();
+        this.juiz = juiz;
         participantes = new ArrayList<>();
         codigo = index++;
-        GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         
-        
+        this.juiz.addTorneio(codigo);
     }
     
-    public void adicionarParticipante(Jogador novoJogador){
+    private void adicionarParticipante(Jogador novoJogador){
         novoJogador.addTorneio(codigo);
         JogadorParticipante novoElemento = new JogadorParticipante(novoJogador);
         participantes.add(novoElemento);
     }
-    //ALERT: Podemos ter problemas aqui, já que a função pede outra classe.
-    //É para revermos ao começarmos a interface visual
-    public void removerParticipante(JogadorParticipante delJogador){
-        participantes.remove(delJogador);
+    
+    public void adicionarListaParticipantes(List<Jogador> novosJogadores){
+        for(Jogador j : novosJogadores){
+            adicionarParticipante(j);
+        }
     }
 
     @Override

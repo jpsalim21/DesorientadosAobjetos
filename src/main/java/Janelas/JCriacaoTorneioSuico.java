@@ -13,11 +13,14 @@ import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Torneios.Torneio;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
+import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -124,7 +127,10 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
             JOptionPane.showMessageDialog(janela, "Digite o número de rodadas corretamente");
             return;
         }
-        TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, rodadas);
+        TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, (Juiz)GerenciaUsuarios.getSingleton().getUsuario(), rodadas);
+        novoTorneio.adicionarListaParticipantes(jogadoresAdicionados);
+        
+        retornar();
     }
     @Override
     public void retornar() {
@@ -144,6 +150,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
             novoJogador = GerenciaUsuarios.getSingleton().procuraJogador(nomeJogadorField.getText());
         } catch (ExcessaoUsuarioNaoEncontrado e) {
             JOptionPane.showMessageDialog(janela, "Jogador não encontrado");
+            nomeJogadorField.setText("");
             return;
         }
         model.addElement(novoJogador);

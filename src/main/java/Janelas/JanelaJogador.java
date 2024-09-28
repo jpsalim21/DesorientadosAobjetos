@@ -44,9 +44,6 @@ public class JanelaJogador implements JanelaInterface{
         janela.addWindowListener(GerenciaUsuarios.getSingleton());
         
         jogadorLogado = j;
-        Torneio t = new TorneioSuico("Nome do torneio", 5);
-        t.adicionarParticipante(jogadorLogado);
-        t.adicionarParticipante(jogadorLogado);
         
         desenhaTela();
         carregarTorneios();
