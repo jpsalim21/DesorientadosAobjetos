@@ -36,7 +36,7 @@ public class JTorneio implements JanelaInterface{
     private final int H_GAP = 5;
     
     private Torneio torneio;
-    private JList<Confronto> confrontosRodadaAtual;
+    private JList<Confronto> partidasRodada;
     private int rodadaAtual = 0;
     
     
@@ -67,8 +67,8 @@ public class JTorneio implements JanelaInterface{
         pareamento.setBorder(BorderFactory.createTitledBorder("Pareamento"));
         //pareamento.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         
-        confrontosRodadaAtual = new JList<>(model);
-        JScrollPane painelScroll = new JScrollPane(confrontosRodadaAtual);
+        partidasRodada = new JList<>(model);
+        JScrollPane painelScroll = new JScrollPane(partidasRodada);
         painelScroll.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
         pareamento.add(painelScroll, BorderLayout.CENTER);
         
@@ -102,7 +102,7 @@ public class JTorneio implements JanelaInterface{
         janela.add(principal);
     }
     private void carregarRodada(){
-        DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)confrontosRodadaAtual.getModel();
+        DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)partidasRodada.getModel();
         List<Confronto> confrontos;
         confrontos = torneio.getInfoRodada(rodadaAtual);
         

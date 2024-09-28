@@ -115,7 +115,6 @@ public class JanelaJogador implements JanelaInterface{
         janela.pack();
     }
 
-    //NOVO MÉTODO ACESSAR TORNEIO, MAS DE FORMA QUE NÃO TEMOS MTAS CLASSES EVENTOS
     @Override
     public void confirmar() {
         int selectedIndex = torneiosEntrados.getSelectedIndex();

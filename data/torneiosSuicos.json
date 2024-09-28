@@ -1,1 +1,29 @@
-[{"rodadaAtual":0,"nome":"sf 2023","codigo":0,"juiz":{"nome":"Salim","senha":"Senha123!","ID":0,"torneio":[0,1],"tipo":"JUIZ"},"participantes":[],"infoClassificacao":[],"infoRodadas":[]},{"rodadaAtual":0,"nome":"sf 2020","codigo":1,"juiz":{"nome":"Salim","senha":"Senha123!","ID":0,"torneio":[0,1],"tipo":"JUIZ"},"participantes":[],"infoClassificacao":[],"infoRodadas":[]}]
+[{
+        "rodadaAtual": 0,
+        "nome": "sf 2023",
+        "codigo": 0,
+        "juiz": {
+            "nome": "Salim",
+            "senha": "Senha123!",
+            "ID": 0,
+            "torneio": [0, 1],
+            "tipo": "JUIZ"
+        },
+        "participantes": [],
+        "infoClassificacao": [],
+        "infoRodadas": []
+    }, {
+        "rodadaAtual": 0,
+        "nome": "sf 2020",
+        "codigo": 1,
+        "juiz": {
+            "nome": "Salim",
+            "senha": "Senha123!",
+            "ID": 0,
+            "torneio": [0, 1],
+            "tipo": "JUIZ"
+        },
+        "participantes": [],
+        "infoClassificacao": [],
+        "infoRodadas": []
+    }]

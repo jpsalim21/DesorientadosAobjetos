@@ -13,6 +13,7 @@ import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -45,6 +46,7 @@ public class JanelaJuizNew implements JanelaInterface{
         this.juiz = juiz;
         
         desenhaTela();
+        carregaTorneios();
         janela.pack();
     }
     
@@ -94,6 +96,16 @@ public class JanelaJuizNew implements JanelaInterface{
         painelPrincipal.add(painelInformacoes, BorderLayout.WEST);
         painelPrincipal.add(painelTorneios, BorderLayout.CENTER);
         janela.add(painelPrincipal);
+    }
+    
+    private void carregaTorneios(){
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        List<Torneio> torneiosAdicionar = GerenciaUsuarios.getSingleton().getTorneios(
+                GerenciaUsuarios.getSingleton().getUsuario().getTorneios());
+        
+        for(Torneio t : torneiosAdicionar){
+            model.addElement(t);
+        }
     }
 
     @Override
