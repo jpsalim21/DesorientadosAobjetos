@@ -5,7 +5,9 @@
 package Janelas;
 
 import Eventos.GerenciaUsuarios;
+import Eventos.Interface.AdicionaJogador;
 import Eventos.Interface.Confirmar;
+import Eventos.Interface.RemoveJogador;
 import Eventos.Interface.Retornar;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Torneios.Torneio;
@@ -28,7 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 
-public class JCriacaoTorneioSuico implements JanelaInterface{
+public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTorneio{
     private final JFrame janela;
     private final int WIDTH = 1000;
     private final int HEIGHT = 400;
@@ -95,8 +97,12 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         nomeJogadorField = new JTextField();
         jogadoresBtnPainel.add(new JLabel("Nome do jogador a adicionar:"));
         jogadoresBtnPainel.add(nomeJogadorField);
-        jogadoresBtnPainel.add(new JButton("Adicionar jogador"));
-        jogadoresBtnPainel.add(new JButton("Remover jogador"));
+        JButton addJogador = new JButton("Adicionar jogador");
+        addJogador.addActionListener(new AdicionaJogador(this));
+        jogadoresBtnPainel.add(addJogador);
+        JButton remJogador = new JButton("Remover jogador");
+        remJogador.addActionListener(new RemoveJogador(this));
+        jogadoresBtnPainel.add(remJogador);
         
         jogadoresPainel.add(painelScrollJogadores);
         jogadoresPainel.add(jogadoresBtnPainel, BorderLayout.SOUTH);
@@ -130,10 +136,20 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         janela.dispose();
     }
     
+    @Override
     public void adicionarJogador(){
-        
+        DefaultListModel<Jogador> model = (DefaultListModel<Jogador>)JListJogadores.getModel();
+        Jogador novoJogador;
+        try {
+            novoJogador = GerenciaUsuarios.getSingleton().procuraJogador(nomeJogadorField.getText());
+        } catch (ExcessaoUsuarioNaoEncontrado e) {
+            JOptionPane.showMessageDialog(janela, "Jogador não encontrado");
+            return;
+        }
+        model.addElement(novoJogador);
+        nomeJogadorField.setText("");
     }
-    
+    @Override
     public void removerJogador(){
         int selectedIndex = JListJogadores.getSelectedIndex();
         
@@ -146,8 +162,5 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         j = model.elementAt(selectedIndex);
         jogadoresAdicionados.remove(j);
         model.remove(selectedIndex);
-        
-        
-        janela.dispose();
     }
 }

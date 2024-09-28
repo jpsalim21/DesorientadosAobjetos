@@ -16,7 +16,7 @@ public class GeradorID {
     private static GeradorID singleton;
     private static int ID;
 
-    public GeradorID() {
+    private GeradorID() {
         //carregar os IDS ja gerados anteriormente e atribui ao ID para continuar a geração
         GerenciaUsuarios gerenciador = GerenciaUsuarios.getSingleton();
         ID = getLast(gerenciador.getUsers());

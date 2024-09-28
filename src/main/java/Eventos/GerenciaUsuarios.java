@@ -112,6 +112,16 @@ public class GerenciaUsuarios implements WindowListener{
             }
         }
     }
+    public Jogador procuraJogador(String nome) throws ExcessaoUsuarioNaoEncontrado{
+        for(Jogador j : jogadores){
+            if(j.getNome().equals(nome)){
+                return j;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    
+    
     public void remove(String nome, int tipo){
         int cont = -1;
         for (int i = 0; i < usuarios.size(); i++) {

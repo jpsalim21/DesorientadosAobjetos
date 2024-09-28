@@ -87,4 +87,9 @@ public abstract class Usuario {
         return Objects.equals(this.senha, other.getSenha());
     }
     
+    @Override
+    public String toString(){
+        return nome;
+    }
+    
 }
