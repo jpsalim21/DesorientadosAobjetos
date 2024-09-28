@@ -5,11 +5,9 @@
  */
 package Torneios;
 
-import Usuarios.Jogador;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 public class TorneioSuico extends Torneio{
     private int rodadaAtual;

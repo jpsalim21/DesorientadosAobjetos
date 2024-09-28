@@ -5,7 +5,6 @@
  */
 package Eventos;
 
-import PossivelDelete.Admin;
 import Excecao.ExcecaoDeSenha;
 import Excecao.ExcecaoUsuarioJaExistente;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
@@ -25,7 +24,6 @@ public class GerenciaUsuarios {
     private static GerenciaUsuarios singleton;
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
-    private List<Admin> administradores;
     private List<Usuario> usuarios;
     private List<Torneio> torneios;
     
@@ -44,16 +42,13 @@ public class GerenciaUsuarios {
     public void carregaUsuarios(){
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
-        Persistencia<Admin> admPersistencia = new AdminPersistencia();
         Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
         jogadores = jogPersistencia.findAll();
         juizes = juiPersistencia.findAll();
-        administradores = admPersistencia.findAll();
         torneios = torPersistencia.findAll();
         usuarios = new ArrayList<>();
         usuarios.addAll(juizes);
         usuarios.addAll(jogadores);
-        usuarios.addAll(administradores);
     }
     
     public void chamaPersistencia() {
@@ -64,10 +59,6 @@ public class GerenciaUsuarios {
         if(juizes != null){
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
             juiPersistencia.save(juizes);
-        }
-        if(administradores != null){
-            Persistencia<Admin> admPersistencia = new AdminPersistencia();
-            admPersistencia.save(administradores);
         }
         if(torneios != null){
             Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
@@ -88,13 +79,6 @@ public class GerenciaUsuarios {
         juizes.add(newJuiz);
         usuarios.add(newJuiz);
         System.out.println("Adicionou novo juiz");
-    }
-    public void adicionaAdmin(String nome, String senha) throws ExcecaoUsuarioJaExistente, ExcecaoDeSenha{
-        procuraNomeIgual(nome);
-        Admin newAdmin = new Admin(nome, senha);
-        administradores.add(newAdmin);
-        usuarios.add(newAdmin);
-        System.out.println("Adicionou novo admin");
     }
     private void procuraNomeIgual(String nome) throws ExcecaoUsuarioJaExistente{
         for(Usuario u : usuarios){
@@ -135,15 +119,6 @@ public class GerenciaUsuarios {
                     System.out.println("Juiz removido.");
                 } else {
                     System.out.println("Usuário não é um juiz.");
-                }
-            }
-            case 2 -> {
-                if (usuario instanceof Admin a) {
-                    administradores.remove(a);
-                    usuarios.remove(usuario);
-                    System.out.println("Admin removido.");
-                } else {
-                    System.out.println("Usuário não é um admin.");
                 }
             }
             default -> System.out.println("Tipo de usuário desconhecido.");
@@ -192,5 +167,9 @@ public class GerenciaUsuarios {
             }
         }
         return retorno;
+    }
+    
+    public List<Usuario> getUsers(){
+        return usuarios;
     }
 }

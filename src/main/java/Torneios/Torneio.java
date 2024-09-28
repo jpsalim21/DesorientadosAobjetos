@@ -5,7 +5,6 @@
  */
 package Torneios;
 
-import PossivelDelete.Admin;
 import Eventos.GerenciaUsuarios;
 import Usuarios.*;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ public class Torneio {
     private final int codigo;
     List<Juiz> juizes;
     List<JogadorParticipante> participantes;
-    List<Admin> admins;
     protected List<List<JogadorParticipante>> infoClassificacao;
     protected List<List<Confronto>> infoRodadas;
     
@@ -25,7 +23,6 @@ public class Torneio {
         this.nome = nome;
         juizes = new ArrayList<>();
         participantes = new ArrayList<>();
-        admins = new ArrayList<>();
         codigo = index++;
         GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         

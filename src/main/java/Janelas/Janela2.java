@@ -11,8 +11,6 @@ import Eventos.*;
 import Eventos.Interface.Confirmar;
 import Excecao.*;
 import Usuarios.*;
-import static Usuarios.Usuario.TipoUsuario.JOGADOR;
-import static Usuarios.Usuario.TipoUsuario.JUIZ;
 import java.awt.*;
 import javax.swing.*;
 
@@ -25,7 +23,7 @@ public class Janela2 implements JanelaInterface {
     private final int H_GAP = 5;
     private JTextField tfnome;
     private JTextField tfsenha;
-    String[] usuarios = {"Jogador","Juiz","Administrador"};
+    String[] usuarios = {"Jogador","Juiz"};
     JComboBox tipoUsuario = new JComboBox(usuarios);
     
     
@@ -104,9 +102,6 @@ public class Janela2 implements JanelaInterface {
                 }
                 if(index == 1){
                     GerenciaUsuarios.getSingleton().adicionaJuiz(tfnome.getText(), tfsenha.getText());
-                }
-                if(index == 2){
-                    GerenciaUsuarios.getSingleton().adicionaAdmin(tfnome.getText(), tfsenha.getText());
                 }
             }
         } catch (ExcecaoDeSenha e){

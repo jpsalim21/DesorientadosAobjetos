@@ -6,7 +6,6 @@
 package Usuarios;
 
 import Excecao.*;
-import java.util.List;
 
 public class Juiz extends Usuario {
 
