@@ -125,7 +125,7 @@ public class JanelaJogador implements JanelaInterface{
         
         Torneio torneio;
         if(selectedIndex == -1){
-            JOptionPane aviso = new JOptionPane("Selecione um torneio para acessar.");
+            JOptionPane.showMessageDialog(janela, "Selecione um torneio.");
             return;
         }
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
