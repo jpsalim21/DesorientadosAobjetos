@@ -119,7 +119,6 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
 
     @Override
     public void confirmar() {
-        System.out.println("Temos x jogadores para adicionar: " + jogadoresAdicionados.size());
         
         String nomeTorneio = nomeField.getText();
         int rodadas = 0;

@@ -11,15 +11,29 @@ public class Confronto {
     private JogadorParticipante vencedor = null;
     private boolean terminouConfronto = false;
     private int resultado = 0;
+    private String resultadoString;
     
     public Confronto(JogadorParticipante j1, JogadorParticipante j2){
         jogador1 = j1;
         jogador2 = j2;
+        resultadoString = " x ";
     }
     //Pode ter jeitos melhores de setar isso, mas como temos caso de empate, não podemos usar boolean
     public void setResultado(int r){
         resultado = r;
         terminouConfronto = true;
+        
+        switch(resultado){
+            case -1 -> {
+                resultadoString = " 1x0 ";
+            }
+            case 0 ->{
+                resultadoString = " 1/2x1/2 ";
+            }
+            case 1 ->{
+                resultadoString = " 0x1 ";
+            }
+        }
     }
     public void terminarConfronto(){
         switch(resultado){
@@ -52,6 +66,6 @@ public class Confronto {
     //FIXME: Podemos encontrar outra forma de fazer isso
     @Override
     public String toString(){
-        return jogador1.getUsuario().getNome() + " x " + jogador2.getUsuario().getNome();
+        return jogador1.getUsuario().getNome() + resultadoString + jogador2.getUsuario().getNome();
     }
 }

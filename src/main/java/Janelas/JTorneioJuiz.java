@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
@@ -34,6 +35,7 @@ public class JTorneioJuiz {
     
     private JList<Confronto> confrontosAtuais;
     private int rodadaAtual = 0;
+    private JLabel rodadaLabel;
     
     public JTorneioJuiz(Torneio torneio){
         janela = new JFrame();
@@ -63,8 +65,10 @@ public class JTorneioJuiz {
         JPanel painelBotoesEmparceiramento = new JPanel();
         painelBotoesEmparceiramento.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
         JButton botaoVoltar = new JButton("Anterior");
+        rodadaLabel = new JLabel("Rodada 1");
         JButton botaoProx = new JButton("Próximo");
         painelBotoesEmparceiramento.add(botaoVoltar);
+        painelBotoesEmparceiramento.add(rodadaLabel);
         painelBotoesEmparceiramento.add(botaoProx);
         
         confrontosAtuais = new JList<>(model);
@@ -75,7 +79,6 @@ public class JTorneioJuiz {
         painelPrincipal.add(painelEmparceiramento);
         janela.add(painelPrincipal);
         
-        
     }
     
     private void carregarRodada(){
@@ -85,10 +88,7 @@ public class JTorneioJuiz {
         
         if(confrontos == null) return; //PROVISÓRIO
         
-        System.out.println("Rodada " + rodadaAtual + " tem n confrontos: " + confrontos.size());
-        
         for(Confronto c : confrontos){
-            System.out.println("Adicionamos os confrontos");
             model.addElement(c);
         }
     }
