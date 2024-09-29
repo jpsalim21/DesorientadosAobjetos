@@ -26,8 +26,6 @@ public class Janela2 implements JanelaInterface {
     String[] usuarios = {"Jogador","Juiz"};
     private JComboBox tipoUsuario = new JComboBox(usuarios);
     
-    
-    
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
         tela.addWindowListener(new Listener());
@@ -38,8 +36,6 @@ public class Janela2 implements JanelaInterface {
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         tela.setVisible(true);
         tela.setLayout(new BorderLayout());
-        
-        
         
         desenhaLogin();
         
@@ -63,7 +59,7 @@ public class Janela2 implements JanelaInterface {
         descricao.setLayout(new GridLayout(0, 1, H_GAP,V_GAP+ 10));
         descricao.add(new JLabel("Nome"));
         descricao.add(new JLabel("Senha"));
-        descricao.add(new JLabel("Acessar como:"));
+        descricao.add(new JLabel("Criar como:"));
         
         JPanel campos = new JPanel();
         campos.setLayout(new GridLayout(0,1, H_GAP,V_GAP));
@@ -133,10 +129,6 @@ public class Janela2 implements JanelaInterface {
             case 1 -> {
                 gere.remove(name, index);
                 JOptionPane.showMessageDialog(tela, "Juiz removido");
-            }
-            case 2 -> {
-                gere.remove(name, index);
-                JOptionPane.showMessageDialog(tela, "Admin removido");
             }
             default -> JOptionPane.showMessageDialog(tela, "Tipo de usuário desconhecido.");
         }
