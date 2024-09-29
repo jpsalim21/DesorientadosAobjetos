@@ -70,7 +70,6 @@ public class JTorneio implements InterfaceAnteriorProx{
         
         JPanel pareamento = new JPanel();
         pareamento.setBorder(BorderFactory.createTitledBorder("Pareamento"));
-        //pareamento.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         
         partidasRodada = new JList<>(model);
         JScrollPane painelScroll = new JScrollPane(partidasRodada);

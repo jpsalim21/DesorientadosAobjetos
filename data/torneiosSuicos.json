@@ -1,1 +1,199 @@
-[{"rodadaAtual":1,"nome":"Bomba Patch ","codigo":1,"juiz":{"nome":"Salim","senha":"Senha123!","ID":0,"torneio":[0,1],"tipo":"JUIZ"},"participantes":[{"usuario":6,"pontuacao":0.0,"bye":false},{"usuario":2,"pontuacao":0.0,"bye":false},{"usuario":3,"pontuacao":0.0,"bye":false},{"usuario":4,"pontuacao":0.0,"bye":false},{"usuario":5,"pontuacao":0.0,"bye":false},{"usuario":7,"pontuacao":0.0,"bye":false}],"infoClassificacao":[[{"usuario":6,"pontuacao":0.0,"bye":false},{"usuario":2,"pontuacao":0.0,"bye":false},{"usuario":3,"pontuacao":0.0,"bye":false},{"usuario":4,"pontuacao":0.0,"bye":false},{"usuario":5,"pontuacao":0.0,"bye":false},{"usuario":7,"pontuacao":0.0,"bye":false}]],"infoRodadas":[[{"jogador1":{"usuario":6,"pontuacao":0.0,"bye":false},"jogador2":{"usuario":4,"pontuacao":0.0,"bye":false},"terminouConfronto":false,"resultado":0,"resultadoString":" x ","imutavel":false},{"jogador1":{"usuario":2,"pontuacao":0.0,"bye":false},"jogador2":{"usuario":5,"pontuacao":0.0,"bye":false},"terminouConfronto":false,"resultado":0,"resultadoString":" x ","imutavel":false},{"jogador1":{"usuario":3,"pontuacao":0.0,"bye":false},"jogador2":{"usuario":7,"pontuacao":0.0,"bye":false},"terminouConfronto":false,"resultado":0,"resultadoString":" x ","imutavel":false}]],"maxRodadas":5},{"rodadaAtual":1,"nome":"Torneio teste","codigo":2,"juiz":{"nome":"Salim","senha":"Senha123!","ID":0,"torneio":[0,1,2],"tipo":"JUIZ"},"participantes":[{"usuario":0,"pontuacao":0.0,"bye":false},{"usuario":0,"pontuacao":0.0,"bye":false}],"infoClassificacao":[[{"usuario":0,"pontuacao":0.0,"bye":false},{"usuario":0,"pontuacao":0.0,"bye":false}]],"infoRodadas":[[{"jogador1":{"usuario":0,"pontuacao":0.0,"bye":false},"jogador2":{"usuario":0,"pontuacao":0.0,"bye":false},"terminouConfronto":false,"resultado":0,"resultadoString":" x ","imutavel":false}]],"maxRodadas":2},{"rodadaAtual":2,"nome":"Futebol da tarde","codigo":3,"juiz":{"nome":"Salim","senha":"Senha123!","ID":0,"torneio":[0,1,2,3],"tipo":"JUIZ"},"participantes":[{"usuario":6,"pontuacao":2.0,"bye":true},{"usuario":9,"pontuacao":0.5,"bye":false},{"usuario":2,"pontuacao":1.5,"bye":false},{"usuario":3,"pontuacao":0.5,"bye":false},{"usuario":8,"pontuacao":2.0,"bye":false},{"usuario":5,"pontuacao":0.5,"bye":false},{"usuario":4,"pontuacao":1.0,"bye":true}],"infoClassificacao":[[{"usuario":6,"pontuacao":2.0,"bye":true},{"usuario":9,"pontuacao":0.5,"bye":false},{"usuario":2,"pontuacao":1.5,"bye":false},{"usuario":3,"pontuacao":0.5,"bye":false},{"usuario":8,"pontuacao":2.0,"bye":false},{"usuario":5,"pontuacao":0.5,"bye":false}],[{"usuario":6,"pontuacao":2.0,"bye":true},{"usuario":8,"pontuacao":2.0,"bye":false},{"usuario":4,"pontuacao":1.0,"bye":true},{"usuario":2,"pontuacao":1.5,"bye":false},{"usuario":5,"pontuacao":0.5,"bye":false},{"usuario":9,"pontuacao":0.5,"bye":false},{"usuario":3,"pontuacao":0.5,"bye":false}],[{"usuario":6,"pontuacao":2.0,"bye":true},{"usuario":8,"pontuacao":2.0,"bye":false},{"usuario":2,"pontuacao":1.5,"bye":false},{"usuario":4,"pontuacao":1.0,"bye":true},{"usuario":9,"pontuacao":0.5,"bye":false},{"usuario":3,"pontuacao":0.5,"bye":false},{"usuario":5,"pontuacao":0.5,"bye":false}]],"infoRodadas":[[{"jogador1":{"usuario":6,"pontuacao":2.0,"bye":true},"jogador2":{"usuario":3,"pontuacao":0.5,"bye":false},"vencedor":{"usuario":6,"pontuacao":2.0,"bye":true},"terminouConfronto":true,"resultado":0,"resultadoString":" 1x0 ","imutavel":true},{"jogador1":{"usuario":9,"pontuacao":0.5,"bye":false},"jogador2":{"usuario":8,"pontuacao":2.0,"bye":false},"vencedor":{"usuario":8,"pontuacao":2.0,"bye":false},"terminouConfronto":true,"resultado":2,"resultadoString":" 0x1 ","imutavel":true},{"jogador1":{"usuario":2,"pontuacao":1.5,"bye":false},"jogador2":{"usuario":5,"pontuacao":0.5,"bye":false},"terminouConfronto":true,"resultado":1,"resultadoString":" 1/2x1/2 ","imutavel":true}],[{"jogador1":{"usuario":8,"pontuacao":2.0,"bye":false},"jogador2":{"usuario":4,"pontuacao":1.0,"bye":true},"vencedor":{"usuario":8,"pontuacao":2.0,"bye":false},"terminouConfronto":true,"resultado":0,"resultadoString":" 1x0 ","imutavel":true},{"jogador1":{"usuario":2,"pontuacao":1.5,"bye":false},"jogador2":{"usuario":5,"pontuacao":0.5,"bye":false},"vencedor":{"usuario":2,"pontuacao":1.5,"bye":false},"terminouConfronto":true,"resultado":0,"resultadoString":" 1x0 ","imutavel":true},{"jogador1":{"usuario":9,"pontuacao":0.5,"bye":false},"jogador2":{"usuario":3,"pontuacao":0.5,"bye":false},"terminouConfronto":true,"resultado":1,"resultadoString":" 1/2x1/2 ","imutavel":true}]],"maxRodadas":5}]
+[
+    {
+        "rodadaAtual": 1,
+        "nome": "Bomba Patch ",
+        "codigo": 1,
+        "juiz": {
+            "nome": "Salim",
+            "senha": "Senha123!",
+            "ID": 0,
+            "torneio": [
+                0,
+                1
+            ],
+            "tipo": "JUIZ"
+        },
+        "participantes": [
+            {
+                "usuario": 6,
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": 2,
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": 3,
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": 4,
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": 5,
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": 7,
+                "pontuacao": 0.0,
+                "bye": false
+            }
+        ],
+        "infoClassificacao": [
+            [
+                {
+                    "usuario": 6,
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": 2,
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": 3,
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": 4,
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": 5,
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": 7,
+                    "pontuacao": 0.0,
+                    "bye": false
+                }
+            ]
+        ],
+        "infoRodadas": [
+            [
+                {
+                    "jogador1": {
+                        "usuario": 6,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": 4,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x ",
+                    "imutavel": false
+                },
+                {
+                    "jogador1": {
+                        "usuario": 2,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": 5,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x ",
+                    "imutavel": false
+                },
+                {
+                    "jogador1": {
+                        "usuario": 3,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": 7,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x ",
+                    "imutavel": false
+                }
+            ]
+        ],
+        "maxRodadas": 5
+    },
+    {
+        "rodadaAtual": 1,
+        "nome": "Torneio teste",
+        "codigo": 2,
+        "juiz": {
+            "nome": "Salim",
+            "senha": "Senha123!",
+            "ID": 0,
+            "torneio": [
+                0,
+                1,
+                2
+            ],
+            "tipo": "JUIZ"
+        },
+        "participantes": [
+            {
+                "usuario": 0,
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": 0,
+                "pontuacao": 0.0,
+                "bye": false
+            }
+        ],
+        "infoClassificacao": [
+            [
+                {
+                    "usuario": 0,
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": 0,
+                    "pontuacao": 0.0,
+                    "bye": false
+                }
+            ]
+        ],
+        "infoRodadas": [
+            [
+                {
+                    "jogador1": {
+                        "usuario": 0,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": 0,
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x ",
+                    "imutavel": false
+                }
+            ]
+        ],
+        "maxRodadas": 2
+    }
+]

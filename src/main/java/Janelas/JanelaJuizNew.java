@@ -12,6 +12,7 @@ import Eventos.JanelaJuiz.ExcluiJuiz;
 import Eventos.JanelaJuiz.ExcluirTorneio;
 import Eventos.Listener;
 import Torneios.Torneio;
+import Torneios.TorneioSuico;
 import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -163,5 +164,8 @@ public class JanelaJuizNew implements JanelaInterface{
         }
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
         torneio = model.get(selectedIndex);
+        
+        GerenciaUsuarios.getSingleton().removerTorneio((TorneioSuico)torneio);
+        janela.pack();
     }
 }
