@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim 202335033
+ * Mateus Lopes Felício 202365555C
+ * Thales Gomes Batista 202365557C
  */
 package Janelas;
 
@@ -32,10 +33,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-/**
- *
- * @author PC12643
- */
 public class JTorneioJuiz implements InterfaceAnteriorProx{
     private final JFrame janela;
     protected final int WIDTH = 1920;

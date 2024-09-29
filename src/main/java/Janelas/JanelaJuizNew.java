@@ -1,4 +1,9 @@
-package Janelas;
+/*
+ * João Pedro Miranda Salim 202335033
+ * Mateus Lopes Felício 202365555C
+ * Thales Gomes Batista 202365557C
+ */
+ package Janelas;
 
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
@@ -23,10 +28,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-/**
- *
- * @author PC12643
- */
 public class JanelaJuizNew implements JanelaInterface{
     private final JFrame janela;
     protected final int WIDTH = 1920;

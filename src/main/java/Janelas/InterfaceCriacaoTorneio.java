@@ -1,13 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ * João Pedro Miranda Salim 202335033
+ * Mateus Lopes Felício 202365555C
+ * Thales Gomes Batista 202365557C
  */
 package Janelas;
 
-/**
- *
- * @author PC12643
- */
 public interface InterfaceCriacaoTorneio {
     public abstract void adicionarJogador();
     public abstract void removerJogador();

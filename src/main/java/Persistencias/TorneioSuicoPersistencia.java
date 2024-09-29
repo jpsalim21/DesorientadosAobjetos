@@ -1,6 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * João Pedro Miranda Salim 202335033
+ * Mateus Lopes Felício 202365555C
+ * Thales Gomes Batista 202365557C
  */
 package Persistencias;
 
@@ -14,10 +15,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author PC12643
- */
 public class TorneioSuicoPersistencia implements Persistencia<TorneioSuico> {
     private static final String PATH = DIRECTORY+ File.separator +"torneiosSuicos.json";
     @Override
