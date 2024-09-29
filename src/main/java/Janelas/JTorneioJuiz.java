@@ -44,7 +44,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     private JList<Confronto> confrontosAtuais;
     private int rodadaAtual = 0;
     private JLabel rodadaLabel;
-    String[] resultados = {"1 - 0", "1/2 - 1/2", "0 - 1"};
+    private String[] resultados = {"1 - 0", "1/2 - 1/2", "0 - 1"};
     private JComboBox resultadoConfronto = new JComboBox(resultados);
     
     public JTorneioJuiz(Torneio torneio){
