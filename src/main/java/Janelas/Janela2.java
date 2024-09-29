@@ -5,6 +5,8 @@
  */
 package Janelas;
 
+import Eventos.Janela2.ExcluiUsuario;
+import Eventos.Janela2.AdicionaUsuario;
 import Eventos.*;
 import Eventos.Interface.Confirmar;
 import Excecao.*;
@@ -22,13 +24,13 @@ public class Janela2 implements JanelaInterface {
     private JTextField tfnome;
     private JTextField tfsenha;
     String[] usuarios = {"Jogador","Juiz"};
-    JComboBox tipoUsuario = new JComboBox(usuarios);
+    private JComboBox tipoUsuario = new JComboBox(usuarios);
     
     
     
     public void desenha(){
         tela = new JFrame("Sistema de Torneios");
-        tela.addWindowListener(GerenciaUsuarios.getSingleton());
+        tela.addWindowListener(new Listener());
         
         GerenciaUsuarios.getSingleton().abriuPrograma();
                 

@@ -7,6 +7,7 @@ package Janelas;
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
+import Eventos.Listener;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -36,7 +37,7 @@ public class JCriacaoTorneio implements JanelaInterface{
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        janela.addWindowListener(GerenciaUsuarios.getSingleton());
+        janela.addWindowListener(new Listener());
         
         desenhaTela();
         janela.pack();
@@ -46,7 +47,6 @@ public class JCriacaoTorneio implements JanelaInterface{
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new BorderLayout());
         painelPrincipal.setBorder(BorderFactory.createTitledBorder("Qual torneio deseja criar?"));
-        painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         
         JPanel painelFormulario = new JPanel();
         painelFormulario.setLayout(new GridLayout(0, 2, H_GAP, V_GAP));

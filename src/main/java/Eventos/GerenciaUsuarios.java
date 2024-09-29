@@ -16,12 +16,10 @@ import Torneios.Torneio;
 import Torneios.TorneioSuico;
 import static Usuarios.Usuario.TipoUsuario.JOGADOR;
 import static Usuarios.Usuario.TipoUsuario.JUIZ;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GerenciaUsuarios implements WindowListener{
+public class GerenciaUsuarios {
     private static GerenciaUsuarios singleton;
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
@@ -41,7 +39,7 @@ public class GerenciaUsuarios implements WindowListener{
         return singleton;
     }
     
-    public void abriuPrograma(){
+    public void carregaUsuarios(){
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
@@ -53,8 +51,7 @@ public class GerenciaUsuarios implements WindowListener{
         usuarios.addAll(jogadores);
     }
     
-    @Override
-    public void windowClosing(WindowEvent e) {
+    public void chamaPersistencia() {
         if(jogadores != null){
             Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
             jogPersistencia.save(jogadores);
@@ -63,37 +60,12 @@ public class GerenciaUsuarios implements WindowListener{
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
             juiPersistencia.save(juizes);
         }
-        if(torneioSuico != null){
-            System.out.println("Salvou os torneios");
-            System.out.println("Temos x torneios:" + torneioSuico.size());
-            Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
-            torPersistencia.save(torneioSuico);
+        if(torneios != null){
+            Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
+            torPersistencia.save(torneios);
         }
     }
-    @Override
-    public void windowClosed(WindowEvent e) {
 
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-
-    }
     public void adicionaJogador(String nome, String senha) throws ExcecaoUsuarioJaExistente,ExcecaoDeSenha{
         procuraNomeIgual(nome);
         Jogador newJogador = new Jogador(nome, senha);
@@ -235,10 +207,5 @@ public class GerenciaUsuarios implements WindowListener{
     
     public Usuario getUsuario(){
         return usuarioLogado;
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-        
     }
 }

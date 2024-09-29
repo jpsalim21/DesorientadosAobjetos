@@ -8,6 +8,7 @@ import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.JanelaJuiz.CriarTorneio;
+import Eventos.Listener;
 import Torneios.Torneio;
 import Usuarios.Juiz;
 import java.awt.BorderLayout;
@@ -42,7 +43,7 @@ public class JanelaJuizNew implements JanelaInterface{
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        janela.addWindowListener(GerenciaUsuarios.getSingleton());
+        janela.addWindowListener(new Listener());
         
         this.juiz = juiz;
         
@@ -131,6 +132,5 @@ public class JanelaJuizNew implements JanelaInterface{
     }
     public void criarTorneio(){
         JCriacaoTorneio janelaNova = new JCriacaoTorneio();
-        janela.dispose();
     }
 }
