@@ -189,6 +189,8 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     }
     
     public void calcularResultado(){
+        System.out.println("Pegando resultado da rodada " + rodadaAtual);
+        
         List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual + 1);
         
         if(jogadores == null){
