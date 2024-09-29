@@ -6,9 +6,16 @@
 package Janelas;
 
 import Eventos.GerenciaUsuarios;
+import Eventos.Interface.Anterior;
+import Eventos.Interface.Proximo;
 import Torneios.Confronto;
 import Eventos.Interface.Retornar;
+import Eventos.JTorneio.PegarResultado;
+import Excecao.ExceptionAcabou;
+import Excecao.ExceptionResultadoImutavel;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.NaoPodeEmparceirarException;
+import Torneios.JogadorParticipante;
 import Torneios.Torneio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -24,7 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JTorneio implements JanelaInterface{
+public class JTorneio implements InterfaceAnteriorProx{
     private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
@@ -35,6 +42,7 @@ public class JTorneio implements JanelaInterface{
     private Torneio torneio;
     private JList<Confronto> partidasRodada;
     private int rodadaAtual = 0;
+    private JLabel rodadaLabel;
     
     
     public JTorneio(Torneio torneio){
@@ -72,19 +80,25 @@ public class JTorneio implements JanelaInterface{
         JPanel pareamentoBotoes = new JPanel();
         pareamentoBotoes.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
         JButton anterior = new JButton("Anterior");
-        JLabel rodadaLabel = new JLabel("Rodada 1");
+        rodadaLabel = new JLabel("Rodada 1");
         JButton proxima = new JButton("Proxima");
+        JButton resultado = new JButton("Resultado da rodada");
+        
+        
         pareamentoBotoes.add(anterior);
         pareamentoBotoes.add(rodadaLabel);
         pareamentoBotoes.add(proxima);
+        pareamentoBotoes.add(resultado);
+        
+        anterior.addActionListener(new Anterior(this));
+        proxima.addActionListener(new Proximo(this));
+        
+        resultado.addActionListener(new PegarResultado(this));
         
         pareamento.add(pareamentoBotoes, BorderLayout.SOUTH);
         
         JPanel classfi = new JPanel();
         JPanel botoes =  new JPanel();
-        
-        JButton btnSai = new JButton("Deslogar");
-        btnSai.addActionListener(new Retornar(this));
         
         classfi.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         classfi.setBorder(BorderFactory.createTitledBorder("Classificação"));
@@ -100,6 +114,7 @@ public class JTorneio implements JanelaInterface{
     }
     private void carregarRodada(){
         DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)partidasRodada.getModel();
+        model.clear();
         List<Confronto> confrontos;
         confrontos = torneio.getRodadaInfo(rodadaAtual);
         
@@ -109,26 +124,37 @@ public class JTorneio implements JanelaInterface{
             model.addElement(c);
         }
     }
-    public void mudaRodada(int soma){
-        rodadaAtual += soma;
+
+    @Override
+    public void anterior() {
+        rodadaAtual -= 1;
         if(rodadaAtual < 0){
             rodadaAtual = 0;
+            JOptionPane.showMessageDialog(janela, "Não existe rodada anterior a essa");
+            return;
         }
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual + 1));
         carregarRodada();
     }
 
     @Override
-    public void confirmar() {
-    
-    }
-
-    @Override
-    public void retornar() {
-        try{
-            GerenciaUsuarios.getSingleton().fazLogin();
-        } catch(ExcessaoUsuarioNaoEncontrado e){
-            JOptionPane optionPane = new JOptionPane("Algum problema ocorreu. Reinicie o programa");
+    public void proximo() {
+        rodadaAtual += 1;
+        if(rodadaAtual >= torneio.getMaxRodadas()){
+            rodadaAtual = torneio.getMaxRodadas() - 1;
+            JOptionPane.showMessageDialog(janela, "Ainda não existe próxima rodada");
+            return;
         }
-        janela.dispose();
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual + 1));
+        carregarRodada();
+    }
+    
+    public void calcularResultado(){
+        List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual + 1);
+        
+        if(jogadores == null){
+            return;
+        }
+        JanelaClassificacao j = new JanelaClassificacao(jogadores);
     }
 }

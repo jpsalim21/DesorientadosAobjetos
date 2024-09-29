@@ -136,7 +136,9 @@ public class JanelaJuizNew implements JanelaInterface{
 
     @Override
     public void retornar() {
-        
+        Janela2 janelas = new Janela2();
+        janelas.desenha();
+        janela.dispose();
     }
     public void criarTorneio(){
         JCriacaoTorneio janelaNova = new JCriacaoTorneio();

@@ -202,7 +202,6 @@ public class GerenciaUsuarios {
         }
     }
     
-    
     public void adicionaTorneio(TorneioSuico t){
         torneioSuico.add(t);
     }
