@@ -6,6 +6,7 @@
 package Torneios;
 
 import Eventos.GerenciaUsuarios;
+import Excecao.ExceptionAcabou;
 import Usuarios.Juiz;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,9 +27,12 @@ public class TorneioSuico extends Torneio{
         
     }
     @Override
-    public void emparceirar() throws NaoPodeEmparceirarException{
+    public void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou{
         if(!calcularClassificacao()){
             throw new NaoPodeEmparceirarException();
+        }
+        if(rodadaAtual >= maxRodadas){
+            throw new ExceptionAcabou();
         }
         
         List<Confronto> infoRodadaAtual = new ArrayList<>();
@@ -39,18 +43,16 @@ public class TorneioSuico extends Torneio{
         
         //Resolve BYE do último jogador
         if(tamanho%2==1){
-            int indiceUltimoBye = tamanho - 1;
+            int indiceUltimoBye = 0;
             while(classificacao.get(indiceUltimoBye).getBye()){
-                indiceUltimoBye--;
+                indiceUltimoBye++;
             }
             classificacao.get(indiceUltimoBye).setBye();
             classificacao.remove(indiceUltimoBye);
         }
-        //Emparceiramento de fato
-        tamanho = classificacao.size() / 2;
-        for(int i = 0; i < tamanho; i++){
-            Confronto c = new Confronto(classificacao.get(i), classificacao.get(i + tamanho));
-            System.out.println(classificacao.get(i).getUsuario().getNome() + " x " + classificacao.get(i + tamanho).getUsuario().getNome());
+        //Emparceiramento de fato;
+        for(int i = 0; i < classificacao.size(); i+=2){
+            Confronto c = new Confronto(classificacao.get(i), classificacao.get(i + 1));
             infoRodadaAtual.add(c);
         }
         
@@ -58,8 +60,6 @@ public class TorneioSuico extends Torneio{
         infoRodadas.add(infoRodadaAtual);
     }
     private boolean calcularClassificacao(){
-        System.out.println("Calculando classificacao da rodada " + rodadaAtual);
-        System.out.println("infoRodadas tem " + infoRodadas.size());
         for(Confronto c : infoRodadas.get(rodadaAtual - 1)){
             if(!c.getTerminouConfronto()){
                 return false;

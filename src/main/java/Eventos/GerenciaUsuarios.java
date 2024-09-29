@@ -123,6 +123,22 @@ public class GerenciaUsuarios implements WindowListener{
         }
         throw new ExcessaoUsuarioNaoEncontrado();
     }
+    public Jogador procuraJogador(int id) throws ExcessaoUsuarioNaoEncontrado{
+        for(Jogador j : jogadores){
+            if(j.getID() == id){
+                return j;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    public Usuario procuraUsuario(int id) throws ExcessaoUsuarioNaoEncontrado{
+        for(Usuario u : usuarios){
+            if(u.getID() == id){
+                return u;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
     
     
     public void remove(String nome, int tipo){

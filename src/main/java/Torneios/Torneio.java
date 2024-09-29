@@ -6,6 +6,7 @@
 package Torneios;
 
 import Eventos.GerenciaUsuarios;
+import Excecao.ExceptionAcabou;
 import Usuarios.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public abstract class Torneio {
         calcularClassificacaoInicial();
     }
     
-    public abstract void emparceirar() throws NaoPodeEmparceirarException;
+    public abstract void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou;
     
     protected abstract void calcularClassificacaoInicial();
     

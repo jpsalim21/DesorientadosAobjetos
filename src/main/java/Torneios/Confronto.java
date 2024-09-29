@@ -5,6 +5,8 @@
  */
 package Torneios;
 
+import Excecao.ExceptionResultadoImutavel;
+
 public class Confronto {
     private final JogadorParticipante jogador1;
     private final JogadorParticipante jogador2;
@@ -12,6 +14,7 @@ public class Confronto {
     private boolean terminouConfronto = false;
     private int resultado = 0;
     private String resultadoString;
+    private boolean imutavel = false;
     
     public Confronto(JogadorParticipante j1, JogadorParticipante j2){
         jogador1 = j1;
@@ -19,7 +22,11 @@ public class Confronto {
         resultadoString = " x ";
     }
     //Pode ter jeitos melhores de setar isso, mas como temos caso de empate, não podemos usar boolean
-    public void setResultado(int r){
+    public void setResultado(int r) throws ExceptionResultadoImutavel{
+        if(imutavel){
+            throw new ExceptionResultadoImutavel();
+        }
+        
         resultado = r;
         terminouConfronto = true;
         
@@ -56,6 +63,7 @@ public class Confronto {
                 jogador2.adicionarPontuacao(1);
             }
         }
+        imutavel = true;
     }
     public JogadorParticipante getVencedor(){
         return vencedor;

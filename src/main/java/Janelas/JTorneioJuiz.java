@@ -9,6 +9,8 @@ import Eventos.Interface.Anterior;
 import Eventos.Interface.Proximo;
 import Eventos.JTorneio.ConfirmarResultado;
 import Eventos.JTorneio.Emparceirar;
+import Excecao.ExceptionAcabou;
+import Excecao.ExceptionResultadoImutavel;
 import Excecao.NaoPodeEmparceirarException;
 import Torneios.Confronto;
 import Torneios.Torneio;
@@ -16,8 +18,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -27,7 +27,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 /**
@@ -102,6 +101,8 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         JButton btnEmparceirar = new JButton("Emparceirar proxima rodada");
         painelConfigConfronto.add(btnEmparceirar);
         btnEmparceirar.addActionListener(new Emparceirar(this));
+        JButton btnClassificacao = new JButton("Calcular resultados");
+        painelConfigConfronto.add(btnClassificacao);
         
         painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
         
@@ -137,7 +138,12 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         
         int indexResultado = resultadoConfronto.getSelectedIndex();
         
-        confronto.setResultado(indexResultado);
+        try {
+            confronto.setResultado(indexResultado);
+        } catch (ExceptionResultadoImutavel ex) {
+            JOptionPane.showMessageDialog(janela, "Impossível alterar resultado de confrontos anteriores. Mude para a rodada atual");
+            return;
+        }
         janela.pack();
     }
 
@@ -169,7 +175,10 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         try {
             torneio.emparceirar();
         } catch (NaoPodeEmparceirarException ex) {
-            JOptionPane.showMessageDialog(janela, "Não é possível fazer emparceiramento. Verifique se cada confronto tem resultado");
+            JOptionPane.showMessageDialog(janela, "Calcule o resultado da rodada antes do próximo emparceiramento.");
+            return;
+        } catch (ExceptionAcabou e){
+            JOptionPane.showMessageDialog(janela, "Torneio acabou. Não é possível adicionar uma rodada");
             return;
         }
         proximo();

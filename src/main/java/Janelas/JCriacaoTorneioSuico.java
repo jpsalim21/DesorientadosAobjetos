@@ -10,7 +10,6 @@ import Eventos.Interface.Confirmar;
 import Eventos.Interface.RemoveJogador;
 import Eventos.Interface.Retornar;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
-import Torneios.Torneio;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import Usuarios.Juiz;
@@ -19,8 +18,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -43,7 +40,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
     JTextField nomeField, rodadasField;
     
     private JTextField nomeJogadorField;
-    private List<Jogador> jogadoresAdicionados;
+    private final List<Jogador> jogadoresAdicionados;
     private JList<Jogador> JListJogadores;
     
     public JCriacaoTorneioSuico(){

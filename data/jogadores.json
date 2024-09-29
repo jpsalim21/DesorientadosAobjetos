@@ -1,1 +1,143 @@
-[{"derrotas":0,"empates":0,"vitorias":0,"nome":"testeuser","senha":"A1@bcdef","ID":0,"torneio":[],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":0,"nome":"Daigo","senha":"A1@bcdef","ID":0,"torneio":[],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":0,"nome":"Justin","senha":"Senha123!","ID":1,"torneio":[],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":3,"nome":"Atletico","senha":"Senha123!","ID":2,"torneio":[0,0,0],"tipo":"JOGADOR"},{"derrotas":4,"empates":0,"vitorias":0,"nome":"Cruzeiro","senha":"Senha123!","ID":3,"torneio":[0,0,0],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":3,"nome":"Flamengo","senha":"Senha123!","ID":4,"torneio":[0],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":3,"nome":"Fluminense","senha":"Senha123!","ID":5,"torneio":[0],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":3,"nome":"Tupi","senha":"Senha123!","ID":6,"torneio":[0,0,0],"tipo":"JOGADOR"},{"derrotas":0,"empates":0,"vitorias":0,"nome":"Santos","senha":"Senha123!","ID":7,"torneio":[],"tipo":"JOGADOR"},{"derrotas":4,"empates":0,"vitorias":0,"nome":"Gremio","senha":"Senha123!","ID":8,"torneio":[0,0,0],"tipo":"JOGADOR"},{"derrotas":4,"empates":0,"vitorias":0,"nome":"Sao Paulo","senha":"Senha123!","ID":9,"torneio":[0],"tipo":"JOGADOR"}]
+[
+    {
+        "derrotas": 0,
+        "empates": 0,
+        "vitorias": 0,
+        "nome": "testeuser",
+        "senha": "A1@bcdef",
+        "ID": 0,
+        "torneio": [],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 0,
+        "vitorias": 0,
+        "nome": "Daigo",
+        "senha": "A1@bcdef",
+        "ID": 0,
+        "torneio": [],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 0,
+        "vitorias": 0,
+        "nome": "Justin",
+        "senha": "Senha123!",
+        "ID": 1,
+        "torneio": [],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 1,
+        "vitorias": 3,
+        "nome": "Atletico",
+        "senha": "Senha123!",
+        "ID": 2,
+        "torneio": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 5,
+        "empates": 0,
+        "vitorias": 0,
+        "nome": "Cruzeiro",
+        "senha": "Senha123!",
+        "ID": 3,
+        "torneio": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 0,
+        "vitorias": 4,
+        "nome": "Flamengo",
+        "senha": "Senha123!",
+        "ID": 4,
+        "torneio": [
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 1,
+        "vitorias": 3,
+        "nome": "Fluminense",
+        "senha": "Senha123!",
+        "ID": 5,
+        "torneio": [
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 0,
+        "vitorias": 4,
+        "nome": "Tupi",
+        "senha": "Senha123!",
+        "ID": 6,
+        "torneio": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 0,
+        "empates": 0,
+        "vitorias": 1,
+        "nome": "Santos",
+        "senha": "Senha123!",
+        "ID": 7,
+        "torneio": [
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 5,
+        "empates": 0,
+        "vitorias": 0,
+        "nome": "Gremio",
+        "senha": "Senha123!",
+        "ID": 8,
+        "torneio": [
+            0,
+            0,
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    },
+    {
+        "derrotas": 5,
+        "empates": 0,
+        "vitorias": 0,
+        "nome": "Sao Paulo",
+        "senha": "Senha123!",
+        "ID": 9,
+        "torneio": [
+            0,
+            0
+        ],
+        "tipo": "JOGADOR"
+    }
+]
