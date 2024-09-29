@@ -15,7 +15,6 @@ import Excecao.NaoPodeEmparceirarException;
 
 public abstract class Torneio {
     protected final String nome;
-    private static int index = 0;
     private final int codigo;
     private final Juiz juiz;
     List<JogadorParticipante> participantes;
@@ -27,7 +26,9 @@ public abstract class Torneio {
         this.nome = nome;
         this.juiz = juiz;
         participantes = new ArrayList<>();
-        codigo = index++;
+        GeradorID gerador = GeradorID.getSingleton();
+        codigo = gerador.generateTournamentID();
+        GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         
         this.juiz.addTorneio(codigo);
     }
