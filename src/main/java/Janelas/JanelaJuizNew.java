@@ -9,6 +9,7 @@ import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.JanelaJuiz.CriarTorneio;
 import Eventos.JanelaJuiz.ExcluiJuiz;
+import Eventos.JanelaJuiz.ExcluirTorneio;
 import Eventos.Listener;
 import Torneios.Torneio;
 import Usuarios.Juiz;
@@ -87,11 +88,15 @@ public class JanelaJuizNew implements JanelaInterface{
         JButton btnExcluirConta = new JButton("Excluir conta");
         btnExcluirConta.addActionListener(new ExcluiJuiz(this));
         
+        JButton btnExcluirTorneio = new JButton("Excluir torneio");
+        btnExcluirTorneio.addActionListener(new ExcluirTorneio(this));
+        
         JButton btnDeslogar = new JButton("Deslogar da Conta");
         btnDeslogar.addActionListener(new Retornar(this));
         
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnCriar);
+        botoesPainelTorneios.add(btnExcluirTorneio);
         botoesPainelTorneios.add(btnDeslogar);
         botoesPainelTorneios.add(btnExcluirConta);
         
@@ -127,7 +132,6 @@ public class JanelaJuizNew implements JanelaInterface{
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
         torneio = model.get(selectedIndex);
         JTorneioJuiz j = new JTorneioJuiz(torneio);
-        
     }
 
     @Override
@@ -145,5 +149,17 @@ public class JanelaJuizNew implements JanelaInterface{
             GerenciaUsuarios.getSingleton().remove(juiz.getID());
             janela.dispose();
         }
+    }
+    
+    public void excluirTorneio(){
+        int selectedIndex = torneiosEntrados.getSelectedIndex();
+        
+        Torneio torneio;
+        if(selectedIndex == -1){
+            JOptionPane.showMessageDialog(janela, "Selecione um torneio.");
+            return;
+        }
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        torneio = model.get(selectedIndex);
     }
 }

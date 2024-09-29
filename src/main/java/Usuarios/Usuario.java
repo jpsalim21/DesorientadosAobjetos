@@ -51,6 +51,10 @@ public abstract class Usuario {
         this.torneio.add(indiceTorneio);
     }
     
+    public void removerTorneio(int indiceTorneio){
+        this.torneio.remove(torneio.indexOf(indiceTorneio));
+    }
+    
     public String getNome() {
         return nome;
     }

@@ -207,6 +207,11 @@ public class GerenciaUsuarios {
         torneioSuico.add(t);
     }
     
+    public void removerTorneio(TorneioSuico t){
+        torneioSuico.remove(t);
+        t.remover();
+    }
+    
     public TorneioSuico getTorneioByID(int id){
         for(TorneioSuico t : torneioSuico){
             if(t.getId() == id){

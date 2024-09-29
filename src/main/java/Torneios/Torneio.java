@@ -16,7 +16,7 @@ import Excecao.NaoPodeEmparceirarException;
 public abstract class Torneio {
     protected final String nome;
     private final int codigo;
-    private final Juiz juiz;
+    private Juiz juiz;
     List<JogadorParticipante> participantes;
     protected List<List<JogadorParticipante>> infoClassificacao;
     protected List<List<Confronto>> infoRodadas;
@@ -53,6 +53,10 @@ public abstract class Torneio {
                 participantes.remove(j);
             }
         }
+    }
+    
+    public void removerJuiz(){
+        juiz = null;
     }
     
     public abstract void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou;
@@ -94,5 +98,12 @@ public abstract class Torneio {
     
     public int getMaxRodadas(){
         return maxRodadas;
+    }
+    
+    public void remover(){
+        juiz.removerTorneio(codigo);
+        for(JogadorParticipante j : participantes){
+            j.getUsuario().removerTorneio(codigo);
+        }
     }
 }

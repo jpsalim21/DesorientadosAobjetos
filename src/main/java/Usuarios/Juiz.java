@@ -15,11 +15,10 @@ public class Juiz extends Usuario {
         tipo = TipoUsuario.JUIZ;
     }
     
-    
     @Override
     public void remover(){
         for(int i : torneio){
-            GerenciaUsuarios.getSingleton().getTorneioByID(i).removerParticipante(ID);
+            GerenciaUsuarios.getSingleton().getTorneioByID(i).removerJuiz();
         }
     }
 }
