@@ -21,8 +21,7 @@ public abstract class Usuario {
     //APAGAR
     public enum TipoUsuario{
         JOGADOR,
-        JUIZ,
-        ADMIN
+        JUIZ
     }
     protected TipoUsuario tipo;
     
