@@ -26,6 +26,7 @@ public class TorneioSuico extends Torneio{
         infoRodadas = new ArrayList<>();
         
     }
+
     @Override
     public void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou{
         if(rodadaAtual >= infoClassificacao.size()){
@@ -59,6 +60,7 @@ public class TorneioSuico extends Torneio{
         rodadaAtual++;
         infoRodadas.add(infoRodadaAtual);
     }
+
     @Override
     public boolean calcularClassificacao(){
         for(Confronto c : infoRodadas.get(rodadaAtual - 1)){
@@ -83,6 +85,7 @@ public class TorneioSuico extends Torneio{
         infoClassificacao.add(classificacao);
         return true;
     }
+
     @Override
     protected void calcularClassificacaoInicial(){
         List<JogadorParticipante> classificacao = new ArrayList<>();
@@ -119,6 +122,7 @@ public class TorneioSuico extends Torneio{
         infoRodadas.add(infoRodadaAtual);
         rodadaAtual++;
     }
+    
     @Override
     public String toString(){
         return "Torneio suico: " + nome;
