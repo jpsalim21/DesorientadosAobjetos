@@ -28,7 +28,6 @@ public abstract class Torneio {
         participantes = new ArrayList<>();
         GeradorID gerador = GeradorID.getSingleton();
         codigo = gerador.generateTournamentID();
-        GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         
         this.juiz.addTorneio(codigo);
     }

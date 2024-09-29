@@ -51,11 +51,11 @@ public class GeradorID {
         return lastID;
     }
     
-    private int getLastTournament(List<Torneio> torneios){
+    private int getLastTournament(List<TorneioSuico> torneios){
         int lastID = 0;
         if(torneios.isEmpty())
             return 0;
-        for(Torneio t: torneios){
+        for(TorneioSuico t: torneios){
             if(t.getId() > lastID)
                 lastID = t.getId();
         }
