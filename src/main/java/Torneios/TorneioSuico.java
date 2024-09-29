@@ -22,6 +22,9 @@ public class TorneioSuico extends Torneio{
         
         infoClassificacao = new ArrayList<>();
         infoRodadas = new ArrayList<>();
+        
+        calcularClassificacaoInicial();
+        emparceirar();
     }
     
     public void emparceirar(){
@@ -54,6 +57,15 @@ public class TorneioSuico extends Torneio{
             }
         }
         
+        List<JogadorParticipante> classificacao = new ArrayList<>();
+        classificacao.addAll(participantes);
+        
+        Collections.sort(classificacao);
+        
+        infoClassificacao.add(classificacao);
+    }
+    
+    private void calcularClassificacaoInicial(){
         List<JogadorParticipante> classificacao = new ArrayList<>();
         classificacao.addAll(participantes);
         

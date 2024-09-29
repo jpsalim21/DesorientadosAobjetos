@@ -19,6 +19,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -110,7 +111,18 @@ public class JanelaJuizNew implements JanelaInterface{
 
     @Override
     public void confirmar() {
+        int selectedIndex = torneiosEntrados.getSelectedIndex();
         
+        Torneio torneio;
+        if(selectedIndex == -1){
+            JOptionPane.showMessageDialog(janela, "Selecione um torneio.");
+            return;
+        }
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        torneio = model.get(selectedIndex);
+        JTorneioJuiz j = new JTorneioJuiz(torneio);
+        
+        janela.dispose();
     }
 
     @Override
