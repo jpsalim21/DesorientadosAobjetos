@@ -38,7 +38,6 @@ public class GerenciaUsuarios {
         return singleton;
     }
     
-    public void carregaUsuarios(){
 
     public void abriuPrograma(){
 
