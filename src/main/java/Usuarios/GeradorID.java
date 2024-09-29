@@ -7,19 +7,21 @@ package Usuarios;
 
 import Eventos.GerenciaUsuarios;
 import java.util.List;
-
+import Torneios.*;
 /**
  *
  * @author mateu
  */
 public class GeradorID {
     private static GeradorID singleton;
-    private static int ID;
+    private static int pID;
+    private static int tID;
 
-    public GeradorID() {
+    private GeradorID() {
         //carregar os IDS ja gerados anteriormente e atribui ao ID para continuar a geração
         GerenciaUsuarios gerenciador = GerenciaUsuarios.getSingleton();
-        ID = getLast(gerenciador.getUsers());
+        pID = getLastUser(gerenciador.getUsers());
+        tID = getLastTournament(gerenciador.getAllTournaments());
     }
     
     public static GeradorID getSingleton(){
@@ -28,18 +30,34 @@ public class GeradorID {
         return singleton;
     }
     
-    public static int generateID(){
-        ID++;
-        return ID;
+    public int generatePlayerID(){
+        pID++;
+        return pID;
     }
     
-    private int getLast(List<Usuario> user){
+    public int generateTournamentID(){
+        tID++;
+        return tID;
+    }
+    
+    private int getLastUser(List<Usuario> user){
         int lastID = 0;
         if(user.isEmpty())
             return 0;
         for(Usuario u: user){
             if(u.getID() > lastID)
                 lastID = u.getID();
+        }
+        return lastID;
+    }
+    
+    private int getLastTournament(List<Torneio> torneios){
+        int lastID = 0;
+        if(torneios.isEmpty())
+            return 0;
+        for(Torneio t: torneios){
+            if(t.getId() > lastID)
+                lastID = t.getId();
         }
         return lastID;
     }

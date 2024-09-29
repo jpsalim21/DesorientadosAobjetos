@@ -5,21 +5,27 @@
  */
 package Torneios;
 
+import Eventos.GerenciaUsuarios;
+import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.Jogador;
 
 public class JogadorParticipante implements Comparable<JogadorParticipante>{
-    private final Jogador usuario;
+    private final int usuario;
     private float pontuacao;
     private boolean bye;
     
     public JogadorParticipante(Jogador j){
-        usuario = j;
+        usuario = j.getID();
         pontuacao = 0;
         bye = false;
     }
     
     public Jogador getUsuario(){
-        return usuario;
+        try {
+            return GerenciaUsuarios.getSingleton().procuraJogador(usuario);
+        } catch (ExcessaoUsuarioNaoEncontrado ex) {
+            return null;
+        }
     }
     
     public void adicionarPontuacao(float valor){
@@ -41,7 +47,11 @@ public class JogadorParticipante implements Comparable<JogadorParticipante>{
 
     @Override
     public int compareTo(JogadorParticipante o) {
-        return Float.compare(pontuacao, o.getPontuacao());
+        return Float.compare(o.getPontuacao(), pontuacao);
+    }
+    @Override
+    public String toString(){
+        return getUsuario().getNome() + ": " + pontuacao + " pontos";
     }
     
 }

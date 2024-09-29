@@ -6,40 +6,54 @@
 package Torneios;
 
 import Eventos.GerenciaUsuarios;
+import Excecao.ExceptionAcabou;
+import Excecao.ExceptionRodadaNaoTerminou;
 import Usuarios.*;
 import java.util.ArrayList;
 import java.util.List;
+import Excecao.NaoPodeEmparceirarException;
 
-public class Torneio {
+public abstract class Torneio {
     protected final String nome;
-    private static int index = 0;
     private final int codigo;
-    List<Juiz> juizes;
+    private final Juiz juiz;
     List<JogadorParticipante> participantes;
     protected List<List<JogadorParticipante>> infoClassificacao;
     protected List<List<Confronto>> infoRodadas;
+    protected int maxRodadas = 0;
     
-    public Torneio(String nome){
+    public Torneio(String nome, Juiz juiz){
         this.nome = nome;
-        juizes = new ArrayList<>();
+        this.juiz = juiz;
         participantes = new ArrayList<>();
-        codigo = index++;
+        GeradorID gerador = GeradorID.getSingleton();
+        codigo = gerador.generateTournamentID();
         GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         
-        
+        this.juiz.addTorneio(codigo);
     }
     
-    public void adicionarParticipante(Jogador novoJogador){
+    private void adicionarParticipante(Jogador novoJogador){
         novoJogador.addTorneio(codigo);
         JogadorParticipante novoElemento = new JogadorParticipante(novoJogador);
         participantes.add(novoElemento);
+        System.out.println("Adicionei mesmo " + novoElemento.getUsuario().getNome());
     }
-    //ALERT: Podemos ter problemas aqui, já que a função pede outra classe.
-    //É para revermos ao começarmos a interface visual
-    public void removerParticipante(JogadorParticipante delJogador){
-        participantes.remove(delJogador);
+    
+    public void adicionarListaParticipantes(List<Jogador> novosJogadores){
+        for(Jogador j : novosJogadores){
+            System.out.println("Adicionei " + j.getNome());
+            adicionarParticipante(j);
+        }
+        calcularClassificacaoInicial();
     }
-
+    
+    public abstract void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou;
+    
+    protected abstract void calcularClassificacaoInicial();
+    
+    public abstract boolean calcularClassificacao();
+    
     @Override
     public String toString(){
         return "Torneio: " + nome;
@@ -57,10 +71,21 @@ public class Torneio {
         return participantes;
     }  
     
-    public List<Confronto> getInfoRodada(int indexRodada){
-        if(infoRodadas.size() <= indexRodada){
-            return null;
+    public List<JogadorParticipante> getClassInfo(int rodadaDesejada){
+        if(rodadaDesejada >= infoClassificacao.size()){
+            calcularClassificacao();
+            if(rodadaDesejada >= infoClassificacao.size()){
+                return null;
+            }
         }
-        return infoRodadas.get(indexRodada);
+        return infoClassificacao.get(rodadaDesejada);
+    }
+    public List<Confronto> getRodadaInfo(int rodadaDesejada){
+        if(rodadaDesejada >= infoRodadas.size()) return null;
+        return infoRodadas.get(rodadaDesejada);
+    }
+    
+    public int getMaxRodadas(){
+        return maxRodadas;
     }
 }

@@ -13,6 +13,7 @@ import Janelas.JanelaJuizNew;
 import Usuarios.*;
 import Persistencias.*;
 import Torneios.Torneio;
+import Torneios.TorneioSuico;
 import static Usuarios.Usuario.TipoUsuario.JOGADOR;
 import static Usuarios.Usuario.TipoUsuario.JUIZ;
 import java.util.ArrayList;
@@ -23,12 +24,13 @@ public class GerenciaUsuarios {
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
     private List<Usuario> usuarios;
-    private List<Torneio> torneios;
+    //private List<Torneio> torneios;
+    private List<TorneioSuico> torneioSuico;
     
     private Usuario usuarioLogado;
     
     private GerenciaUsuarios() {
-        torneios = new ArrayList<>();
+        torneioSuico = new ArrayList<>();
     }
     public static GerenciaUsuarios getSingleton(){
         if(singleton == null){
@@ -37,13 +39,17 @@ public class GerenciaUsuarios {
         return singleton;
     }
     
+<<<<<<< HEAD
     public void carregaUsuarios(){
+=======
+    public void abriuPrograma(){
+>>>>>>> origin/main
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
-        Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
+        Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
         jogadores = jogPersistencia.findAll();
         juizes = juiPersistencia.findAll();
-        torneios = torPersistencia.findAll();
+        torneioSuico = torPersistencia.findAll();
         usuarios = new ArrayList<>();
         usuarios.addAll(juizes);
         usuarios.addAll(jogadores);
@@ -58,9 +64,11 @@ public class GerenciaUsuarios {
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
             juiPersistencia.save(juizes);
         }
-        if(torneios != null){
-            Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
-            torPersistencia.save(torneios);
+        if(torneioSuico != null){
+            System.out.println("Salvou os torneios");
+            System.out.println("Temos x torneios:" + torneioSuico.size());
+            Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
+            torPersistencia.save(torneioSuico);
         }
     }
 
@@ -85,6 +93,32 @@ public class GerenciaUsuarios {
             }
         }
     }
+    public Jogador procuraJogador(String nome) throws ExcessaoUsuarioNaoEncontrado{
+        for(Jogador j : jogadores){
+            if(j.getNome().equals(nome)){
+                return j;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    public Jogador procuraJogador(int id) throws ExcessaoUsuarioNaoEncontrado{
+        for(Jogador j : jogadores){
+            if(j.getID() == id){
+                return j;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    public Usuario procuraUsuario(int id) throws ExcessaoUsuarioNaoEncontrado{
+        for(Usuario u : usuarios){
+            if(u.getID() == id){
+                return u;
+            }
+        }
+        throw new ExcessaoUsuarioNaoEncontrado();
+    }
+    
+    
     public void remove(String nome, int tipo){
         int cont = -1;
         for (int i = 0; i < usuarios.size(); i++) {
@@ -151,14 +185,16 @@ public class GerenciaUsuarios {
     }
     
     
-    public void adicionaTorneio(Torneio t){
-        torneios.add(t);
+    public void adicionaTorneio(TorneioSuico t){
+        System.out.println("Adicionamos um torneio");
+        torneioSuico.add(t);
+        System.out.println(torneioSuico.size());
     }
     
     public List<Torneio> getTorneios(List<Integer> ids){
         List<Torneio> retorno = new ArrayList<>();
         for(int id : ids){
-            for(Torneio t : torneios){
+            for(TorneioSuico t : torneioSuico){
                 if(t.getId() == id){
                     retorno.add(t);
                 }
@@ -167,7 +203,20 @@ public class GerenciaUsuarios {
         return retorno;
     }
     
+    public List<Torneio> getAllTournaments(){
+        return torneios;
+    }
+    
     public List<Usuario> getUsers(){
         return usuarios;
+    }
+    
+    public Usuario getUsuario(){
+        return usuarioLogado;
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        
     }
 }

@@ -14,11 +14,13 @@ import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -46,6 +48,7 @@ public class JanelaJuizNew implements JanelaInterface{
         this.juiz = juiz;
         
         desenhaTela();
+        carregaTorneios();
         janela.pack();
     }
     
@@ -96,10 +99,31 @@ public class JanelaJuizNew implements JanelaInterface{
         painelPrincipal.add(painelTorneios, BorderLayout.CENTER);
         janela.add(painelPrincipal);
     }
+    
+    private void carregaTorneios(){
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        List<Torneio> torneiosAdicionar = GerenciaUsuarios.getSingleton().getTorneios(
+                GerenciaUsuarios.getSingleton().getUsuario().getTorneios());
+        
+        for(Torneio t : torneiosAdicionar){
+            model.addElement(t);
+        }
+    }
 
     @Override
     public void confirmar() {
+        int selectedIndex = torneiosEntrados.getSelectedIndex();
         
+        Torneio torneio;
+        if(selectedIndex == -1){
+            JOptionPane.showMessageDialog(janela, "Selecione um torneio.");
+            return;
+        }
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        torneio = model.get(selectedIndex);
+        JTorneioJuiz j = new JTorneioJuiz(torneio);
+        
+        janela.dispose();
     }
 
     @Override

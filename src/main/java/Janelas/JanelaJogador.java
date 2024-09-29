@@ -46,10 +46,14 @@ public class JanelaJogador implements JanelaInterface {
         janela.addWindowListener(new Listener());
 
         jogadorLogado = j;
+<<<<<<< HEAD
         Torneio t = new TorneioSuico("Nome do torneio", 5);
         t.adicionarParticipante(jogadorLogado);
         t.adicionarParticipante(jogadorLogado);
 
+=======
+        
+>>>>>>> origin/main
         desenhaTela();
         carregarTorneios();
     }
@@ -122,7 +126,6 @@ public class JanelaJogador implements JanelaInterface {
         janela.pack();
     }
 
-    //NOVO MÉTODO ACESSAR TORNEIO, MAS DE FORMA QUE NÃO TEMOS MTAS CLASSES EVENTOS
     @Override
     public void confirmar() {
         int selectedIndex = torneiosEntrados.getSelectedIndex();
