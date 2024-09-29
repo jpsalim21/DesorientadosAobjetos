@@ -1,9 +1,8 @@
 /*
- * João Pedro Miranda Salim
- * Mateus Lopes Felício
- * Thales Gomes Batista
+ * João Pedro Miranda Salim 202335033
+ * Mateus Lopes Felício 202365555C
+ * Thales Gomes Batista 202365557C
  */
-
 package Persistencias;
 import Usuarios.Jogador;
 
