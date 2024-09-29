@@ -12,7 +12,6 @@ import java.util.List;
 
 public class Torneio {
     protected final String nome;
-    private static int index = 0;
     private final int codigo;
     List<Juiz> juizes;
     List<JogadorParticipante> participantes;
@@ -23,7 +22,8 @@ public class Torneio {
         this.nome = nome;
         juizes = new ArrayList<>();
         participantes = new ArrayList<>();
-        codigo = index++;
+        GeradorID gerador = GeradorID.getSingleton();
+        codigo = gerador.generateTournamentID();
         GerenciaUsuarios.getSingleton().adicionaTorneio(this);
         
         

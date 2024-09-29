@@ -194,6 +194,10 @@ public class GerenciaUsuarios implements WindowListener{
         return retorno;
     }
     
+    public List<Torneio> getAllTournaments(){
+        return torneios;
+    }
+    
     public List<Usuario> getUsers(){
         return usuarios;
     }

@@ -29,7 +29,8 @@ public abstract class Usuario {
         padrao = Pattern.compile(senhaRegex);
         setSenha(senha);
         this.nome = nome;
-        ID = GeradorID.generateID();
+        GeradorID gerador = GeradorID.getSingleton();
+        ID = gerador.generatePlayerID();
     }
     
     public boolean validaSenha(String senha){
