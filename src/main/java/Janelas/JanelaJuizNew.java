@@ -113,6 +113,7 @@ public class JanelaJuizNew implements JanelaInterface{
     
     private void carregaTorneios(){
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        model.clear();
         List<Torneio> torneiosAdicionar = GerenciaUsuarios.getSingleton().getTorneios(
                 GerenciaUsuarios.getSingleton().getUsuario().getTorneios());
         
@@ -166,6 +167,7 @@ public class JanelaJuizNew implements JanelaInterface{
         torneio = model.get(selectedIndex);
         
         GerenciaUsuarios.getSingleton().removerTorneio((TorneioSuico)torneio);
+        carregaTorneios();
         janela.pack();
     }
 }
