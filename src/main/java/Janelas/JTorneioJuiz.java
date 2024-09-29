@@ -7,6 +7,7 @@ package Janelas;
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Anterior;
 import Eventos.Interface.Proximo;
+import Eventos.JTorneio.CalcularResultado;
 import Eventos.JTorneio.ConfirmarResultado;
 import Eventos.JTorneio.Emparceirar;
 import Excecao.ExceptionAcabou;
@@ -104,6 +105,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         btnEmparceirar.addActionListener(new Emparceirar(this));
         JButton btnClassificacao = new JButton("Calcular resultados");
         painelConfigConfronto.add(btnClassificacao);
+        btnClassificacao.addActionListener(new CalcularResultado(this));
         
         painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
         
@@ -186,7 +188,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     }
     
     public void calcularResultado(){
-        List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual);
+        List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual + 1);
         
         if(jogadores == null){
             return;

@@ -71,7 +71,12 @@ public abstract class Torneio {
     }  
     
     public List<JogadorParticipante> getClassInfo(int rodadaDesejada){
-        if(rodadaDesejada >= infoClassificacao.size()) return null;
+        if(rodadaDesejada >= infoClassificacao.size()){
+            calcularClassificacao();
+            if(rodadaDesejada >= infoClassificacao.size()){
+                return null;
+            }
+        }
         return infoClassificacao.get(rodadaDesejada);
     }
     public List<Confronto> getRodadaInfo(int rodadaDesejada){

@@ -45,6 +45,8 @@ public class JanelaClassificacao {
         
         jlJogadores = new JList<>(model);
         painelPrincipal.add(new JScrollPane(jlJogadores));
+        
+        tela.add(painelPrincipal);
     }
     private void carregarLista(List<JogadorParticipante> jogadores){
         DefaultListModel<JogadorParticipante> model = (DefaultListModel<JogadorParticipante>)jlJogadores.getModel();

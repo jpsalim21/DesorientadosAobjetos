@@ -49,5 +49,9 @@ public class JogadorParticipante implements Comparable<JogadorParticipante>{
     public int compareTo(JogadorParticipante o) {
         return Float.compare(o.getPontuacao(), pontuacao);
     }
+    @Override
+    public String toString(){
+        return getUsuario().getNome() + ": " + pontuacao + " pontos";
+    }
     
 }
