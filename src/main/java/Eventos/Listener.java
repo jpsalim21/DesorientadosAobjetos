@@ -13,7 +13,7 @@ public class Listener implements WindowListener{
     
     @Override
     public void windowOpened(WindowEvent e) {
-        GerenciaUsuarios.getSingleton().carregaUsuarios();
+        
     }
 
     @Override

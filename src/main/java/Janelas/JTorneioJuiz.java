@@ -10,6 +10,7 @@ import Eventos.Interface.Proximo;
 import Eventos.JTorneio.CalcularResultado;
 import Eventos.JTorneio.ConfirmarResultado;
 import Eventos.JTorneio.Emparceirar;
+import Eventos.Listener;
 import Excecao.ExceptionAcabou;
 import Excecao.ExceptionResultadoImutavel;
 import Excecao.NaoPodeEmparceirarException;
@@ -52,10 +53,11 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     public JTorneioJuiz(Torneio torneio){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        janela.addWindowListener(GerenciaUsuarios.getSingleton());
+        janela.setResizable(false);
+        janela.addWindowListener(new Listener());
         this.torneio = torneio;
         
         desenhaTela();
@@ -67,8 +69,8 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         DefaultListModel<Confronto> model = new DefaultListModel<>();
         
         JPanel painelPrincipal = new JPanel();
-        painelPrincipal.setLayout(new BorderLayout());
-        painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        //painelPrincipal.setLayout(new BorderLayout());
+        //painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         
         JPanel painelEmparceiramento = new JPanel();
         painelEmparceiramento.setBorder(BorderFactory.createTitledBorder("Emparceiramento"));
@@ -107,7 +109,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         painelConfigConfronto.add(btnClassificacao);
         btnClassificacao.addActionListener(new CalcularResultado(this));
         
-        painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
+        //painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
         
         painelPrincipal.add(painelEmparceiramento);
         painelPrincipal.add(painelConfigConfronto, BorderLayout.EAST);
@@ -158,7 +160,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
             JOptionPane.showMessageDialog(janela, "Não existe rodada anterior a essa");
             return;
         }
-        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual));
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual + 1));
         carregarRodada();
     }
 
@@ -170,7 +172,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
             JOptionPane.showMessageDialog(janela, "Ainda não existe próxima rodada");
             return;
         }
-        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual));
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual + 1));
         carregarRodada();
     }
     
@@ -188,6 +190,8 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     }
     
     public void calcularResultado(){
+        System.out.println("Pegando resultado da rodada " + rodadaAtual);
+        
         List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual + 1);
         
         if(jogadores == null){

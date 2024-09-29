@@ -28,7 +28,7 @@ public class TorneioSuico extends Torneio{
     }
     @Override
     public void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou{
-        if(!calcularClassificacao()){
+        if(rodadaAtual >= infoClassificacao.size()){
             throw new NaoPodeEmparceirarException();
         }
         if(rodadaAtual >= maxRodadas){

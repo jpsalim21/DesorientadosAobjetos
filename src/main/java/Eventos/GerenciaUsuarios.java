@@ -24,7 +24,6 @@ public class GerenciaUsuarios {
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
     private List<Usuario> usuarios;
-    //private List<Torneio> torneios;
     private List<TorneioSuico> torneioSuico;
     
     private Usuario usuarioLogado;
@@ -39,11 +38,10 @@ public class GerenciaUsuarios {
         return singleton;
     }
     
-<<<<<<< HEAD
     public void carregaUsuarios(){
-=======
+
     public void abriuPrograma(){
->>>>>>> origin/main
+
         Persistencia<Jogador> jogPersistencia = new JogadorPersistencia();
         Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
         Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
@@ -65,8 +63,8 @@ public class GerenciaUsuarios {
             juiPersistencia.save(juizes);
         }
         if(torneioSuico != null){
-            System.out.println("Salvou os torneios");
-            System.out.println("Temos x torneios:" + torneioSuico.size());
+            System.out.println("Torneios é diferente de null");
+            System.out.println(torneioSuico.size());
             Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
             torPersistencia.save(torneioSuico);
         }
@@ -117,7 +115,29 @@ public class GerenciaUsuarios {
         }
         throw new ExcessaoUsuarioNaoEncontrado();
     }
-    
+    public void remove(int id){
+        Usuario usuarioRemover = null;
+        for(Usuario u : usuarios){
+            if(u.getID() == id){
+                usuarioRemover = u;
+            }
+        }
+        if(usuarioRemover == null){
+            System.out.println("Usuário não encontrado");
+            return;
+        }
+        switch(usuarioRemover.getTipoUsuario()){
+            case JOGADOR -> {
+                jogadores.remove((Jogador)usuarioRemover);
+            }
+            case JUIZ -> {
+                juizes.remove((Juiz)usuarioRemover);
+            }
+        }
+        usuarios.remove(usuarioRemover);
+        usuarioRemover.remover();
+        chamaPersistencia();
+    }
     
     public void remove(String nome, int tipo){
         int cont = -1;
@@ -155,6 +175,7 @@ public class GerenciaUsuarios {
             }
             default -> System.out.println("Tipo de usuário desconhecido.");
         }
+        chamaPersistencia();
     }
 
     public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
@@ -184,11 +205,22 @@ public class GerenciaUsuarios {
         }
     }
     
-    
     public void adicionaTorneio(TorneioSuico t){
-        System.out.println("Adicionamos um torneio");
         torneioSuico.add(t);
-        System.out.println(torneioSuico.size());
+    }
+    
+    public void removerTorneio(TorneioSuico t){
+        torneioSuico.remove(t);
+        t.remover();
+    }
+    
+    public TorneioSuico getTorneioByID(int id){
+        for(TorneioSuico t : torneioSuico){
+            if(t.getId() == id){
+                return t;
+            }
+        }
+        return null;
     }
     
     public List<Torneio> getTorneios(List<Integer> ids){
@@ -203,8 +235,8 @@ public class GerenciaUsuarios {
         return retorno;
     }
     
-    public List<Torneio> getAllTournaments(){
-        return torneios;
+    public List<TorneioSuico> getAllTournaments(){
+        return torneioSuico;
     }
     
     public List<Usuario> getUsers(){
@@ -213,10 +245,5 @@ public class GerenciaUsuarios {
     
     public Usuario getUsuario(){
         return usuarioLogado;
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-        
     }
 }

@@ -1,15 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Janelas;
 
 import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.JanelaJuiz.CriarTorneio;
+import Eventos.JanelaJuiz.ExcluiJuiz;
+import Eventos.JanelaJuiz.ExcluirTorneio;
 import Eventos.Listener;
 import Torneios.Torneio;
+import Torneios.TorneioSuico;
 import Usuarios.Juiz;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -83,12 +82,20 @@ public class JanelaJuizNew implements JanelaInterface{
         JButton btnCriar = new JButton("Criar Torneio");
         btnCriar.addActionListener(new CriarTorneio(this));
         
+        JButton btnExcluirConta = new JButton("Excluir conta");
+        btnExcluirConta.addActionListener(new ExcluiJuiz(this));
+        
+        JButton btnExcluirTorneio = new JButton("Excluir torneio");
+        btnExcluirTorneio.addActionListener(new ExcluirTorneio(this));
+        
         JButton btnDeslogar = new JButton("Deslogar da Conta");
         btnDeslogar.addActionListener(new Retornar(this));
         
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnCriar);
+        botoesPainelTorneios.add(btnExcluirTorneio);
         botoesPainelTorneios.add(btnDeslogar);
+        botoesPainelTorneios.add(btnExcluirConta);
         
         painelTorneios.add(torneiosList, BorderLayout.NORTH);
         painelTorneios.add(botoesPainelTorneios, BorderLayout.SOUTH);
@@ -102,6 +109,7 @@ public class JanelaJuizNew implements JanelaInterface{
     
     private void carregaTorneios(){
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        model.clear();
         List<Torneio> torneiosAdicionar = GerenciaUsuarios.getSingleton().getTorneios(
                 GerenciaUsuarios.getSingleton().getUsuario().getTorneios());
         
@@ -122,15 +130,40 @@ public class JanelaJuizNew implements JanelaInterface{
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
         torneio = model.get(selectedIndex);
         JTorneioJuiz j = new JTorneioJuiz(torneio);
-        
-        janela.dispose();
     }
 
     @Override
     public void retornar() {
-        
+        Janela2 janelas = new Janela2();
+        janelas.desenha();
+        janela.dispose();
     }
     public void criarTorneio(){
         JCriacaoTorneio janelaNova = new JCriacaoTorneio();
+        janela.dispose();
+    }
+    public void excluirConta() {
+        int response = JOptionPane.showConfirmDialog(janela, "Você deseja continuar?", "Excluir conta", JOptionPane.YES_NO_OPTION);
+
+        if (response == JOptionPane.YES_OPTION) {
+            GerenciaUsuarios.getSingleton().remove(juiz.getID());
+            janela.dispose();
+        }
+    }
+    
+    public void excluirTorneio(){
+        int selectedIndex = torneiosEntrados.getSelectedIndex();
+        
+        Torneio torneio;
+        if(selectedIndex == -1){
+            JOptionPane.showMessageDialog(janela, "Selecione um torneio.");
+            return;
+        }
+        DefaultListModel<Torneio> model = (DefaultListModel<Torneio>)torneiosEntrados.getModel();
+        torneio = model.get(selectedIndex);
+        
+        GerenciaUsuarios.getSingleton().removerTorneio((TorneioSuico)torneio);
+        carregaTorneios();
+        janela.pack();
     }
 }

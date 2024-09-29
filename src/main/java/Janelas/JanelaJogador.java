@@ -11,7 +11,6 @@ import Eventos.Interface.Retornar;
 import Eventos.JanelaJogador.ExcluiJogador;
 import Eventos.Listener;
 import Torneios.Torneio;
-import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -46,14 +45,10 @@ public class JanelaJogador implements JanelaInterface {
         janela.addWindowListener(new Listener());
 
         jogadorLogado = j;
-<<<<<<< HEAD
         Torneio t = new TorneioSuico("Nome do torneio", 5);
         t.adicionarParticipante(jogadorLogado);
         t.adicionarParticipante(jogadorLogado);
 
-=======
-        
->>>>>>> origin/main
         desenhaTela();
         carregarTorneios();
     }
@@ -138,8 +133,6 @@ public class JanelaJogador implements JanelaInterface {
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>) torneiosEntrados.getModel();
         torneio = model.get(selectedIndex);
         JTorneio janelaTorneio = new JTorneio(torneio);
-
-        janela.dispose();
     }
 
     @Override
@@ -153,9 +146,8 @@ public class JanelaJogador implements JanelaInterface {
         int response = JOptionPane.showConfirmDialog(janela, "Você deseja continuar?", "Excluir conta", JOptionPane.YES_NO_OPTION);
 
         if (response == JOptionPane.YES_OPTION) {
-            GerenciaUsuarios.getSingleton().remove(jogadorLogado.getNome(), 0);
+            GerenciaUsuarios.getSingleton().remove(jogadorLogado.getID());
             janela.dispose();
-
         }
     }
 }

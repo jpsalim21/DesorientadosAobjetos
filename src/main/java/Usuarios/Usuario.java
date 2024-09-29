@@ -4,6 +4,7 @@
  * Thales Gomes Batista
  */
 package Usuarios;
+import Eventos.GerenciaUsuarios;
 import java.util.*;
 import java.util.regex.Pattern;
 import Excecao.*;
@@ -50,6 +51,10 @@ public abstract class Usuario {
         this.torneio.add(indiceTorneio);
     }
     
+    public void removerTorneio(int indiceTorneio){
+        this.torneio.remove(torneio.indexOf(indiceTorneio));
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -92,5 +97,9 @@ public abstract class Usuario {
     public String toString(){
         return nome;
     }
-    
+    public void remover(){
+        for(int i : torneio){
+            GerenciaUsuarios.getSingleton().getTorneioByID(i).removerParticipante(ID);
+        }
+    }
 }
