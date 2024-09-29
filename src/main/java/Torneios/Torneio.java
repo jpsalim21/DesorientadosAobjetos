@@ -9,8 +9,9 @@ import Eventos.GerenciaUsuarios;
 import Usuarios.*;
 import java.util.ArrayList;
 import java.util.List;
+import Excecao.NaoPodeEmparceirarException;
 
-public class Torneio {
+public abstract class Torneio {
     protected final String nome;
     private static int index = 0;
     private final int codigo;
@@ -18,6 +19,7 @@ public class Torneio {
     List<JogadorParticipante> participantes;
     protected List<List<JogadorParticipante>> infoClassificacao;
     protected List<List<Confronto>> infoRodadas;
+    protected int maxRodadas = 0;
     
     public Torneio(String nome, Juiz juiz){
         this.nome = nome;
@@ -40,8 +42,13 @@ public class Torneio {
             System.out.println("Adicionei " + j.getNome());
             adicionarParticipante(j);
         }
+        calcularClassificacaoInicial();
     }
-
+    
+    public abstract void emparceirar() throws NaoPodeEmparceirarException;
+    
+    protected abstract void calcularClassificacaoInicial();
+    
     @Override
     public String toString(){
         return "Torneio: " + nome;
@@ -64,5 +71,9 @@ public class Torneio {
             return null;
         }
         return infoRodadas.get(indexRodada);
+    }
+    
+    public int getMaxRodadas(){
+        return maxRodadas;
     }
 }

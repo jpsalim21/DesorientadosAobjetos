@@ -5,13 +5,19 @@
 package Janelas;
 
 import Eventos.GerenciaUsuarios;
+import Eventos.Interface.Anterior;
+import Eventos.Interface.Proximo;
 import Eventos.JTorneio.ConfirmarResultado;
+import Eventos.JTorneio.Emparceirar;
+import Excecao.NaoPodeEmparceirarException;
 import Torneios.Confronto;
 import Torneios.Torneio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -28,7 +34,7 @@ import javax.swing.JScrollPane;
  *
  * @author PC12643
  */
-public class JTorneioJuiz {
+public class JTorneioJuiz implements InterfaceAnteriorProx{
     private final JFrame janela;
     protected final int WIDTH = 1920;
     protected final int HEIGHT = 1080;
@@ -69,12 +75,15 @@ public class JTorneioJuiz {
         
         JPanel painelBotoesEmparceiramento = new JPanel();
         painelBotoesEmparceiramento.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
-        JButton botaoVoltar = new JButton("Anterior");
+        JButton botaoAnterior = new JButton("Anterior");
         rodadaLabel = new JLabel("Rodada 1");
         JButton botaoProx = new JButton("Próximo");
-        painelBotoesEmparceiramento.add(botaoVoltar);
+        painelBotoesEmparceiramento.add(botaoAnterior);
         painelBotoesEmparceiramento.add(rodadaLabel);
         painelBotoesEmparceiramento.add(botaoProx);
+        
+        botaoAnterior.addActionListener(new Anterior(this));
+        botaoProx.addActionListener(new Proximo(this));
         
         confrontosAtuais = new JList<>(model);
         painelEmparceiramento.add(new JScrollPane(confrontosAtuais));
@@ -90,6 +99,11 @@ public class JTorneioJuiz {
         JButton btnConfirmar = new JButton("Confirmar");
         btnConfirmar.addActionListener(new ConfirmarResultado(this));
         painelConfigConfronto.add(btnConfirmar);
+        JButton btnEmparceirar = new JButton("Emparceirar proxima rodada");
+        painelConfigConfronto.add(btnEmparceirar);
+        btnEmparceirar.addActionListener(new Emparceirar(this));
+        
+        painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
         
         painelPrincipal.add(painelEmparceiramento);
         painelPrincipal.add(painelConfigConfronto, BorderLayout.EAST);
@@ -99,6 +113,7 @@ public class JTorneioJuiz {
     
     private void carregarRodada(){
         DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)confrontosAtuais.getModel();
+        model.clear();
         List<Confronto> confrontos;
         confrontos = torneio.getInfoRodada(rodadaAtual);
         
@@ -124,5 +139,39 @@ public class JTorneioJuiz {
         
         confronto.setResultado(indexResultado);
         janela.pack();
+    }
+
+    @Override
+    public void anterior() {
+        rodadaAtual -= 1;
+        if(rodadaAtual < 0){
+            rodadaAtual = 0;
+            JOptionPane.showMessageDialog(janela, "Não existe rodada anterior a essa");
+            return;
+        }
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual));
+        carregarRodada();
+    }
+
+    @Override
+    public void proximo() {
+        rodadaAtual += 1;
+        if(rodadaAtual >= torneio.getMaxRodadas()){
+            rodadaAtual = torneio.getMaxRodadas() - 1;
+            JOptionPane.showMessageDialog(janela, "Ainda não existe próxima rodada");
+            return;
+        }
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual));
+        carregarRodada();
+    }
+    
+    public void emparceirar(){
+        try {
+            torneio.emparceirar();
+        } catch (NaoPodeEmparceirarException ex) {
+            JOptionPane.showMessageDialog(janela, "Não é possível fazer emparceiramento. Verifique se cada confronto tem resultado");
+            return;
+        }
+        proximo();
     }
 }

@@ -130,7 +130,6 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
         }
         TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, (Juiz)GerenciaUsuarios.getSingleton().getUsuario(), rodadas);
         novoTorneio.adicionarListaParticipantes(jogadoresAdicionados);
-        novoTorneio.calcularClassificacaoInicial();
         
         retornar();
     }

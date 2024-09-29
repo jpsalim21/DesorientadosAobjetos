@@ -1,1 +1,1967 @@
-[{"rodadaAtual":1,"nome":"Bomba patch","codigo":0,"juiz":{"nome":"Salim","senha":"Senha123!","ID":0,"torneio":[0],"tipo":"JUIZ"},"participantes":[{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Tupi","senha":"Senha123!","ID":6,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Atletico","senha":"Senha123!","ID":2,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Cruzeiro","senha":"Senha123!","ID":3,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Gremio","senha":"Senha123!","ID":8,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false}],"infoClassificacao":[[{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Tupi","senha":"Senha123!","ID":6,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Atletico","senha":"Senha123!","ID":2,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Cruzeiro","senha":"Senha123!","ID":3,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Gremio","senha":"Senha123!","ID":8,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false}]],"infoRodadas":[[{"jogador1":{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Tupi","senha":"Senha123!","ID":6,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},"jogador2":{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Cruzeiro","senha":"Senha123!","ID":3,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},"terminouConfronto":true,"resultado":0,"resultadoString":" 1x0 "},{"jogador1":{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Atletico","senha":"Senha123!","ID":2,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},"jogador2":{"usuario":{"derrotas":0,"empates":0,"vitorias":0,"nome":"Gremio","senha":"Senha123!","ID":8,"torneio":[0],"tipo":"JOGADOR"},"pontuacao":0.0,"bye":false},"terminouConfronto":true,"resultado":1,"resultadoString":" 1/2x1/2 "}]]}]
+[
+    {
+        "rodadaAtual": 2,
+        "nome": "Bomba patch",
+        "codigo": 0,
+        "juiz": {
+            "nome": "Salim",
+            "senha": "Senha123!",
+            "ID": 0,
+            "torneio": [
+                0,
+                0
+            ],
+            "tipo": "JUIZ"
+        },
+        "participantes": [
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Gremio",
+                    "senha": "Senha123!",
+                    "ID": 8,
+                    "torneio": [
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Tupi",
+                    "senha": "Senha123!",
+                    "ID": 6,
+                    "torneio": [
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Cruzeiro",
+                    "senha": "Senha123!",
+                    "ID": 3,
+                    "torneio": [
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Atletico",
+                    "senha": "Senha123!",
+                    "ID": 2,
+                    "torneio": [
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 0.0,
+                "bye": false
+            }
+        ],
+        "infoClassificacao": [
+            [
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                }
+            ],
+            [
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                }
+            ]
+        ],
+        "infoRodadas": [
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 1,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 1,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 1,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 0,
+                    "resultadoString": " 1x0 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 1,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 1,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": false
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 1,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                }
+            ],
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x "
+                }
+            ]
+        ],
+        "maxRodadas": 5
+    },
+    {
+        "rodadaAtual": 5,
+        "nome": "Bomba patch 2",
+        "codigo": 0,
+        "juiz": {
+            "nome": "Salim",
+            "senha": "Senha123!",
+            "ID": 0,
+            "torneio": [
+                0,
+                0
+            ],
+            "tipo": "JUIZ"
+        },
+        "participantes": [
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 3,
+                    "nome": "Tupi",
+                    "senha": "Senha123!",
+                    "ID": 6,
+                    "torneio": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 4.0,
+                "bye": true
+            },
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 3,
+                    "nome": "Atletico",
+                    "senha": "Senha123!",
+                    "ID": 2,
+                    "torneio": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 4.0,
+                "bye": true
+            },
+            {
+                "usuario": {
+                    "derrotas": 4,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Cruzeiro",
+                    "senha": "Senha123!",
+                    "ID": 3,
+                    "torneio": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": {
+                    "derrotas": 4,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Gremio",
+                    "senha": "Senha123!",
+                    "ID": 8,
+                    "torneio": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 0.0,
+                "bye": false
+            },
+            {
+                "usuario": {
+                    "derrotas": 4,
+                    "empates": 0,
+                    "vitorias": 0,
+                    "nome": "Sao Paulo",
+                    "senha": "Senha123!",
+                    "ID": 9,
+                    "torneio": [
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 1.0,
+                "bye": true
+            },
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 3,
+                    "nome": "Flamengo",
+                    "senha": "Senha123!",
+                    "ID": 4,
+                    "torneio": [
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 4.0,
+                "bye": true
+            },
+            {
+                "usuario": {
+                    "derrotas": 0,
+                    "empates": 0,
+                    "vitorias": 3,
+                    "nome": "Fluminense",
+                    "senha": "Senha123!",
+                    "ID": 5,
+                    "torneio": [
+                        0
+                    ],
+                    "tipo": "JOGADOR"
+                },
+                "pontuacao": 4.0,
+                "bye": true
+            }
+        ],
+        "infoClassificacao": [
+            [
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Sao Paulo",
+                        "senha": "Senha123!",
+                        "ID": 9,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 1.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Flamengo",
+                        "senha": "Senha123!",
+                        "ID": 4,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                }
+            ],
+            [
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Sao Paulo",
+                        "senha": "Senha123!",
+                        "ID": 9,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 1.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Flamengo",
+                        "senha": "Senha123!",
+                        "ID": 4,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Fluminense",
+                        "senha": "Senha123!",
+                        "ID": 5,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                }
+            ],
+            [
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Sao Paulo",
+                        "senha": "Senha123!",
+                        "ID": 9,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 1.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Flamengo",
+                        "senha": "Senha123!",
+                        "ID": 4,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Fluminense",
+                        "senha": "Senha123!",
+                        "ID": 5,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                }
+            ],
+            [
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Sao Paulo",
+                        "senha": "Senha123!",
+                        "ID": 9,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 1.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Flamengo",
+                        "senha": "Senha123!",
+                        "ID": 4,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Fluminense",
+                        "senha": "Senha123!",
+                        "ID": 5,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                }
+            ],
+            [
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Cruzeiro",
+                        "senha": "Senha123!",
+                        "ID": 3,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Gremio",
+                        "senha": "Senha123!",
+                        "ID": 8,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 0.0,
+                    "bye": false
+                },
+                {
+                    "usuario": {
+                        "derrotas": 4,
+                        "empates": 0,
+                        "vitorias": 0,
+                        "nome": "Sao Paulo",
+                        "senha": "Senha123!",
+                        "ID": 9,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 1.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Tupi",
+                        "senha": "Senha123!",
+                        "ID": 6,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Atletico",
+                        "senha": "Senha123!",
+                        "ID": 2,
+                        "torneio": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Flamengo",
+                        "senha": "Senha123!",
+                        "ID": 4,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                },
+                {
+                    "usuario": {
+                        "derrotas": 0,
+                        "empates": 0,
+                        "vitorias": 3,
+                        "nome": "Fluminense",
+                        "senha": "Senha123!",
+                        "ID": 5,
+                        "torneio": [
+                            0
+                        ],
+                        "tipo": "JOGADOR"
+                    },
+                    "pontuacao": 4.0,
+                    "bye": true
+                }
+            ]
+        ],
+        "infoRodadas": [
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 0,
+                    "resultadoString": " 1x0 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Sao Paulo",
+                            "senha": "Senha123!",
+                            "ID": 9,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 0,
+                    "resultadoString": " 1x0 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                }
+            ],
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Sao Paulo",
+                            "senha": "Senha123!",
+                            "ID": 9,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": true
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                }
+            ],
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Sao Paulo",
+                            "senha": "Senha123!",
+                            "ID": 9,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": true
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                }
+            ],
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Sao Paulo",
+                            "senha": "Senha123!",
+                            "ID": 9,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 1.0,
+                        "bye": true
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "vencedor": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": true,
+                    "resultado": 2,
+                    "resultadoString": " 0x1 "
+                }
+            ],
+            [
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Cruzeiro",
+                            "senha": "Senha123!",
+                            "ID": 3,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Atletico",
+                            "senha": "Senha123!",
+                            "ID": 2,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 4,
+                            "empates": 0,
+                            "vitorias": 0,
+                            "nome": "Gremio",
+                            "senha": "Senha123!",
+                            "ID": 8,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 0.0,
+                        "bye": false
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Flamengo",
+                            "senha": "Senha123!",
+                            "ID": 4,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x "
+                },
+                {
+                    "jogador1": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Tupi",
+                            "senha": "Senha123!",
+                            "ID": 6,
+                            "torneio": [
+                                0,
+                                0,
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "jogador2": {
+                        "usuario": {
+                            "derrotas": 0,
+                            "empates": 0,
+                            "vitorias": 3,
+                            "nome": "Fluminense",
+                            "senha": "Senha123!",
+                            "ID": 5,
+                            "torneio": [
+                                0
+                            ],
+                            "tipo": "JOGADOR"
+                        },
+                        "pontuacao": 4.0,
+                        "bye": true
+                    },
+                    "terminouConfronto": false,
+                    "resultado": 0,
+                    "resultadoString": " x "
+                }
+            ]
+        ],
+        "maxRodadas": 5
+    }
+]
