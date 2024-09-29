@@ -3,13 +3,13 @@
  * Mateus Lopes Felício 202365555C
  * Thales Gomes Batista 202365557C
  */
-package Eventos;
+package Singleton;
 
 import Excecao.ExcecaoDeSenha;
 import Excecao.ExcecaoUsuarioJaExistente;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Janelas.JanelaJogador;
-import Janelas.JanelaJuizNew;
+import Janelas.JanelaJuiz;
 import Usuarios.*;
 import Persistencias.*;
 import Torneios.Torneio;
@@ -197,8 +197,9 @@ public class GerenciaUsuarios {
                 JanelaJogador janelaJogador = new JanelaJogador((Jogador)usuarioLogado);
             }
             case JUIZ -> {
-                JanelaJuizNew janelaJuiz = new JanelaJuizNew((Juiz)usuarioLogado);
+                JanelaJuiz janelaJuiz = new JanelaJuiz((Juiz)usuarioLogado);
             }
+
         }
     }
     

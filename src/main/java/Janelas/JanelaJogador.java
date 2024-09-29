@@ -5,7 +5,7 @@
  */
 package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.JanelaJogador.ExcluiJogador;
@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JanelaJogador implements JanelaInterface {
+public class JanelaJogador implements InterfaceJanela {
 
     private final JFrame janela;
     protected final int WIDTH = 1920;
@@ -128,12 +128,12 @@ public class JanelaJogador implements JanelaInterface {
         }
         DefaultListModel<Torneio> model = (DefaultListModel<Torneio>) torneiosEntrados.getModel();
         torneio = model.get(selectedIndex);
-        JTorneio janelaTorneio = new JTorneio(torneio);
+        JTorneioJogador janelaTorneio = new JTorneioJogador(torneio);
     }
 
     @Override
     public void retornar() {
-        Janela2 janelas = new Janela2();
+        JanelaInicial janelas = new JanelaInicial();
         janelas.desenha();
         janela.dispose();
     }

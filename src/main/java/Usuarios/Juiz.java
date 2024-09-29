@@ -5,7 +5,7 @@
  */
 package Usuarios;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Excecao.*;
 
 public class Juiz extends Usuario {

@@ -5,7 +5,7 @@
  */
 package Torneios;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Usuarios.Jogador;
 

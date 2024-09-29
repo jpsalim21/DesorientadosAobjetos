@@ -5,6 +5,7 @@
  */
 package Janelas;
 
+import Singleton.GerenciaUsuarios;
 import Eventos.Janela2.ExcluiUsuario;
 import Eventos.Janela2.AdicionaUsuario;
 import Eventos.*;
@@ -14,7 +15,7 @@ import Usuarios.*;
 import java.awt.*;
 import javax.swing.*;
 
-public class Janela2 implements JanelaInterface {
+public class JanelaInicial implements InterfaceJanela {
     
     private JFrame tela;
     private final int WIDTH = 1000;

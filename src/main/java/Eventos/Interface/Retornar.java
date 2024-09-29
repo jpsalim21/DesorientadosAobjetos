@@ -5,13 +5,13 @@
  */
 package Eventos.Interface;
 
-import Janelas.JanelaInterface;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Janelas.InterfaceJanela;
 
 public class Retornar implements ActionListener{
-    private final JanelaInterface janela;
-    public Retornar(JanelaInterface janela){
+    private final InterfaceJanela janela;
+    public Retornar(InterfaceJanela janela){
         this.janela = janela;
     }
     @Override

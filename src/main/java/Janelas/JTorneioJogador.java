@@ -5,7 +5,7 @@
  */
 package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.Anterior;
 import Eventos.Interface.Proximo;
 import Torneios.Confronto;
@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JTorneio implements InterfaceAnteriorProx{
+public class JTorneioJogador implements InterfaceAnteriorProx{
     private final JFrame janela;
     private String tipoT;
     private final int WIDTH = 1920;
@@ -45,7 +45,7 @@ public class JTorneio implements InterfaceAnteriorProx{
     private JLabel rodadaLabel;
     
     
-    public JTorneio(Torneio torneio){
+    public JTorneioJogador(Torneio torneio){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

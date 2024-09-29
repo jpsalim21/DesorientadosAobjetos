@@ -5,7 +5,7 @@
  */
  package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.JanelaJuiz.CriarTorneio;
@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-public class JanelaJuizNew implements JanelaInterface{
+public class JanelaJuiz implements InterfaceJanela{
     private final JFrame janela;
     protected final int WIDTH = 1920;
     protected final int HEIGHT = 1080;
@@ -37,7 +37,7 @@ public class JanelaJuizNew implements JanelaInterface{
     protected final Juiz juiz;
     protected JList<Torneio> torneiosEntrados;
     
-    public JanelaJuizNew(Juiz juiz){
+    public JanelaJuiz(Juiz juiz){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,7 +135,7 @@ public class JanelaJuizNew implements JanelaInterface{
 
     @Override
     public void retornar() {
-        Janela2 janelas = new Janela2();
+        JanelaInicial janelas = new JanelaInicial();
         janelas.desenha();
         janela.dispose();
     }

@@ -5,7 +5,7 @@
  */
 package Janelas;
 
-public interface JanelaInterface {
+public interface InterfaceJanela {
     public abstract void confirmar();
     public abstract void retornar();
     

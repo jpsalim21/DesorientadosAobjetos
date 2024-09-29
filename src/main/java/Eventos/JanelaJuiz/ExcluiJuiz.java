@@ -5,13 +5,13 @@
  */
 package Eventos.JanelaJuiz;
 
-import Janelas.JanelaJuizNew;
+import Janelas.JanelaJuiz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExcluiJuiz implements ActionListener{
-    private JanelaJuizNew j;
-    public ExcluiJuiz(JanelaJuizNew j){
+    private JanelaJuiz j;
+    public ExcluiJuiz(JanelaJuiz j){
         this.j = j;
     }
     @Override

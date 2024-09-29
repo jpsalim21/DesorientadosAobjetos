@@ -10,9 +10,9 @@ import Janelas.*;
 import java.awt.event.ActionEvent;
 
 public class AdicionaUsuario implements ActionListener{
-    private final Janela2 tela;
+    private final JanelaInicial tela;
     
-    public AdicionaUsuario(Janela2 tela){
+    public AdicionaUsuario(JanelaInicial tela){
         this.tela = tela;
     }
     

@@ -5,7 +5,7 @@
  */
 package Torneios;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Excecao.ExceptionAcabou;
 import Usuarios.Juiz;
 import java.util.ArrayList;

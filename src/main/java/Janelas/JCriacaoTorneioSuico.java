@@ -5,7 +5,7 @@
  */
 package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.AdicionaJogador;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.RemoveJogador;
@@ -31,7 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 
-public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTorneio{
+public class JCriacaoTorneioSuico implements InterfaceJanela, InterfaceCriacaoTorneio{
     private final JFrame janela;
     private final int WIDTH = 1000;
     private final int HEIGHT = 400;

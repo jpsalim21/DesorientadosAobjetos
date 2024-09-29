@@ -5,7 +5,7 @@
  */
 package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.Anterior;
 import Eventos.Interface.Proximo;
 import Eventos.JTorneio.CalcularResultado;
