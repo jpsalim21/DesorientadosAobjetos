@@ -60,8 +60,6 @@ public class GerenciaUsuarios {
             juiPersistencia.save(juizes);
         }
         if(torneioSuico != null){
-            System.out.println("Torneios é diferente de null");
-            System.out.println(torneioSuico.size());
             Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
             torPersistencia.save(torneioSuico);
         }
@@ -72,14 +70,12 @@ public class GerenciaUsuarios {
         Jogador newJogador = new Jogador(nome, senha);
         jogadores.add(newJogador);
         usuarios.add(newJogador);
-        System.out.println("Adicionou novo jogador");
     }
     public void adicionaJuiz(String nome, String senha) throws ExcecaoUsuarioJaExistente,ExcecaoDeSenha{
         procuraNomeIgual(nome);
         Juiz newJuiz = new Juiz(nome, senha);
         juizes.add(newJuiz);
         usuarios.add(newJuiz);
-        System.out.println("Adicionou novo juiz");
     }
     private void procuraNomeIgual(String nome) throws ExcecaoUsuarioJaExistente{
         for(Usuario u : usuarios){
@@ -120,7 +116,6 @@ public class GerenciaUsuarios {
             }
         }
         if(usuarioRemover == null){
-            System.out.println("Usuário não encontrado");
             return;
         }
         switch(usuarioRemover.getTipoUsuario()){
@@ -146,7 +141,6 @@ public class GerenciaUsuarios {
         }
     
         if (cont == -1) {
-            System.out.println("Usuário não encontrado.");
             return;
         }
     
@@ -156,21 +150,15 @@ public class GerenciaUsuarios {
                 if (usuario instanceof Jogador j) {
                     jogadores.remove(j);
                     usuarios.remove(usuario);
-                    System.out.println("Jogador removido.");
-                } else {
-                    System.out.println("Usuário não é um jogador.");
                 }
             }
             case 1 -> {
                 if (usuario instanceof Juiz j) {
                     juizes.remove(j);
                     usuarios.remove(usuario);
-                    System.out.println("Juiz removido.");
-                } else {
-                    System.out.println("Usuário não é um juiz.");
+                   
                 }
             }
-            default -> System.out.println("Tipo de usuário desconhecido.");
         }
         chamaPersistencia();
     }

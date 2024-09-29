@@ -151,7 +151,6 @@ public class Janela2 implements JanelaInterface {
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
         } catch(ExcessaoUsuarioNaoEncontrado e){
-            System.out.println("Deu esse erro aqui");
             JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
             return;
         }

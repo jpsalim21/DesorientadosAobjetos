@@ -99,7 +99,6 @@ public class TorneioSuico extends Torneio{
         infoClassificacao.add(classificacao);
         
         List<Confronto> infoRodadaAtual = new ArrayList<>();
-        System.out.println("Peguei classificacao pré rodada " + rodadaAtual);
         int tamanho = classificacao.size();
         
         //Resolve BYE do último jogador

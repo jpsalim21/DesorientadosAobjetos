@@ -29,7 +29,7 @@ public class JCriacaoTorneio implements JanelaInterface{
     private final int V_GAP = 10;
     private final int H_GAP = 5;
     
-    String[] torneios = {"Suíço","Mata-mata"};
+    String[] torneios = {"Suíço"};
     JComboBox tipoTorneio = new JComboBox(torneios);
     
     public JCriacaoTorneio(){

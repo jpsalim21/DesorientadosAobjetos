@@ -66,9 +66,6 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         DefaultListModel<Confronto> model = new DefaultListModel<>();
         
         JPanel painelPrincipal = new JPanel();
-        //painelPrincipal.setLayout(new BorderLayout());
-        //painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        
         JPanel painelEmparceiramento = new JPanel();
         painelEmparceiramento.setBorder(BorderFactory.createTitledBorder("Emparceiramento"));
         painelEmparceiramento.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
@@ -105,9 +102,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         JButton btnClassificacao = new JButton("Calcular resultados");
         painelConfigConfronto.add(btnClassificacao);
         btnClassificacao.addActionListener(new CalcularResultado(this));
-        
-        //painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
-        
+
         painelPrincipal.add(painelEmparceiramento);
         painelPrincipal.add(painelConfigConfronto, BorderLayout.EAST);
         janela.add(painelPrincipal);
@@ -187,7 +182,6 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     }
     
     public void calcularResultado(){
-        System.out.println("Pegando resultado da rodada " + rodadaAtual);
         
         List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual + 1);
         
