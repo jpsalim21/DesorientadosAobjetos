@@ -123,5 +123,6 @@ public class JTorneioJuiz {
         int indexResultado = resultadoConfronto.getSelectedIndex();
         
         confronto.setResultado(indexResultado);
+        janela.pack();
     }
 }
