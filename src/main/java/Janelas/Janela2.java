@@ -32,7 +32,7 @@ public class Janela2 implements JanelaInterface {
         tela = new JFrame("Sistema de Torneios");
         tela.addWindowListener(new Listener());
         
-        GerenciaUsuarios.getSingleton().abriuPrograma();
+        GerenciaUsuarios.getSingleton().carregaUsuarios();
                 
         tela.setSize(WIDTH, HEIGHT);
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

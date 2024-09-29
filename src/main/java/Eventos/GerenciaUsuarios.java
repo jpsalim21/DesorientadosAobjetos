@@ -24,7 +24,6 @@ public class GerenciaUsuarios {
     private List<Jogador> jogadores;
     private List<Juiz> juizes;
     private List<Usuario> usuarios;
-    //private List<Torneio> torneios;
     private List<TorneioSuico> torneioSuico;
     
     private Usuario usuarioLogado;
@@ -60,9 +59,9 @@ public class GerenciaUsuarios {
             Persistencia<Juiz> juiPersistencia = new JuizPersistencia();
             juiPersistencia.save(juizes);
         }
-        if(torneios != null){
-            Persistencia<Torneio> torPersistencia = new TorneiosPersistencia();
-            torPersistencia.save(torneios);
+        if(torneioSuico != null){
+            Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
+            torPersistencia.save(torneioSuico);
         }
     }
 

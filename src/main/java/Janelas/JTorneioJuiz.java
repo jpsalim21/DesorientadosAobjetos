@@ -10,6 +10,7 @@ import Eventos.Interface.Proximo;
 import Eventos.JTorneio.CalcularResultado;
 import Eventos.JTorneio.ConfirmarResultado;
 import Eventos.JTorneio.Emparceirar;
+import Eventos.Listener;
 import Excecao.ExceptionAcabou;
 import Excecao.ExceptionResultadoImutavel;
 import Excecao.NaoPodeEmparceirarException;
@@ -55,7 +56,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        janela.addWindowListener(GerenciaUsuarios.getSingleton());
+        janela.addWindowListener(new Listener());
         this.torneio = torneio;
         
         desenhaTela();
