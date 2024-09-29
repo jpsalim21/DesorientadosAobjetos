@@ -56,6 +56,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
+        janela.setResizable(false);
         janela.addWindowListener(new Listener());
         this.torneio = torneio;
         
@@ -68,8 +69,8 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         DefaultListModel<Confronto> model = new DefaultListModel<>();
         
         JPanel painelPrincipal = new JPanel();
-        painelPrincipal.setLayout(new BorderLayout());
-        painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        //painelPrincipal.setLayout(new BorderLayout());
+        //painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         
         JPanel painelEmparceiramento = new JPanel();
         painelEmparceiramento.setBorder(BorderFactory.createTitledBorder("Emparceiramento"));
@@ -108,7 +109,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         painelConfigConfronto.add(btnClassificacao);
         btnClassificacao.addActionListener(new CalcularResultado(this));
         
-        painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
+        //painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
         
         painelPrincipal.add(painelEmparceiramento);
         painelPrincipal.add(painelConfigConfronto, BorderLayout.EAST);
