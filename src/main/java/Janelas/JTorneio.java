@@ -63,8 +63,6 @@ public class JTorneio implements InterfaceAnteriorProx{
         DefaultListModel<Confronto> model = new DefaultListModel<>();
         
         JPanel principal = new JPanel();
-        
-        //principal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         principal.setBorder(BorderFactory.createTitledBorder(tipoT));
         principal.setLayout(new BorderLayout());
         
@@ -74,15 +72,14 @@ public class JTorneio implements InterfaceAnteriorProx{
         partidasRodada = new JList<>(model);
         JScrollPane painelScroll = new JScrollPane(partidasRodada);
         painelScroll.setPreferredSize(new Dimension(WIDTH/2, HEIGHT));
-        pareamento.add(painelScroll, BorderLayout.CENTER);
         
         JPanel pareamentoBotoes = new JPanel();
         pareamentoBotoes.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
+
         JButton anterior = new JButton("Anterior");
         rodadaLabel = new JLabel("Rodada 1");
         JButton proxima = new JButton("Proxima");
         JButton resultado = new JButton("Resultado da rodada");
-        
         
         pareamentoBotoes.add(anterior);
         pareamentoBotoes.add(rodadaLabel);
@@ -95,10 +92,10 @@ public class JTorneio implements InterfaceAnteriorProx{
         resultado.addActionListener(new PegarResultado(this));
         
         pareamento.add(pareamentoBotoes, BorderLayout.SOUTH);
+        pareamento.add(painelScroll, BorderLayout.CENTER);
+        
         
         JPanel classfi = new JPanel();
-        JPanel botoes =  new JPanel();
-        
         classfi.setPreferredSize(new Dimension(WIDTH/4, HEIGHT));
         classfi.setBorder(BorderFactory.createTitledBorder("Classificação"));
         classfi.setLayout(new BorderLayout());
@@ -107,7 +104,6 @@ public class JTorneio implements InterfaceAnteriorProx{
         
         principal.add(pareamento,BorderLayout.WEST);
         principal.add(classfi,BorderLayout.CENTER);
-        principal.add(botoes, BorderLayout.SOUTH);
         
         janela.add(principal);
     }
