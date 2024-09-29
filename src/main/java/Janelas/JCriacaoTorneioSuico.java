@@ -10,7 +10,7 @@ import Eventos.Interface.AdicionaJogador;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.RemoveJogador;
 import Eventos.Interface.Retornar;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import Usuarios.Juiz;
@@ -135,7 +135,7 @@ public class JCriacaoTorneioSuico implements InterfaceJanela, InterfaceCriacaoTo
     public void retornar() {
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
-        } catch (ExcessaoUsuarioNaoEncontrado e){
+        } catch (ExcecaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
         }
         janela.dispose();
@@ -147,7 +147,7 @@ public class JCriacaoTorneioSuico implements InterfaceJanela, InterfaceCriacaoTo
         Jogador novoJogador;
         try {
             novoJogador = GerenciaUsuarios.getSingleton().procuraJogador(nomeJogadorField.getText());
-        } catch (ExcessaoUsuarioNaoEncontrado e) {
+        } catch (ExcecaoUsuarioNaoEncontrado e) {
             JOptionPane.showMessageDialog(janela, "Jogador não encontrado");
             nomeJogadorField.setText("");
             return;

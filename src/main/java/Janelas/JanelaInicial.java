@@ -145,13 +145,13 @@ public class JanelaInicial implements InterfaceJanela {
         } catch (ExcecaoDeSenha e){
             JOptionPane.showMessageDialog(tela, "A senha é inválida!");
             return;
-        } catch (ExcessaoUsuarioNaoEncontrado e){
+        } catch (ExcecaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
             return;
         }
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
-        } catch(ExcessaoUsuarioNaoEncontrado e){
+        } catch(ExcecaoUsuarioNaoEncontrado e){
             System.out.println("Deu esse erro aqui");
             JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
             return;

@@ -7,7 +7,7 @@ package Singleton;
 
 import Excecao.ExcecaoDeSenha;
 import Excecao.ExcecaoUsuarioJaExistente;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import Janelas.JanelaJogador;
 import Janelas.JanelaJuiz;
 import Usuarios.*;
@@ -88,29 +88,29 @@ public class GerenciaUsuarios {
             }
         }
     }
-    public Jogador procuraJogador(String nome) throws ExcessaoUsuarioNaoEncontrado{
+    public Jogador procuraJogador(String nome) throws ExcecaoUsuarioNaoEncontrado{
         for(Jogador j : jogadores){
             if(j.getNome().equals(nome)){
                 return j;
             }
         }
-        throw new ExcessaoUsuarioNaoEncontrado();
+        throw new ExcecaoUsuarioNaoEncontrado();
     }
-    public Jogador procuraJogador(int id) throws ExcessaoUsuarioNaoEncontrado{
+    public Jogador procuraJogador(int id) throws ExcecaoUsuarioNaoEncontrado{
         for(Jogador j : jogadores){
             if(j.getID() == id){
                 return j;
             }
         }
-        throw new ExcessaoUsuarioNaoEncontrado();
+        throw new ExcecaoUsuarioNaoEncontrado();
     }
-    public Usuario procuraUsuario(int id) throws ExcessaoUsuarioNaoEncontrado{
+    public Usuario procuraUsuario(int id) throws ExcecaoUsuarioNaoEncontrado{
         for(Usuario u : usuarios){
             if(u.getID() == id){
                 return u;
             }
         }
-        throw new ExcessaoUsuarioNaoEncontrado();
+        throw new ExcecaoUsuarioNaoEncontrado();
     }
     public void remove(int id){
         Usuario usuarioRemover = null;
@@ -175,7 +175,7 @@ public class GerenciaUsuarios {
         chamaPersistencia();
     }
 
-    public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
+    public void tentaLogin(String nome, String senha) throws ExcecaoUsuarioNaoEncontrado,ExcecaoDeSenha{
         for(Usuario u : usuarios){
             if(u.getNome().equals(nome)){
                 if(u.getSenha().equals(senha)){
@@ -184,12 +184,12 @@ public class GerenciaUsuarios {
                 }
             }
         }
-        throw new ExcessaoUsuarioNaoEncontrado();
+        throw new ExcecaoUsuarioNaoEncontrado();
     }
     
-    public void fazLogin() throws ExcessaoUsuarioNaoEncontrado{
+    public void fazLogin() throws ExcecaoUsuarioNaoEncontrado{
         if(usuarioLogado == null) {
-            throw new ExcessaoUsuarioNaoEncontrado();
+            throw new ExcecaoUsuarioNaoEncontrado();
         }
         
         switch(usuarioLogado.getTipoUsuario()){

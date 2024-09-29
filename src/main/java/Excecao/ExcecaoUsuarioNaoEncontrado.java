@@ -5,9 +5,9 @@
  */
 package Excecao;
 
-public class ExcessaoUsuarioNaoEncontrado extends Exception{
+public class ExcecaoUsuarioNaoEncontrado extends Exception{
 
-    public ExcessaoUsuarioNaoEncontrado() {
+    public ExcecaoUsuarioNaoEncontrado() {
         super("Usuario não encontrado!");
     }
 }

@@ -9,7 +9,7 @@ import Singleton.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.Listener;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -85,7 +85,7 @@ public class JCriacaoTorneio implements InterfaceJanela{
     public void retornar() {
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
-        } catch(ExcessaoUsuarioNaoEncontrado e){
+        } catch(ExcecaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
             return;
         }

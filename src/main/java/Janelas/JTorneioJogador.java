@@ -13,7 +13,7 @@ import Eventos.Interface.Retornar;
 import Eventos.JTorneio.PegarResultado;
 import Excecao.ExceptionAcabou;
 import Excecao.ExceptionResultadoImutavel;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import Excecao.NaoPodeEmparceirarException;
 import Torneios.JogadorParticipante;
 import Torneios.Torneio;
