@@ -5,9 +5,7 @@
  */
 
 package com.mycompany.desorientadosaobjetos;
-import Eventos.GerenciaUsuarios;
 import Janelas.*;
-import Torneios.Torneio;
 
 
 public class DesorientadosAobjetos {

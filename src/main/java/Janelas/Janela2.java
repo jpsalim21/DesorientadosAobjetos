@@ -24,7 +24,7 @@ public class Janela2 implements JanelaInterface {
     private JTextField tfnome;
     private JTextField tfsenha;
     String[] usuarios = {"Jogador","Juiz"};
-    JComboBox tipoUsuario = new JComboBox(usuarios);
+    private JComboBox tipoUsuario = new JComboBox(usuarios);
     
     
     

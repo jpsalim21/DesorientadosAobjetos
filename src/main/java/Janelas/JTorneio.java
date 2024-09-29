@@ -7,15 +7,12 @@ package Janelas;
 
 import Eventos.GerenciaUsuarios;
 import Torneios.Confronto;
-import Eventos.DeslogaTorneio;
 import Eventos.Interface.Retornar;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
 import Torneios.Torneio;
-import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.ScrollPane;
 import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;

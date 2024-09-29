@@ -15,8 +15,6 @@ import Persistencias.*;
 import Torneios.Torneio;
 import static Usuarios.Usuario.TipoUsuario.JOGADOR;
 import static Usuarios.Usuario.TipoUsuario.JUIZ;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import java.util.List;
 
