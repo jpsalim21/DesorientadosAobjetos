@@ -5,6 +5,7 @@
  */
 package Usuarios;
 
+import Eventos.GerenciaUsuarios;
 import Excecao.*;
 
 public class Juiz extends Usuario {
@@ -14,4 +15,11 @@ public class Juiz extends Usuario {
         tipo = TipoUsuario.JUIZ;
     }
     
+    
+    @Override
+    public void remover(){
+        for(int i : torneio){
+            GerenciaUsuarios.getSingleton().getTorneioByID(i).removerParticipante(ID);
+        }
+    }
 }

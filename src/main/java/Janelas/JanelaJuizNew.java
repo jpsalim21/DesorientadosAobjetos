@@ -8,6 +8,7 @@ import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.JanelaJuiz.CriarTorneio;
+import Eventos.JanelaJuiz.ExcluiJuiz;
 import Eventos.Listener;
 import Torneios.Torneio;
 import Usuarios.Juiz;
@@ -83,12 +84,16 @@ public class JanelaJuizNew implements JanelaInterface{
         JButton btnCriar = new JButton("Criar Torneio");
         btnCriar.addActionListener(new CriarTorneio(this));
         
+        JButton btnExcluirConta = new JButton("Excluir conta");
+        btnExcluirConta.addActionListener(new ExcluiJuiz(this));
+        
         JButton btnDeslogar = new JButton("Deslogar da Conta");
         btnDeslogar.addActionListener(new Retornar(this));
         
         botoesPainelTorneios.add(btnAcessar);
         botoesPainelTorneios.add(btnCriar);
         botoesPainelTorneios.add(btnDeslogar);
+        botoesPainelTorneios.add(btnExcluirConta);
         
         painelTorneios.add(torneiosList, BorderLayout.NORTH);
         painelTorneios.add(botoesPainelTorneios, BorderLayout.SOUTH);
@@ -132,5 +137,13 @@ public class JanelaJuizNew implements JanelaInterface{
     public void criarTorneio(){
         JCriacaoTorneio janelaNova = new JCriacaoTorneio();
         janela.dispose();
+    }
+    public void excluirConta() {
+        int response = JOptionPane.showConfirmDialog(janela, "Você deseja continuar?", "Excluir conta", JOptionPane.YES_NO_OPTION);
+
+        if (response == JOptionPane.YES_OPTION) {
+            GerenciaUsuarios.getSingleton().remove(juiz.getID());
+            janela.dispose();
+        }
     }
 }

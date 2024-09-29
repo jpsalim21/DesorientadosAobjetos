@@ -47,6 +47,14 @@ public abstract class Torneio {
         calcularClassificacaoInicial();
     }
     
+    public void removerParticipante(int id){
+        for(JogadorParticipante j : participantes){
+            if(j.getUsuario().getID() == id){
+                participantes.remove(j);
+            }
+        }
+    }
+    
     public abstract void emparceirar() throws NaoPodeEmparceirarException, ExceptionAcabou;
     
     protected abstract void calcularClassificacaoInicial();

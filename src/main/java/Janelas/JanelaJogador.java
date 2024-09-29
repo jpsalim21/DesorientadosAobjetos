@@ -11,7 +11,6 @@ import Eventos.Interface.Retornar;
 import Eventos.JanelaJogador.ExcluiJogador;
 import Eventos.Listener;
 import Torneios.Torneio;
-import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

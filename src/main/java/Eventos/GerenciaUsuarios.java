@@ -132,6 +132,7 @@ public class GerenciaUsuarios {
             }
         }
         usuarios.remove(usuarioRemover);
+        usuarioRemover.remover();
         chamaPersistencia();
     }
     
@@ -204,6 +205,15 @@ public class GerenciaUsuarios {
     
     public void adicionaTorneio(TorneioSuico t){
         torneioSuico.add(t);
+    }
+    
+    public TorneioSuico getTorneioByID(int id){
+        for(TorneioSuico t : torneioSuico){
+            if(t.getId() == id){
+                return t;
+            }
+        }
+        return null;
     }
     
     public List<Torneio> getTorneios(List<Integer> ids){
