@@ -62,48 +62,54 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         janela.pack();
     }
     
-    private void desenhaTela(){
+     private void desenhaTela(){
         DefaultListModel<Confronto> model = new DefaultListModel<>();
-        // Inicializa os botões de navegação
-        JButton botaoAnterior = new JButton("Anterior");
-        JButton botaoProx = new JButton("Próximo");
-        rodadaLabel = new JLabel("Rodada 1");
-
+        
+        JPanel painelPrincipal = new JPanel();
+        //painelPrincipal.setLayout(new BorderLayout());
+        //painelPrincipal.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        
+        JPanel painelEmparceiramento = new JPanel();
+        painelEmparceiramento.setBorder(BorderFactory.createTitledBorder("Emparceiramento"));
+        painelEmparceiramento.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
+        
         JPanel painelBotoesEmparceiramento = new JPanel();
+        painelBotoesEmparceiramento.setLayout(new GridLayout(1, 0, H_GAP, V_GAP));
+        JButton botaoAnterior = new JButton("Anterior");
+        rodadaLabel = new JLabel("Rodada 1");
+        JButton botaoProx = new JButton("Próximo");
         painelBotoesEmparceiramento.add(botaoAnterior);
         painelBotoesEmparceiramento.add(rodadaLabel);
         painelBotoesEmparceiramento.add(botaoProx);
-
+        
         botaoAnterior.addActionListener(new Anterior(this));
         botaoProx.addActionListener(new Proximo(this));
-
+        
         confrontosAtuais = new JList<>(model);
-        JScrollPane scrollPaneConfrontos = new JScrollPane(confrontosAtuais);
-
-        JPanel painelEmparceiramento = new JPanel();
-        painelEmparceiramento.add(scrollPaneConfrontos);
+        painelEmparceiramento.add(new JScrollPane(confrontosAtuais));
         painelEmparceiramento.add(painelBotoesEmparceiramento);
-
-        JPanel painelConfigConfronto = new JPanel(new GridLayout(0, 1, H_GAP, V_GAP));
+        
+        JPanel parteDeCima = new JPanel();
+        parteDeCima.setLayout(new BorderLayout());
+        
+        JPanel painelConfigConfronto = new JPanel();
+        painelConfigConfronto.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
         painelConfigConfronto.add(new JLabel("Resultado do confronto"));
         painelConfigConfronto.add(resultadoConfronto);
-
         JButton btnConfirmar = new JButton("Confirmar");
         btnConfirmar.addActionListener(new ConfirmarResultado(this));
         painelConfigConfronto.add(btnConfirmar);
-
-        JButton btnEmparceirar = new JButton("Emparceirar próxima rodada");
-        btnEmparceirar.addActionListener(new Emparceirar(this));
+        JButton btnEmparceirar = new JButton("Emparceirar proxima rodada");
         painelConfigConfronto.add(btnEmparceirar);
-
+        btnEmparceirar.addActionListener(new Emparceirar(this));
         JButton btnClassificacao = new JButton("Calcular resultados");
-        btnClassificacao.addActionListener(new CalcularResultado(this));
         painelConfigConfronto.add(btnClassificacao);
-
-        JPanel painelPrincipal = new JPanel(new BorderLayout());
-        painelPrincipal.add(painelEmparceiramento, BorderLayout.CENTER);
+        btnClassificacao.addActionListener(new CalcularResultado(this));
+        
+        //painelConfigConfronto.setPreferredSize(new Dimension(WIDTH/5, HEIGHT/4));
+        
+        painelPrincipal.add(painelEmparceiramento);
         painelPrincipal.add(painelConfigConfronto, BorderLayout.EAST);
-
         janela.add(painelPrincipal);
         
     }
