@@ -123,7 +123,6 @@ public class JanelaJuizNew implements JanelaInterface{
         torneio = model.get(selectedIndex);
         JTorneioJuiz j = new JTorneioJuiz(torneio);
         
-        janela.dispose();
     }
 
     @Override
@@ -132,5 +131,6 @@ public class JanelaJuizNew implements JanelaInterface{
     }
     public void criarTorneio(){
         JCriacaoTorneio janelaNova = new JCriacaoTorneio();
+        janela.dispose();
     }
 }

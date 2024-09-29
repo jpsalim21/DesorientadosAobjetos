@@ -53,7 +53,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
     public JTorneioJuiz(Torneio torneio){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
         janela.addWindowListener(new Listener());

@@ -60,6 +60,8 @@ public class GerenciaUsuarios {
             juiPersistencia.save(juizes);
         }
         if(torneioSuico != null){
+            System.out.println("Torneios é diferente de null");
+            System.out.println(torneioSuico.size());
             Persistencia<TorneioSuico> torPersistencia = new TorneioSuicoPersistencia();
             torPersistencia.save(torneioSuico);
         }
@@ -179,9 +181,7 @@ public class GerenciaUsuarios {
     
     
     public void adicionaTorneio(TorneioSuico t){
-        System.out.println("Adicionamos um torneio");
         torneioSuico.add(t);
-        System.out.println(torneioSuico.size());
     }
     
     public List<Torneio> getTorneios(List<Integer> ids){
