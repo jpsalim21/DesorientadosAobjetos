@@ -59,7 +59,8 @@ public class TorneioSuico extends Torneio{
         rodadaAtual++;
         infoRodadas.add(infoRodadaAtual);
     }
-    private boolean calcularClassificacao(){
+    @Override
+    public boolean calcularClassificacao(){
         for(Confronto c : infoRodadas.get(rodadaAtual - 1)){
             if(!c.getTerminouConfronto()){
                 return false;
@@ -117,13 +118,6 @@ public class TorneioSuico extends Torneio{
         
         infoRodadas.add(infoRodadaAtual);
         rodadaAtual++;
-    }
-    
-    public List<JogadorParticipante> getClassInfo(int rodadaDesejada){
-        return infoClassificacao.get(rodadaDesejada);
-    }
-    public List<Confronto> getRodadaInfo(int rodadaDesejada){
-        return infoRodadas.get(rodadaDesejada);
     }
     @Override
     public String toString(){

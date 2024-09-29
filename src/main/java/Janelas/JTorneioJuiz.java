@@ -13,6 +13,7 @@ import Excecao.ExceptionAcabou;
 import Excecao.ExceptionResultadoImutavel;
 import Excecao.NaoPodeEmparceirarException;
 import Torneios.Confronto;
+import Torneios.JogadorParticipante;
 import Torneios.Torneio;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -116,7 +117,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
         DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)confrontosAtuais.getModel();
         model.clear();
         List<Confronto> confrontos;
-        confrontos = torneio.getInfoRodada(rodadaAtual);
+        confrontos = torneio.getRodadaInfo(rodadaAtual);
         
         if(confrontos == null) return; //PROVISÓRIO
         
@@ -182,5 +183,14 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
             return;
         }
         proximo();
+    }
+    
+    public void calcularResultado(){
+        List<JogadorParticipante> jogadores = torneio.getClassInfo(rodadaAtual);
+        
+        if(jogadores == null){
+            return;
+        }
+        JanelaClassificacao j = new JanelaClassificacao(jogadores);
     }
 }

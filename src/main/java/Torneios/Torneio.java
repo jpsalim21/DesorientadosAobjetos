@@ -7,6 +7,7 @@ package Torneios;
 
 import Eventos.GerenciaUsuarios;
 import Excecao.ExceptionAcabou;
+import Excecao.ExceptionRodadaNaoTerminou;
 import Usuarios.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,8 @@ public abstract class Torneio {
     
     protected abstract void calcularClassificacaoInicial();
     
+    public abstract boolean calcularClassificacao();
+    
     @Override
     public String toString(){
         return "Torneio: " + nome;
@@ -67,11 +70,13 @@ public abstract class Torneio {
         return participantes;
     }  
     
-    public List<Confronto> getInfoRodada(int indexRodada){
-        if(infoRodadas.size() <= indexRodada){
-            return null;
-        }
-        return infoRodadas.get(indexRodada);
+    public List<JogadorParticipante> getClassInfo(int rodadaDesejada){
+        if(rodadaDesejada >= infoClassificacao.size()) return null;
+        return infoClassificacao.get(rodadaDesejada);
+    }
+    public List<Confronto> getRodadaInfo(int rodadaDesejada){
+        if(rodadaDesejada >= infoRodadas.size()) return null;
+        return infoRodadas.get(rodadaDesejada);
     }
     
     public int getMaxRodadas(){

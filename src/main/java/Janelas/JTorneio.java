@@ -104,7 +104,7 @@ public class JTorneio implements JanelaInterface{
     private void carregarRodada(){
         DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)partidasRodada.getModel();
         List<Confronto> confrontos;
-        confrontos = torneio.getInfoRodada(rodadaAtual);
+        confrontos = torneio.getRodadaInfo(rodadaAtual);
         
         if(confrontos == null) return; //PROVISÓRIO
         

@@ -47,7 +47,7 @@ public class JogadorParticipante implements Comparable<JogadorParticipante>{
 
     @Override
     public int compareTo(JogadorParticipante o) {
-        return Float.compare(pontuacao, o.getPontuacao());
+        return Float.compare(o.getPontuacao(), pontuacao);
     }
     
 }
