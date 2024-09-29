@@ -5,13 +5,13 @@
  */
 package Eventos.JanelaJuiz;
 
-import Janelas.JanelaJuizNew;
+import Janelas.JanelaJuiz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExcluirTorneio implements ActionListener{
-    private JanelaJuizNew j;
-    public ExcluirTorneio(JanelaJuizNew j){
+    private JanelaJuiz j;
+    public ExcluirTorneio(JanelaJuiz j){
         this.j = j;
     }
     @Override

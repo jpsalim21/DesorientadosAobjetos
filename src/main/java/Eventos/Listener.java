@@ -5,6 +5,7 @@
  */
 package Eventos;
 
+import Singleton.GerenciaUsuarios;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 

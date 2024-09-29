@@ -4,7 +4,7 @@
  * Thales Gomes Batista 202365557C
  */
 package Usuarios;
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import java.util.*;
 import java.util.regex.Pattern;
 import Excecao.*;

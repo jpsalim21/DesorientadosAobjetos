@@ -5,13 +5,13 @@
  */
 package Eventos.JanelaJuiz;
 
-import Janelas.JanelaJuizNew;
+import Janelas.JanelaJuiz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CriarTorneio implements ActionListener{
-    private final JanelaJuizNew janela;
-    public CriarTorneio(JanelaJuizNew janela){
+    private final JanelaJuiz janela;
+    public CriarTorneio(JanelaJuiz janela){
         this.janela = janela;
     }
     @Override

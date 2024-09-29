@@ -5,8 +5,8 @@
  */
 package Torneios;
 
-import Eventos.GerenciaUsuarios;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Singleton.GerenciaUsuarios;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import Usuarios.Jogador;
 
 public class JogadorParticipante implements Comparable<JogadorParticipante>{
@@ -23,7 +23,7 @@ public class JogadorParticipante implements Comparable<JogadorParticipante>{
     public Jogador getUsuario(){
         try {
             return GerenciaUsuarios.getSingleton().procuraJogador(usuario);
-        } catch (ExcessaoUsuarioNaoEncontrado ex) {
+        } catch (ExcecaoUsuarioNaoEncontrado ex) {
             return null;
         }
     }

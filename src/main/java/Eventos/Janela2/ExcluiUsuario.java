@@ -5,14 +5,14 @@
  */
 package Eventos.Janela2;
 
-import Janelas.Janela2;
+import Janelas.JanelaInicial;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ExcluiUsuario implements ActionListener{
-     private final Janela2 tela;
+     private final JanelaInicial tela;
      
-     public ExcluiUsuario(Janela2 tela){
+     public ExcluiUsuario(JanelaInicial tela){
         this.tela = tela;
     }
      @Override

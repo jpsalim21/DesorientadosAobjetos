@@ -5,11 +5,11 @@
  */
 package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Eventos.Listener;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-public class JCriacaoTorneio implements JanelaInterface{
+public class JCriacaoTorneio implements InterfaceJanela{
     private final JFrame janela;
     private final int WIDTH = 1000;
     private final int HEIGHT = 500;
@@ -85,7 +85,7 @@ public class JCriacaoTorneio implements JanelaInterface{
     public void retornar() {
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
-        } catch(ExcessaoUsuarioNaoEncontrado e){
+        } catch(ExcecaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
             return;
         }

@@ -5,13 +5,13 @@
  */
 package Eventos.JTorneio;
 
-import Janelas.JTorneio;
+import Janelas.JTorneioJogador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PegarResultado implements ActionListener{
-    private JTorneio j;
-    public PegarResultado(JTorneio j){
+    private JTorneioJogador j;
+    public PegarResultado(JTorneioJogador j){
         this.j = j;
     }
     @Override

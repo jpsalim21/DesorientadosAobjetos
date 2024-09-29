@@ -5,12 +5,12 @@
  */
 package Janelas;
 
-import Eventos.GerenciaUsuarios;
+import Singleton.GerenciaUsuarios;
 import Eventos.Interface.AdicionaJogador;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.RemoveJogador;
 import Eventos.Interface.Retornar;
-import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Excecao.ExcecaoUsuarioNaoEncontrado;
 import Torneios.TorneioSuico;
 import Usuarios.Jogador;
 import Usuarios.Juiz;
@@ -31,7 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 
-public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTorneio{
+public class JCriacaoTorneioSuico implements InterfaceJanela, InterfaceCriacaoTorneio{
     private final JFrame janela;
     private final int WIDTH = 1000;
     private final int HEIGHT = 400;
@@ -135,7 +135,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
     public void retornar() {
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
-        } catch (ExcessaoUsuarioNaoEncontrado e){
+        } catch (ExcecaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
         }
         janela.dispose();
@@ -147,7 +147,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
         Jogador novoJogador;
         try {
             novoJogador = GerenciaUsuarios.getSingleton().procuraJogador(nomeJogadorField.getText());
-        } catch (ExcessaoUsuarioNaoEncontrado e) {
+        } catch (ExcecaoUsuarioNaoEncontrado e) {
             JOptionPane.showMessageDialog(janela, "Jogador não encontrado");
             nomeJogadorField.setText("");
             return;
