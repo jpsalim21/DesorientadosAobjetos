@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -66,8 +67,8 @@ public class JTorneioJuiz {
         painelBotoesEmparceiramento.add(botaoVoltar);
         painelBotoesEmparceiramento.add(botaoProx);
         
-        confrontosAtuais = new JList<>();
-        painelEmparceiramento.add(new JScrollBar());
+        confrontosAtuais = new JList<>(model);
+        painelEmparceiramento.add(new JScrollPane(confrontosAtuais));
         painelEmparceiramento.add(painelBotoesEmparceiramento);
         
         
@@ -83,6 +84,8 @@ public class JTorneioJuiz {
         confrontos = torneio.getInfoRodada(rodadaAtual);
         
         if(confrontos == null) return; //PROVISÓRIO
+        
+        System.out.println("Rodada " + rodadaAtual + " tem n confrontos: " + confrontos.size());
         
         for(Confronto c : confrontos){
             System.out.println("Adicionamos os confrontos");

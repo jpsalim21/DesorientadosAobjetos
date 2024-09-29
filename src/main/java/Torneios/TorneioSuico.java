@@ -23,8 +23,6 @@ public class TorneioSuico extends Torneio{
         infoClassificacao = new ArrayList<>();
         infoRodadas = new ArrayList<>();
         
-        calcularClassificacaoInicial();
-        emparceirar();
     }
     
     public void emparceirar(){
@@ -32,8 +30,11 @@ public class TorneioSuico extends Torneio{
         List<JogadorParticipante> classificacao = infoClassificacao.get(rodadaAtual);
         int tamanho = classificacao.size();
         
+        System.out.println("Tamanho da classificacao: " + tamanho);
+        
         //Resolve BYE do último jogador
         if(tamanho%2==1){
+            System.out.println("Deu BYE");
             int indiceUltimoBye = tamanho - 1;
             while(classificacao.get(indiceUltimoBye).getBye()){
                 indiceUltimoBye--;
@@ -44,8 +45,11 @@ public class TorneioSuico extends Torneio{
         tamanho = tamanho / 2;
         for(int i = 0; i < tamanho; i++){
             Confronto c = new Confronto(classificacao.get(i), classificacao.get(i + tamanho));
+            System.out.println("Confronto entre " + classificacao.get(i).getUsuario().getNome() + " e " + classificacao.get(i + tamanho).getUsuario().getNome());
             infoRodadaAtual.add(c);
         }
+        
+        System.out.println("Tá emparceirado");
         
         rodadaAtual++;
         infoRodadas.add(infoRodadaAtual);
@@ -65,13 +69,18 @@ public class TorneioSuico extends Torneio{
         infoClassificacao.add(classificacao);
     }
     
-    private void calcularClassificacaoInicial(){
+    public void calcularClassificacaoInicial(){
         List<JogadorParticipante> classificacao = new ArrayList<>();
         classificacao.addAll(participantes);
-        
+        System.out.println("Classificacao nova tem " + classificacao.size());
         Collections.sort(classificacao);
         
+        for(JogadorParticipante j : classificacao){
+            System.out.println(j.getUsuario().getNome());
+        }
+        
         infoClassificacao.add(classificacao);
+        emparceirar();
     }
     
     public List<JogadorParticipante> getClassInfo(int rodadaDesejada){

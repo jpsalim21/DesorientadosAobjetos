@@ -119,6 +119,8 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
 
     @Override
     public void confirmar() {
+        System.out.println("Temos x jogadores para adicionar: " + jogadoresAdicionados.size());
+        
         String nomeTorneio = nomeField.getText();
         int rodadas = 0;
         try{
@@ -129,6 +131,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
         }
         TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, (Juiz)GerenciaUsuarios.getSingleton().getUsuario(), rodadas);
         novoTorneio.adicionarListaParticipantes(jogadoresAdicionados);
+        novoTorneio.calcularClassificacaoInicial();
         
         retornar();
     }
@@ -153,6 +156,8 @@ public class JCriacaoTorneioSuico implements JanelaInterface, InterfaceCriacaoTo
             nomeJogadorField.setText("");
             return;
         }
+        
+        jogadoresAdicionados.add(novoJogador);
         model.addElement(novoJogador);
         nomeJogadorField.setText("");
     }

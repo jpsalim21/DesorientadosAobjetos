@@ -32,10 +32,12 @@ public class Torneio {
         novoJogador.addTorneio(codigo);
         JogadorParticipante novoElemento = new JogadorParticipante(novoJogador);
         participantes.add(novoElemento);
+        System.out.println("Adicionei mesmo " + novoElemento.getUsuario().getNome());
     }
     
     public void adicionarListaParticipantes(List<Jogador> novosJogadores){
         for(Jogador j : novosJogadores){
+            System.out.println("Adicionei " + j.getNome());
             adicionarParticipante(j);
         }
     }
