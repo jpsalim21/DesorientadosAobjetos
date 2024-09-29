@@ -8,16 +8,23 @@ import Eventos.GerenciaUsuarios;
 import Eventos.Interface.Confirmar;
 import Eventos.Interface.Retornar;
 import Excecao.ExcessaoUsuarioNaoEncontrado;
+import Torneios.Torneio;
 import Torneios.TorneioSuico;
+import Usuarios.Jogador;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 
@@ -30,18 +37,24 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
     
     JTextField nomeField, rodadasField;
     
+    private JTextField nomeJogadorField;
+    private List<Jogador> jogadoresAdicionados;
+    private JList<Jogador> JListJogadores;
+    
     public JCriacaoTorneioSuico(){
         janela = new JFrame();
         janela.setSize(new Dimension(WIDTH, HEIGHT));
         janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         janela.setVisible(true);
         janela.setLayout(new BorderLayout());
-        
+        jogadoresAdicionados = new ArrayList<>();
         desenhaTela();
         janela.pack();
     }
     
     private void desenhaTela() {
+        DefaultListModel<Jogador> model = new DefaultListModel<>();
+        
         JPanel painelPrincipal = new JPanel();
         painelPrincipal.setLayout(new BorderLayout());
         painelPrincipal.setBorder(BorderFactory.createTitledBorder("Informações do torneio"));
@@ -72,7 +85,24 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         formulario.add(rodadasLabel);
         formulario.add(rodadasField);
         
-        painelPrincipal.add(formulario);
+        JPanel jogadoresPainel = new JPanel();
+        jogadoresPainel.setLayout(new BorderLayout());
+        jogadoresPainel.setBorder(BorderFactory.createTitledBorder("Jogadores adicionados"));
+        JListJogadores = new JList<>(model);
+        JScrollPane painelScrollJogadores = new JScrollPane(JListJogadores);
+        JPanel jogadoresBtnPainel = new JPanel();
+        jogadoresBtnPainel.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
+        nomeJogadorField = new JTextField();
+        jogadoresBtnPainel.add(new JLabel("Nome do jogador a adicionar:"));
+        jogadoresBtnPainel.add(nomeJogadorField);
+        jogadoresBtnPainel.add(new JButton("Adicionar jogador"));
+        jogadoresBtnPainel.add(new JButton("Remover jogador"));
+        
+        jogadoresPainel.add(painelScrollJogadores);
+        jogadoresPainel.add(jogadoresBtnPainel, BorderLayout.SOUTH);
+        
+        painelPrincipal.add(jogadoresPainel, BorderLayout.CENTER);
+        painelPrincipal.add(formulario, BorderLayout.NORTH);
         painelPrincipal.add(painelBtn, BorderLayout.SOUTH);
         
         janela.add(painelPrincipal);
@@ -89,9 +119,7 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
             return;
         }
         TorneioSuico novoTorneio = new TorneioSuico(nomeTorneio, rodadas);
-        
     }
-
     @Override
     public void retornar() {
         try{
@@ -99,6 +127,27 @@ public class JCriacaoTorneioSuico implements JanelaInterface{
         } catch (ExcessaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(janela, "Algo deu errado, reinicie o programa!");
         }
+        janela.dispose();
+    }
+    
+    public void adicionarJogador(){
+        
+    }
+    
+    public void removerJogador(){
+        int selectedIndex = JListJogadores.getSelectedIndex();
+        
+        Jogador j;
+        if(selectedIndex == -1){
+            JOptionPane.showMessageDialog(janela, "Selecione um jogador da lista");
+            return;
+        }
+        DefaultListModel<Jogador> model = (DefaultListModel<Jogador>)JListJogadores.getModel();
+        j = model.elementAt(selectedIndex);
+        jogadoresAdicionados.remove(j);
+        model.remove(selectedIndex);
+        
+        
         janela.dispose();
     }
 }
