@@ -5,6 +5,7 @@
 package Janelas;
 
 import Eventos.GerenciaUsuarios;
+import Eventos.JTorneio.ConfirmarResultado;
 import Torneios.Confronto;
 import Torneios.Torneio;
 import java.awt.BorderLayout;
@@ -14,9 +15,11 @@ import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -36,6 +39,8 @@ public class JTorneioJuiz {
     private JList<Confronto> confrontosAtuais;
     private int rodadaAtual = 0;
     private JLabel rodadaLabel;
+    String[] resultados = {"1 - 0", "1/2 - 1/2", "0 - 1"};
+    private JComboBox resultadoConfronto = new JComboBox(resultados);
     
     public JTorneioJuiz(Torneio torneio){
         janela = new JFrame();
@@ -75,8 +80,19 @@ public class JTorneioJuiz {
         painelEmparceiramento.add(new JScrollPane(confrontosAtuais));
         painelEmparceiramento.add(painelBotoesEmparceiramento);
         
+        JPanel parteDeCima = new JPanel();
+        parteDeCima.setLayout(new BorderLayout());
+        
+        JPanel painelConfigConfronto = new JPanel();
+        painelConfigConfronto.setLayout(new GridLayout(0, 1, H_GAP, V_GAP));
+        painelConfigConfronto.add(new JLabel("Resultado do confronto"));
+        painelConfigConfronto.add(resultadoConfronto);
+        JButton btnConfirmar = new JButton("Confirmar");
+        btnConfirmar.addActionListener(new ConfirmarResultado(this));
+        painelConfigConfronto.add(btnConfirmar);
         
         painelPrincipal.add(painelEmparceiramento);
+        painelPrincipal.add(painelConfigConfronto, BorderLayout.EAST);
         janela.add(painelPrincipal);
         
     }
@@ -91,5 +107,21 @@ public class JTorneioJuiz {
         for(Confronto c : confrontos){
             model.addElement(c);
         }
+    }
+    
+    public void setResultado(){
+        int selectedIndex = confrontosAtuais.getSelectedIndex();
+        
+        Confronto confronto;
+        if(selectedIndex == -1){
+            JOptionPane.showMessageDialog(janela, "Selecione um confronto.");
+            return;
+        }
+        DefaultListModel<Confronto> model = (DefaultListModel<Confronto>)confrontosAtuais.getModel();
+        confronto = model.get(selectedIndex);
+        
+        int indexResultado = resultadoConfronto.getSelectedIndex();
+        
+        confronto.setResultado(indexResultado);
     }
 }

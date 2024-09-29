@@ -24,32 +24,32 @@ public class Confronto {
         terminouConfronto = true;
         
         switch(resultado){
-            case -1 -> {
+            case 0 -> {
                 resultadoString = " 1x0 ";
             }
-            case 0 ->{
+            case 1 ->{
                 resultadoString = " 1/2x1/2 ";
             }
-            case 1 ->{
+            case 2 ->{
                 resultadoString = " 0x1 ";
             }
         }
     }
     public void terminarConfronto(){
         switch(resultado){
-            case -1 -> {
+            case 0 -> {
                 jogador1.getUsuario().addVitorias();
                 jogador2.getUsuario().addDerrotas();
                 vencedor = jogador1;
                 jogador1.adicionarPontuacao(1);
             }
-            case 0 -> {
+            case 1 -> {
                 jogador1.getUsuario().addEmpates();
                 jogador2.getUsuario().addEmpates();
                 jogador1.adicionarPontuacao(0.5f);
                 jogador2.adicionarPontuacao(0.5f);
             }
-            case 1 -> {
+            case 2 -> {
                 jogador1.getUsuario().addDerrotas();
                 jogador2.getUsuario().addVitorias();
                 vencedor = jogador2;
