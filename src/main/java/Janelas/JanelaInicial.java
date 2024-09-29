@@ -151,7 +151,7 @@ public class JanelaInicial implements InterfaceJanela {
         }
         try{
             GerenciaUsuarios.getSingleton().fazLogin();
-        } catch(ExcessaoUsuarioNaoEncontrado e){
+        } catch(ExcecaoUsuarioNaoEncontrado e){
             JOptionPane.showMessageDialog(tela, "Usuario ou senha incorretos. Digite novamente");
             return;
         }
