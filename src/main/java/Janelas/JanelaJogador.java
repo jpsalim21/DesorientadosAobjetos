@@ -145,9 +145,8 @@ public class JanelaJogador implements JanelaInterface {
         int response = JOptionPane.showConfirmDialog(janela, "Você deseja continuar?", "Excluir conta", JOptionPane.YES_NO_OPTION);
 
         if (response == JOptionPane.YES_OPTION) {
-            GerenciaUsuarios.getSingleton().remove(jogadorLogado.getNome(), 0);
+            GerenciaUsuarios.getSingleton().remove(jogadorLogado.getID());
             janela.dispose();
-
         }
     }
 }

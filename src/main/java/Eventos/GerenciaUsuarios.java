@@ -112,7 +112,28 @@ public class GerenciaUsuarios {
         }
         throw new ExcessaoUsuarioNaoEncontrado();
     }
-    
+    public void remove(int id){
+        Usuario usuarioRemover = null;
+        for(Usuario u : usuarios){
+            if(u.getID() == id){
+                usuarioRemover = u;
+            }
+        }
+        if(usuarioRemover == null){
+            System.out.println("Usuário não encontrado");
+            return;
+        }
+        switch(usuarioRemover.getTipoUsuario()){
+            case JOGADOR -> {
+                jogadores.remove((Jogador)usuarioRemover);
+            }
+            case JUIZ -> {
+                juizes.remove((Juiz)usuarioRemover);
+            }
+        }
+        usuarios.remove(usuarioRemover);
+        chamaPersistencia();
+    }
     
     public void remove(String nome, int tipo){
         int cont = -1;
@@ -150,6 +171,7 @@ public class GerenciaUsuarios {
             }
             default -> System.out.println("Tipo de usuário desconhecido.");
         }
+        chamaPersistencia();
     }
 
     public void tentaLogin(String nome, String senha) throws ExcessaoUsuarioNaoEncontrado,ExcecaoDeSenha{
