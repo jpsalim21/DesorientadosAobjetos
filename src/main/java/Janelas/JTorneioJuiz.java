@@ -159,7 +159,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
             JOptionPane.showMessageDialog(janela, "Não existe rodada anterior a essa");
             return;
         }
-        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual));
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual + 1));
         carregarRodada();
     }
 
@@ -171,7 +171,7 @@ public class JTorneioJuiz implements InterfaceAnteriorProx{
             JOptionPane.showMessageDialog(janela, "Ainda não existe próxima rodada");
             return;
         }
-        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual));
+        rodadaLabel.setText("Rodada " + String.valueOf(rodadaAtual + 1));
         carregarRodada();
     }
     
